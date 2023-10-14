@@ -15,8 +15,8 @@ env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   IS_MAIN: ${{contains(github.ref, 'main')}}
   GODOT_VERSION: 4.1.1 # This affects download links! For example "https://downloads.tuxfamily.org/godotengine/3.4.3/Godot_v3.4.3-stable_linux_headless.64.zip"
-  PROJECT_NAME: PipelineTesting  # insert your project name (human readable)
-  ITCH_PROJECT_NAME: pipelinetesting # the page url name for the game
+  PROJECT_NAME: TBDgwj62  # insert your project name (human readable)
+  ITCH_PROJECT_NAME: tbdgwj62 # the page url name for the game
   ITCH_USERNAME: Chacob # insert your username!
   RCEDIT_SOURCE: https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x86.exe
 

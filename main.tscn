@@ -1,10 +1,209 @@
-[gd_scene load_steps=2 format=3 uid="uid://wuyuok32urh7"]
+[gd_scene load_steps=16 format=3 uid="uid://wuyuok32urh7"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pvl1u"]
+[ext_resource type="PackedScene" uid="uid://dlr4ihuvbnso0" path="res://_assets/world/testfloor.tscn" id="1_wxao8"]
+[ext_resource type="Script" path="res://PlayerController.gd" id="2_cp85y"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="3_m0tww"]
+[ext_resource type="Script" path="res://AudioPlayer.gd" id="4_gy3wl"]
+[ext_resource type="PackedScene" uid="uid://b7114ep6as0ma" path="res://_assets/AI/MoveToAttackRange/MoveToAttackRange.tscn" id="4_habin"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="4_kk357"]
+[ext_resource type="PackedScene" uid="uid://ddq4dalsieh13" path="res://_assets/AI/Attack/Attack.tscn" id="5_blb7m"]
+[ext_resource type="Texture2D" uid="uid://cqtpqew8v34gm" path="res://_assets/sprites/Player Animations/Idle/frame0000.png" id="7_116db"]
+[ext_resource type="Texture2D" uid="uid://cuxnvyk0eela8" path="res://_assets/sprites/Player Animations/Idle/frame0001.png" id="8_7asje"]
+[ext_resource type="Texture2D" uid="uid://cjn7g376s34fo" path="res://_assets/sprites/Player Animations/Idle/frame0002.png" id="9_e5l61"]
+[ext_resource type="Texture2D" uid="uid://clly3ufkmed8m" path="res://_assets/sprites/Player Animations/Idle/frame0003.png" id="10_fwrbh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1uvf"]
+radius = 32.0
+height = 144.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m25a3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3nk6"]
+radius = 32.0
+height = 272.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hqii"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_116db")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7asje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e5l61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fwrbh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(575.75, 326.25)
-scale = Vector2(1152.5, 653.5)
-texture = SubResource("PlaceholderTexture2D_pvl1u")
+[node name="World" type="Node2D" parent="."]
+
+[node name="Floor" parent="World" instance=ExtResource("1_wxao8")]
+
+[node name="Floor2" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(512, 0)
+
+[node name="Floor3" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(1024, 0)
+
+[node name="Floor4" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(1536, 0)
+
+[node name="Floor5" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(2048, 0)
+
+[node name="Floor16" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(1024, -1984)
+
+[node name="Floor17" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(1536, -1984)
+
+[node name="Floor18" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(2048, -1984)
+
+[node name="Floor19" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(-504, -1984)
+
+[node name="Floor20" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(8, -1984)
+
+[node name="Floor21" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(520, -1984)
+
+[node name="Floor6" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(2624, -448)
+rotation = 1.5708
+
+[node name="Floor10" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(2624, -960)
+rotation = 1.5708
+
+[node name="Floor11" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(2624, -1472)
+rotation = 1.5708
+
+[node name="Floor12" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(-504, -960)
+rotation = 1.5708
+
+[node name="Floor13" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(-504, -1472)
+rotation = 1.5708
+
+[node name="Floor14" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(-503, -1984)
+rotation = 1.5708
+
+[node name="Floor15" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(2624, -1984)
+rotation = 1.5708
+
+[node name="Floor9" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(-504, -448)
+rotation = 1.5708
+
+[node name="Floor7" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(472, -472)
+rotation = 3.14159
+scale = Vector2(0.554658, 0.670361)
+
+[node name="Floor22" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(1144, -1120)
+rotation = 3.14159
+scale = Vector2(0.554658, 0.670361)
+
+[node name="Floor23" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(56.0002, -1336)
+rotation = 3.14159
+scale = Vector2(0.554658, 0.670361)
+
+[node name="Floor24" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(2088, -1528)
+rotation = 3.14159
+scale = Vector2(0.554658, 0.670361)
+
+[node name="Floor25" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(1984, -536)
+rotation = 3.14159
+scale = Vector2(0.554658, 0.670361)
+
+[node name="Floor26" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(1336, -320)
+rotation = 3.14159
+scale = Vector2(0.554658, 0.670361)
+
+[node name="Floor8" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(8, 64)
+rotation = 3.14159
+
+[node name="Agents" type="Node2D" parent="."]
+
+[node name="AgentZero" type="CharacterBody2D" parent="Agents"]
+position = Vector2(256, -192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agents/AgentZero"]
+shape = SubResource("CapsuleShape2D_f1uvf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Agents/AgentZero"]
+position = Vector2(-6.67572e-06, 7.62939e-06)
+scale = Vector2(64, 144)
+texture = SubResource("CanvasTexture_m25a3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Agents/AgentZero"]
+offset_left = -16.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = -16.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "A.I."
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BeehaveTree" type="Node" parent="Agents/AgentZero"]
+script = ExtResource("3_m0tww")
+
+[node name="SelectorComposite" type="Node" parent="Agents/AgentZero/BeehaveTree"]
+script = ExtResource("4_kk357")
+
+[node name="MoveToAttackRange" parent="Agents/AgentZero/BeehaveTree/SelectorComposite" instance=ExtResource("4_habin")]
+
+[node name="Attack" parent="Agents/AgentZero/BeehaveTree/SelectorComposite" instance=ExtResource("5_blb7m")]
+
+[node name="Player" type="CharacterBody2D" parent="Agents"]
+position = Vector2(-328, -168)
+collision_layer = 8
+script = ExtResource("2_cp85y")
+MAX_STRAFE_SPEED = 1000
+STRAFE_ACC = 100
+JUMP_VELOCITY = -1600
+HANG_TIME_THRESHOLD_SPEED = 10
+GRACE_JUMP_TIME = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agents/Player"]
+position = Vector2(-8, 32)
+shape = SubResource("CapsuleShape2D_t3nk6")
+
+[node name="Camera2D" type="Camera2D" parent="Agents/Player"]
+position = Vector2(0, -96)
+zoom = Vector2(0.4, 0.4)
+position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Agents/Player"]
+sprite_frames = SubResource("SpriteFrames_4hqii")
+animation = &"Idle"
+
+[node name="AudioPlayer" type="Node" parent="."]
+script = ExtResource("4_gy3wl")

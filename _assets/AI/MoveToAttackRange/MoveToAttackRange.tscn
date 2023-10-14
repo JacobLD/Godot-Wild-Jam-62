@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7114ep6as0ma"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_xrgn7"]
+[ext_resource type="Script" path="res://_assets/AI/MoveToAttackRange/isNotInRangeToAttack.gd" id="2_3gryq"]
+[ext_resource type="Script" path="res://_assets/AI/MoveToAttackRange/MoveToAtackRange.gd" id="3_pw4pu"]
+
+[node name="MoveToAttackRange" type="Node"]
+script = ExtResource("1_xrgn7")
+
+[node name="IsNotInAttackRange" type="Node" parent="."]
+script = ExtResource("2_3gryq")
+
+[node name="MoveToAttackRange" type="Node" parent="."]
+script = ExtResource("3_pw4pu")

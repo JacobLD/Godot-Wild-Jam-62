@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://wuyuok32urh7"]
+
+[ext_resource type="PackedScene" uid="uid://dlr4ihuvbnso0" path="res://_assets/world/testfloor.tscn" id="1_wxao8"]
+[ext_resource type="Script" path="res://Player.gd" id="2_x2bqt"]
+[ext_resource type="Script" path="res://AudioPlayer.gd" id="4_gy3wl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3nk6"]
+radius = 32.0
+height = 128.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_l008n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1uvf"]
+radius = 32.0
+height = 144.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m25a3"]
+
+[node name="Main" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Floor" parent="World" instance=ExtResource("1_wxao8")]
+
+[node name="Floor2" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(512, 0)
+
+[node name="Floor3" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(512, -64)
+
+[node name="Floor4" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(64, -40)
+rotation = 1.5708
+
+[node name="Floor5" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(384, -40)
+rotation = 1.5708
+
+[node name="Floor6" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(1088, -448)
+rotation = 1.5708
+
+[node name="Floor9" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(-504, -448)
+rotation = 1.5708
+
+[node name="Floor7" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(504, -352)
+rotation = 3.14159
+
+[node name="Floor8" parent="World" instance=ExtResource("1_wxao8")]
+position = Vector2(8, 64)
+rotation = 3.14159
+
+[node name="Agents" type="Node2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="Agents"]
+position = Vector2(-328, -168)
+script = ExtResource("2_x2bqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agents/Player"]
+shape = SubResource("CapsuleShape2D_t3nk6")
+
+[node name="Camera2D" type="Camera2D" parent="Agents/Player"]
+position_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Agents/Player"]
+position = Vector2(1.09673e-05, 0)
+scale = Vector2(32, 128)
+texture = SubResource("CanvasTexture_l008n")
+
+[node name="AgentZero" type="CharacterBody2D" parent="Agents"]
+position = Vector2(256, -192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agents/AgentZero"]
+shape = SubResource("CapsuleShape2D_f1uvf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Agents/AgentZero"]
+position = Vector2(-6.67572e-06, 7.62939e-06)
+scale = Vector2(64, 144)
+texture = SubResource("CanvasTexture_m25a3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Agents/AgentZero"]
+offset_left = -16.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = -16.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "A.I."
+fit_content = true
+
+[node name="Tree" type="Node" parent="Agents/AgentZero"]
+
+[node name="AudioPlayer" type="Node" parent="."]
+script = ExtResource("4_gy3wl")
