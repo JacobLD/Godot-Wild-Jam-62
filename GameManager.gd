@@ -1,25 +1,28 @@
 extends Node
 
-var _player : CharacterBody2D = null
+var _player : PlayerController = null
 var _audio_player : AudioPlayer = null
 
+var _player_unlock_timer : Timer = Timer.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.call_deferred("_on_start")
+	add_child(_player_unlock_timer)
+	_player_unlock_timer.one_shot = true
+	_player_unlock_timer.timeout.connect(_unlock_player)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_start() -> void:
+	_audio_player.play_tutorial_track()
+	_player_unlock_timer.start(3)
 
 
-func registerPlayer(player : CharacterBody2D):
+func registerPlayer(player : PlayerController):
 	print("Player registered")
 	_player = player
 
 
-func getPlayer() -> CharacterBody2D:
+func getPlayer() -> PlayerController:
 	if _player == null:
 		printerr("Trying to fetch a null player body")
 	
@@ -33,3 +36,6 @@ func getAudioPlayer() -> AudioPlayer:
 		printerr("Trying to fetch a null audio player!")
 	
 	return _audio_player
+
+func _unlock_player():
+	_player.controls_locked = false

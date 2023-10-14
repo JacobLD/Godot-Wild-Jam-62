@@ -22,6 +22,8 @@ var _has_jumped : bool = false
 var _grace_timer : Timer
 var _grace_time : bool = false
 
+var controls_locked = true
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var default_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_gravity = default_gravity
@@ -40,8 +42,12 @@ func _ready():
 	current_gravity = default_gravity
 	high_gravity = default_gravity * FALL_GRAVITY_MODIFIER
 	low_gravity = default_gravity * HANG_TIME_GRAVITY_MODIFIER
+	
+	GameManager.registerPlayer(self)
 
 func _physics_process(delta):
+	if controls_locked:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += current_gravity * delta
@@ -101,3 +107,5 @@ func _process(delta):
 	
 	if is_on_floor() and velocity.x == 0 and velocity.y == 0:
 		$AnimatedSprite2D.play("Idle")
+	elif is_on_floor() and abs(velocity.x) > 0:
+		$AnimatedSprite2D.play("walk")
