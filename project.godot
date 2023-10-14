@@ -31,10 +31,6 @@ gdscript/warnings/unassigned_variable=0
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
-
 [input]
 
 strafe_right={
