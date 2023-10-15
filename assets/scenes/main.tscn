@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcbnk8myvlr3u"]
+
+[ext_resource type="PackedScene" uid="uid://2wf4qmpmphaq" path="res://assets/scenes/tutorial_island.tscn" id="1_pxj53"]
+[ext_resource type="PackedScene" uid="uid://bqv4qnvnbdgkg" path="res://assets/prefabs/Player/player.tscn" id="2_rekih"]
+[ext_resource type="PackedScene" uid="uid://cmln4exwtqh3a" path="res://assets/prefabs/music_box/music_box.tscn" id="3_8hp5f"]
+
+[node name="main" type="Node2D"]
+
+[node name="world" type="Node2D" parent="."]
+
+[node name="tutorial_island" parent="world" instance=ExtResource("1_pxj53")]
+position = Vector2(-192, 168)
+
+[node name="agents" type="Node2D" parent="."]
+
+[node name="PlayerController" parent="agents" instance=ExtResource("2_rekih")]
+MAX_STRAFE_SPEED = 1000
+STRAFE_ACC = 50
+HANG_TIME_THRESHOLD_SPEED = 25
+
+[node name="MusicBox" parent="." instance=ExtResource("3_8hp5f")]

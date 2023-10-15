@@ -1,7 +1,0 @@
-TODO
-
-Get Audio Player working
-Spash Screen
-Scene Transistions
-A.I. working
-Put player in game with animations

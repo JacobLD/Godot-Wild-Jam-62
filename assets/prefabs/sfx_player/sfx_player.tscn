@@ -1,0 +1,112 @@
+[gd_scene load_steps=22 format=3 uid="uid://tvxqrrabb1de"]
+
+[ext_resource type="Script" path="res://scripts/sfx_player.gd" id="1_0qgrq"]
+[ext_resource type="AudioStream" uid="uid://fnrsgcs0wn1a" path="res://assets/audio/footsteps/grass/footstep_grass1.wav" id="2_x76hd"]
+[ext_resource type="AudioStream" uid="uid://c87e7kedg2qf3" path="res://assets/audio/footsteps/grass/footstep_grass2.wav" id="3_tmpkj"]
+[ext_resource type="AudioStream" uid="uid://c8puvx54i5mbs" path="res://assets/audio/footsteps/grass/footstep_grass3.wav" id="4_yh78h"]
+[ext_resource type="AudioStream" uid="uid://4im5byftcs1c" path="res://assets/audio/footsteps/grass/footstep_grass4.wav" id="5_0hxix"]
+[ext_resource type="AudioStream" uid="uid://dqchtmqtxm0dy" path="res://assets/audio/footsteps/grass/footstep_grass5.wav" id="6_ocpjv"]
+[ext_resource type="AudioStream" uid="uid://dgwk33l4iw530" path="res://assets/audio/footsteps/grass/footstep_grass6.wav" id="7_wyius"]
+[ext_resource type="AudioStream" uid="uid://dl3tb63sq3ht0" path="res://assets/audio/footsteps/grass/footstep_grass7.wav" id="8_xy2jw"]
+[ext_resource type="AudioStream" uid="uid://dgrrhmylelbhg" path="res://assets/audio/footsteps/rock/footstep_rock1.wav" id="9_njblq"]
+[ext_resource type="AudioStream" uid="uid://c6g1imqpustn0" path="res://assets/audio/footsteps/rock/footstep_rock2.wav" id="10_tbgmy"]
+[ext_resource type="AudioStream" uid="uid://kdlkfdsxuvy" path="res://assets/audio/footsteps/rock/footstep_rock3.wav" id="11_bl4pi"]
+[ext_resource type="AudioStream" uid="uid://befmcgybykcio" path="res://assets/audio/footsteps/rock/footstep_rock4.wav" id="12_sf27n"]
+[ext_resource type="AudioStream" uid="uid://ctq5tevytlwbd" path="res://assets/audio/footsteps/rock/footstep_rock5.wav" id="13_e3nv0"]
+[ext_resource type="AudioStream" uid="uid://bt0fsja52r2y7" path="res://assets/audio/footsteps/rock/footstep_rock6.wav" id="14_den3r"]
+[ext_resource type="AudioStream" uid="uid://dc8ub175scfbl" path="res://assets/audio/footsteps/rock/footstep_rock7.wav" id="15_3ha4v"]
+[ext_resource type="AudioStream" uid="uid://ctkrc4pjc7uaj" path="res://assets/audio/footsteps/rock/footstep_rock8.wav" id="16_kivp2"]
+[ext_resource type="AudioStream" uid="uid://cvqpvhydhh5h3" path="res://assets/audio/footsteps/leaves/footstep_wetleaves1.wav" id="17_ka2h0"]
+[ext_resource type="AudioStream" uid="uid://3c8d0mrgbwl2" path="res://assets/audio/footsteps/leaves/footstep_wetleaves2.wav" id="18_xhtip"]
+[ext_resource type="AudioStream" uid="uid://bt4l48rbihlug" path="res://assets/audio/footsteps/leaves/footstep_wetleaves3.wav" id="19_vclm5"]
+[ext_resource type="AudioStream" uid="uid://cg56ymlkmalcn" path="res://assets/audio/footsteps/leaves/footstep_wetleaves4.wav" id="20_q8oah"]
+[ext_resource type="AudioStream" uid="uid://dcb42m3to0j8y" path="res://assets/audio/footsteps/leaves/footstep_wetleaves5.wav" id="21_or786"]
+
+[node name="sfx_player" type="Node2D"]
+script = ExtResource("1_0qgrq")
+
+[node name="Grass" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer2D" parent="Grass"]
+stream = ExtResource("2_x76hd")
+bus = &"SFX"
+
+[node name="2" type="AudioStreamPlayer2D" parent="Grass"]
+stream = ExtResource("3_tmpkj")
+bus = &"SFX"
+
+[node name="3" type="AudioStreamPlayer2D" parent="Grass"]
+stream = ExtResource("4_yh78h")
+bus = &"SFX"
+
+[node name="4" type="AudioStreamPlayer2D" parent="Grass"]
+stream = ExtResource("5_0hxix")
+bus = &"SFX"
+
+[node name="5" type="AudioStreamPlayer2D" parent="Grass"]
+stream = ExtResource("6_ocpjv")
+bus = &"SFX"
+
+[node name="6" type="AudioStreamPlayer2D" parent="Grass"]
+stream = ExtResource("7_wyius")
+bus = &"SFX"
+
+[node name="7" type="AudioStreamPlayer2D" parent="Grass"]
+stream = ExtResource("8_xy2jw")
+bus = &"SFX"
+
+[node name="Rock" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer2D" parent="Rock"]
+stream = ExtResource("9_njblq")
+bus = &"SFX"
+
+[node name="2" type="AudioStreamPlayer2D" parent="Rock"]
+stream = ExtResource("10_tbgmy")
+bus = &"SFX"
+
+[node name="3" type="AudioStreamPlayer2D" parent="Rock"]
+stream = ExtResource("11_bl4pi")
+bus = &"SFX"
+
+[node name="4" type="AudioStreamPlayer2D" parent="Rock"]
+stream = ExtResource("12_sf27n")
+bus = &"SFX"
+
+[node name="5" type="AudioStreamPlayer2D" parent="Rock"]
+stream = ExtResource("13_e3nv0")
+bus = &"SFX"
+
+[node name="6" type="AudioStreamPlayer2D" parent="Rock"]
+stream = ExtResource("14_den3r")
+bus = &"SFX"
+
+[node name="7" type="AudioStreamPlayer2D" parent="Rock"]
+stream = ExtResource("15_3ha4v")
+bus = &"SFX"
+
+[node name="8" type="AudioStreamPlayer2D" parent="Rock"]
+stream = ExtResource("16_kivp2")
+bus = &"SFX"
+
+[node name="Leaves" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer2D" parent="Leaves"]
+stream = ExtResource("17_ka2h0")
+bus = &"SFX"
+
+[node name="2" type="AudioStreamPlayer2D" parent="Leaves"]
+stream = ExtResource("18_xhtip")
+bus = &"SFX"
+
+[node name="3" type="AudioStreamPlayer2D" parent="Leaves"]
+stream = ExtResource("19_vclm5")
+bus = &"SFX"
+
+[node name="4" type="AudioStreamPlayer2D" parent="Leaves"]
+stream = ExtResource("20_q8oah")
+bus = &"SFX"
+
+[node name="5" type="AudioStreamPlayer2D" parent="Leaves"]
+stream = ExtResource("21_or786")
+bus = &"SFX"

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://2wf4qmpmphaq"]
+
+[ext_resource type="PackedScene" uid="uid://fhlq4rxov70m" path="res://assets/prefabs/world/ground/grass/grass_test_ground.tscn" id="1_iremy"]
+[ext_resource type="PackedScene" uid="uid://cbkpv41nncjvv" path="res://assets/prefabs/world/ground/rock/rock_test_ground.tscn" id="2_tt5pd"]
+[ext_resource type="PackedScene" uid="uid://cos54k7w1dq8u" path="res://assets/prefabs/world/ground/leaves/leaf_test_ground.tscn" id="3_mnlwa"]
+
+[node name="tutorial_island" type="Node2D"]
+
+[node name="Floor2" parent="." instance=ExtResource("1_iremy")]
+position = Vector2(264, 0)
+
+[node name="Floor3" parent="." instance=ExtResource("1_iremy")]
+position = Vector2(776, 0)
+
+[node name="Floor4" parent="." instance=ExtResource("1_iremy")]
+position = Vector2(-760, 0)
+
+[node name="Floor5" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -448)
+rotation = 1.5708
+
+[node name="Floor6" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -960)
+rotation = 1.5708
+
+[node name="Floor7" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -1472)
+rotation = 1.5708
+
+[node name="Floor11" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -1472)
+rotation = 1.5708
+
+[node name="Floor8" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(1352, -448)
+rotation = 1.5708
+
+[node name="Floor9" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(1352, -960)
+rotation = 1.5708
+
+[node name="Floor10" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(1352, -1472)
+rotation = 1.5708
+
+[node name="Floor12" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(776, -1472)
+
+[node name="Floor13" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(264, -1472)
+
+[node name="Floor16" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -448)
+
+[node name="Floor17" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(328, -920)
+
+[node name="Floor14" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-248, -1472)
+
+[node name="Floor15" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -1472)
+
+[node name="Floor" parent="." instance=ExtResource("3_mnlwa")]
+position = Vector2(-248, 0)
