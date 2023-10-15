@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bt4l48rbihlug"
+path="res://.godot/imported/footstep_wetleaves4.wav-84a3728abe1b4f50713f7c780c9b8989.sample"
+
+[deps]
+
+source_file="res://_assets/Audio Tracks/footsteps/footstep_wetleaves4.wav"
+dest_files=["res://.godot/imported/footstep_wetleaves4.wav-84a3728abe1b4f50713f7c780c9b8989.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

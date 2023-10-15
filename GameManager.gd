@@ -39,3 +39,7 @@ func getAudioPlayer() -> AudioPlayer:
 
 func _unlock_player():
 	_player.controls_locked = false
+
+
+func Exit_Tutorial():
+	print("TODO - leaving tutorial")

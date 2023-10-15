@@ -54,7 +54,7 @@ jobs:
         run: |
           mkdir ./exports/windows
           ls
-          ./godot --export-release "Windows Desktop" ./exports/windows/$PROJECT_NAME.exe --headless
+          ./godot --export-release "Windows Desktop" ./exports/windows/$PROJECT_NAME.zip --headless
       - name: Export Mac Port
         run: |
           mkdir ./exports/mac

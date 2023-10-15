@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://devh11i78c77r"
+path="res://.godot/imported/footstep_wetleaves5.ogg-3a3744cf9b3b9b484fc0bed6d6e7cc10.oggvorbisstr"
+
+[deps]
+
+source_file="res://_assets/Audio Tracks/footsteps/footstep_wetleaves5.ogg"
+dest_files=["res://.godot/imported/footstep_wetleaves5.ogg-3a3744cf9b3b9b484fc0bed6d6e7cc10.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
