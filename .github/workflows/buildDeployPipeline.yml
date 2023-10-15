@@ -106,7 +106,7 @@ jobs:
       - name: Push Web Export To Itch
         run: ./butler push ./exports/web/$PROJECT_NAME.zip $ITCH_USERNAME/$ITCH_PROJECT_NAME:HTML5
       - name: Push Windows Export To Itch
-        run: ./butler push ./exports/windows/$PROJECT_NAME.exe $ITCH_USERNAME/$ITCH_PROJECT_NAME:win 
+        run: ./butler push ./exports/windows/$PROJECT_NAME.zip $ITCH_USERNAME/$ITCH_PROJECT_NAME:win 
       - name: Push Mac Export To Itch
         run: ./butler push ./exports/mac/$PROJECT_NAME.zip $ITCH_USERNAME/$ITCH_PROJECT_NAME:mac 
       - name: Push Linux Export To Itch
