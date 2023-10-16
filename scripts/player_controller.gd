@@ -147,7 +147,8 @@ func _apply_state():
 	animationTree["parameters/conditions/jump_blocking"] = state == State.JUMP_BLOCK
 	
 	if last_state != state:
-		print("Trans to ", State.keys()[state])
+		pass
+		#print("Trans to ", State.keys()[state])
 	last_state = state
 
 
