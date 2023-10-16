@@ -164,19 +164,21 @@ position = Vector2(-1168, -664)
 texture = ExtResource("2_23vbx")
 
 [node name="far_rocks_tile" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(2880, 0)
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(11520, 0)
 
 [node name="GroundTreeParallax2" type="Sprite2D" parent="ParallaxBackground/far_rocks_tile"]
-position = Vector2(1440, -72)
+position = Vector2(1704, -280)
+scale = Vector2(4, 4)
 texture = ExtResource("6_xxdm1")
 
 [node name="close_rocks_tile" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(2880, 0)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(4320, 0)
 
 [node name="GroundTreeParallax1" type="Sprite2D" parent="ParallaxBackground/close_rocks_tile"]
-position = Vector2(1440, -142)
+position = Vector2(1440, -208)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_n2lmg")
 
 [node name="Tree" type="ParallaxLayer" parent="ParallaxBackground"]
