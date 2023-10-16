@@ -10,8 +10,24 @@ enum FloorType {
 @export var Feet_Position : NodePath
 var _feet_pos : Node2D = null
 
+@export var Hand_Position : NodePath
+var _hand_pos : Node2D = null
+
 func _ready():
 	_feet_pos = get_node(Feet_Position)
+	_hand_pos = get_node(Hand_Position)
+
+func on_jump():
+	_play_random_child_at(_feet_pos.global_position, $Jump)
+
+
+func on_swing():
+	_play_random_child_at(_hand_pos.global_position, $Swing)
+
+
+func on_block():
+	_play_random_child_at(_hand_pos.global_position, $Block)
+
 
 func on_footstep(type):
 	match type:

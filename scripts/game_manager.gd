@@ -13,7 +13,8 @@ func _ready():
 
 
 func _on_start() -> void:
-	_audio_player.play_tutorial_track()
+	#_audio_player.play_tutorial_track(false)
+	_audio_player.play_upgrade_hub(false)
 	_player_unlock_timer.start(3)
 
 
@@ -43,3 +44,4 @@ func _unlock_player():
 
 func Exit_Tutorial():
 	print("TODO - leaving tutorial")
+	_audio_player.play_room_1(true)

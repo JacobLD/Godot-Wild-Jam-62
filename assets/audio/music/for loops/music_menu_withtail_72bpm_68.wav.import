@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ixj7f3n3tlwp"
+path="res://.godot/imported/music_menu_withtail_72bpm_68.wav-abdd70123d5b5f9feed35f769ffd0c2d.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/for loops/music_menu_withtail_72bpm_68.wav"
+dest_files=["res://.godot/imported/music_menu_withtail_72bpm_68.wav-abdd70123d5b5f9feed35f769ffd0c2d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

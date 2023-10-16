@@ -25,7 +25,7 @@ var _grace_time : bool = false
 
 var controls_locked = false
 var _blocking = false
-var _attacking = false
+@export var attacking = false
 var _walking = false
 @export var walking_complete = true
 
@@ -47,7 +47,7 @@ enum State {
 }
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var default_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var default_gravity = 2000
 var current_gravity = default_gravity
 var high_gravity = default_gravity * FALL_GRAVITY_MODIFIER
 var low_gravity = default_gravity * HANG_TIME_GRAVITY_MODIFIER
@@ -73,6 +73,7 @@ func _ready():
 func _physics_process(delta):
 	# Do jank Camera Smoothing
 	$Camera2D.position_smoothing_speed = abs(velocity.length() * delta)
+	print(velocity.length() * delta / 3)
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -103,6 +104,7 @@ func _handle_input(delta):
 		_walking = false
 		current_gravity = default_gravity
 		velocity.y = -JUMP_VELOCITY
+		$sfx_player.on_jump()
 		
 	# We Hit the floor after falling
 	elif _has_jumped and is_on_floor() and velocity.y == 0:
@@ -147,8 +149,11 @@ func _apply_state():
 	animationTree["parameters/conditions/jump_blocking"] = state == State.JUMP_BLOCK
 	
 	if last_state != state:
-		pass
-		#print("Trans to ", State.keys()[state])
+		if state == State.ATTACKING or state == State.JUMP_ATTACKING:
+			$sfx_player.on_swing()
+		if state == State.BLOCKING and last_state != State.JUMP_BLOCK or state == State.JUMP_BLOCK and last_state != State.BLOCKING: # To prevent double blocking sounds
+			$sfx_player.on_block()
+		print("Trans to ", State.keys()[state])
 	last_state = state
 
 
@@ -156,8 +161,11 @@ func _on_grace_timer_finished():
 	_grace_time = false
 
 func _decide_player_state():	
+	if attacking:
+		return
+	
 	if Input.is_action_just_pressed("attack"):
-		_attacking = true
+		attacking = true
 		
 		if is_on_floor():
 			state = State.ATTACKING

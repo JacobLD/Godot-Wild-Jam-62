@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8gu25nsf0d1t"
+path="res://.godot/imported/music_boss3_withtail_vbpm_44.wav-8febe29aa92905af7f3fe9559909af87.sample"
+
+[deps]
+
+source_file="res://assets/audio/music/for loops/music_boss3_withtail_vbpm_44.wav"
+dest_files=["res://.godot/imported/music_boss3_withtail_vbpm_44.wav-8febe29aa92905af7f3fe9559909af87.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

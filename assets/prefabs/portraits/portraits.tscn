@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddoy7m4umfic6"]
+
+[ext_resource type="Texture2D" uid="uid://b8c8rvm1661lq" path="res://assets/sprites/portraits/Portrait_Layering order.png" id="1_hqg22"]
+[ext_resource type="Texture2D" uid="uid://66lxblg0m761" path="res://assets/sprites/portraits/Portrait_positioning.png" id="2_n3ja3"]
+
+[node name="Portraits" type="Node2D"]
+
+[node name="Left" type="Node2D" parent="."]
+
+[node name="Right" type="Node2D" parent="."]
+
+[node name="PortraitLayeringOrder" type="Sprite2D" parent="."]
+position = Vector2(-248, -248)
+texture = ExtResource("1_hqg22")
+
+[node name="PortraitPositioning" type="Sprite2D" parent="."]
+position = Vector2(-440, 32)
+texture = ExtResource("2_n3ja3")
