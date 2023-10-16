@@ -72,7 +72,7 @@ func _ready():
 
 func _physics_process(delta):
 	# Do jank Camera Smoothing
-	$Camera2D.position_smoothing_speed = abs(velocity.length() * delta)
+	$Camera2D.position_smoothing_speed = max(abs(velocity.length() * delta / 3),5)
 	print(velocity.length() * delta / 3)
 	
 	# Add the gravity.
