@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dc04lphd2fj1a"]
+
+[ext_resource type="Texture2D" uid="uid://dsjggasmea3rr" path="res://assets/sprites/portraits/frame/portrait_frame.png" id="1_7g87l"]
+[ext_resource type="Script" path="res://assets/prefabs/portrait.gd" id="1_y8r2q"]
+[ext_resource type="Texture2D" uid="uid://cw841hx6wjpth" path="res://assets/sprites/portraits/constant/portrait_item_hood_back.png" id="2_6g3i1"]
+[ext_resource type="Texture2D" uid="uid://cligshrx40akm" path="res://assets/sprites/portraits/frame/portrait_foreground.png" id="2_dvspf"]
+[ext_resource type="Texture2D" uid="uid://bnxsvitefrllm" path="res://assets/sprites/portraits/frame/portrait_item_frame.png" id="3_cjm6i"]
+[ext_resource type="Texture2D" uid="uid://dg5noq4cjkmpi" path="res://assets/sprites/portraits/constant/portrait_item_mustache_back.png" id="3_vyjhx"]
+[ext_resource type="Texture2D" uid="uid://bbguy5kp2obnx" path="res://assets/sprites/portraits/constant/portrait_item_mustache_front.png" id="16_hvyax"]
+[ext_resource type="Texture2D" uid="uid://bx3m73cq83qsh" path="res://assets/sprites/portraits/constant/portrait_item_eye_olive.png" id="30_we6q0"]
+
+[node name="Frame" type="Node2D"]
+script = ExtResource("1_y8r2q")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_7g87l")
+
+[node name="PortraitItemHoodBack" type="Sprite2D" parent="."]
+position = Vector2(40, 2)
+texture = ExtResource("2_6g3i1")
+
+[node name="PortraitItemMustacheBack" type="Sprite2D" parent="."]
+position = Vector2(42, 5)
+texture = ExtResource("3_vyjhx")
+
+[node name="jaw_pos" type="Node2D" parent="."]
+position = Vector2(43, 3)
+
+[node name="PortraitItemMustacheFront" type="Sprite2D" parent="."]
+position = Vector2(44, 4)
+texture = ExtResource("16_hvyax")
+
+[node name="nose_pos" type="Node2D" parent="."]
+position = Vector2(41, 6)
+
+[node name="PortraitItemEyeOlive" type="Sprite2D" parent="."]
+position = Vector2(44, 2)
+texture = ExtResource("30_we6q0")
+
+[node name="cheek_pos" type="Node2D" parent="."]
+position = Vector2(44, 2)
+
+[node name="PortraitForeground" type="Sprite2D" parent="."]
+position = Vector2(1, 3)
+scale = Vector2(0.958476, 0.988915)
+texture = ExtResource("2_dvspf")
+
+[node name="item_frame" type="Sprite2D" parent="."]
+position = Vector2(-112, 176)
+texture = ExtResource("3_cjm6i")

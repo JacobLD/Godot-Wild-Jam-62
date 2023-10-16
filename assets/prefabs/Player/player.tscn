@@ -1,10 +1,14 @@
-[gd_scene load_steps=89 format=3 uid="uid://bqv4qnvnbdgkg"]
+[gd_scene load_steps=93 format=3 uid="uid://bqv4qnvnbdgkg"]
 
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_11evo"]
 [ext_resource type="Texture2D" uid="uid://dkvm2bi3narhj" path="res://assets/sprites/player_animations/attack/attack0000.png" id="2_64vml"]
+[ext_resource type="Texture2D" uid="uid://cw841hx6wjpth" path="res://assets/sprites/portraits/constant/portrait_item_hood_back.png" id="2_clm85"]
+[ext_resource type="Texture2D" uid="uid://dg5noq4cjkmpi" path="res://assets/sprites/portraits/constant/portrait_item_mustache_back.png" id="3_040ov"]
 [ext_resource type="Texture2D" uid="uid://vinpxwc3eudp" path="res://assets/sprites/player_animations/attack/attack0001.png" id="3_d3bgw"]
+[ext_resource type="Texture2D" uid="uid://bbguy5kp2obnx" path="res://assets/sprites/portraits/constant/portrait_item_mustache_front.png" id="4_fiho6"]
 [ext_resource type="Texture2D" uid="uid://ngh67g4rshd7" path="res://assets/sprites/player_animations/attack/attack0002.png" id="4_pawm3"]
 [ext_resource type="Texture2D" uid="uid://6ww2eprdvd5v" path="res://assets/sprites/player_animations/attack/attack0003.png" id="5_i42cr"]
+[ext_resource type="Texture2D" uid="uid://bx3m73cq83qsh" path="res://assets/sprites/portraits/constant/portrait_item_eye_olive.png" id="5_vqgeo"]
 [ext_resource type="Texture2D" uid="uid://dyy5fi4jtqtx" path="res://assets/sprites/player_animations/attack/attack0004.png" id="6_6fcdw"]
 [ext_resource type="Texture2D" uid="uid://b0xg8futk5obk" path="res://assets/sprites/player_animations/attack/attack0005.png" id="7_ebptl"]
 [ext_resource type="Texture2D" uid="uid://d2r7p2kqpl2va" path="res://assets/sprites/player_animations/block/block0000.png" id="8_ommvk"]
@@ -600,6 +604,37 @@ JUMP_VELOCITY = 1600
 libraries = {
 "": SubResource("AnimationLibrary_rfmmh")
 }
+
+[node name="face" type="Node2D" parent="."]
+
+[node name="PortraitItemHoodBack" type="Sprite2D" parent="face"]
+position = Vector2(11, -79)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_clm85")
+
+[node name="PortraitItemMustacheBack" type="Sprite2D" parent="face"]
+position = Vector2(11, -79)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_040ov")
+
+[node name="jaw_pos" type="Node2D" parent="face"]
+position = Vector2(10, -80)
+
+[node name="PortraitItemMustacheFront" type="Sprite2D" parent="face"]
+position = Vector2(11, -79)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_fiho6")
+
+[node name="nose_pos" type="Node2D" parent="face"]
+position = Vector2(11, -79)
+
+[node name="PortraitItemEyeOlive" type="Sprite2D" parent="face"]
+position = Vector2(11, -79)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_vqgeo")
+
+[node name="cheek_pos" type="Node2D" parent="face"]
+position = Vector2(10, -80)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_brul0")

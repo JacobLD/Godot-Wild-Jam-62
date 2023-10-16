@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cos54k7w1dq8u" path="res://assets/prefabs/world/ground/leaves/leaf_test_ground.tscn" id="1_colpn"]
 [ext_resource type="Texture2D" uid="uid://bpcjrt1hb5mm4" path="res://assets/sprites/environment/sky/sky_tileable_bg.jpg" id="2_23vbx"]
+[ext_resource type="Script" path="res://scripts/parallax_background_fix.gd" id="2_nybt5"]
 [ext_resource type="Texture2D" uid="uid://b682i1trunjsu" path="res://assets/sprites/environment/tree/tree_hand_1.png" id="2_sedwm"]
-[ext_resource type="Script" path="res://assets/scenes/parallax_background_fix.gd" id="2_wudny"]
 [ext_resource type="Texture2D" uid="uid://b7b7iv8bwboc6" path="res://assets/sprites/environment/tree/tree_hand_2.png" id="3_2j6er"]
 [ext_resource type="Texture2D" uid="uid://cm8jtgvavgdnn" path="res://assets/sprites/environment/tree/ground_tree_leaves.png" id="4_dc7i3"]
 [ext_resource type="Texture2D" uid="uid://cy50hupo4yq2a" path="res://assets/sprites/environment/tree/ground_tree_npc.png" id="5_b4wqp"]
@@ -135,7 +135,7 @@ position = Vector2(-512, -2560)
 position = Vector2(0, -2560)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("2_wudny")
+script = ExtResource("2_nybt5")
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -203,3 +203,6 @@ motion_mirroring = Vector2(2880, 0)
 [node name="GroundTreeLeaves" type="Sprite2D" parent="ParallaxBackground/leafy_ground_tile"]
 position = Vector2(1440, -72)
 texture = ExtResource("4_dc7i3")
+
+[node name="Portraits" type="Node2D" parent="."]
+position = Vector2(1272, -424)

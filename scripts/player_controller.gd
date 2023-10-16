@@ -69,6 +69,7 @@ func _ready():
 	
 	GameManager.registerPlayer(self)
 	animationTree = $AnimationTree
+	call_deferred("_on_deferred")
 
 func _physics_process(delta):
 	# Do jank Camera Smoothing
@@ -93,8 +94,10 @@ func _handle_input(delta):
 	if abs(direction) > 0:
 		if !$AnimatedSprite2D.flip_h and direction < 0:
 			$AnimatedSprite2D.flip_h = true
+			$face.scale.x = -1
 		elif $AnimatedSprite2D.flip_h and direction > 0:
 			$AnimatedSprite2D.flip_h = false
+			$face.scale.x = 1
 	
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or !_grace_timer.is_stopped()) and !_has_jumped and state != State.ATTACKING and state != State.BLOCKING:
@@ -210,8 +213,36 @@ func on_footstep():
 	if is_on_floor():
 		$sfx_player.on_footstep(_last_floor_type)
 	
-
-
 # The collider being null is causing the above sounds to fail - we need to find a better way of finding the floor object!!
 
 
+func set_face_item(item : Item) -> void:
+	match item.face_position:
+		item.FacePosition.CHEEK:
+			_set_face_item($face/cheek_pos, item)
+		item.FacePosition.NOSE:
+			_set_face_item($face/nose_pos, item)
+		item.FacePosition.JAW:
+			_set_face_item($face/jaw_pos, item)
+
+func _set_face_item(face_node : Node2D, item : Item) -> void:
+	item.scale = Vector2(0.25, 0.25)
+	if face_node.get_child_count() > 0:
+		face_node.get_child(0).queue_free()
+	
+	face_node.add_child(item)
+	item.position = Vector2.ZERO
+
+func _on_deferred():
+	var jaw : Item = GameManager.getItemManager().get_random_jaw()
+	jaw.visible = true
+	
+	var nose : Item = GameManager.getItemManager().get_random_nose()
+	nose.visible = true
+	
+	var cheek : Item = GameManager.getItemManager().get_random_cheek()
+	cheek.visible = true
+	
+	set_face_item(nose)
+	set_face_item(cheek)
+	set_face_item(jaw)

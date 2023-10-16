@@ -1,0 +1,388 @@
+[gd_scene load_steps=38 format=3 uid="uid://c7rc6qqx50ruq"]
+
+[ext_resource type="Texture2D" uid="uid://c0hqw7k568fxi" path="res://assets/sprites/portraits/cheek/portrait_item_fall_orange.png" id="1_fee72"]
+[ext_resource type="Script" path="res://assets/scenes/item_manager.gd" id="1_sr8hv"]
+[ext_resource type="Script" path="res://assets/prefabs/item.gd" id="2_feask"]
+[ext_resource type="Texture2D" uid="uid://bshlprqy5hedg" path="res://assets/sprites/portraits/cheek/portrait_item_fall_potato.png" id="3_ef0is"]
+[ext_resource type="Texture2D" uid="uid://d1sspxde7xy85" path="res://assets/sprites/portraits/cheek/portrait_item_fall_pumpkin.png" id="4_6hip1"]
+[ext_resource type="Texture2D" uid="uid://f4l6iuia2yfs" path="res://assets/sprites/portraits/cheek/portrait_item_fall_turnip.png" id="5_km0qm"]
+[ext_resource type="Texture2D" uid="uid://c2otmslmlxe61" path="res://assets/sprites/portraits/cheek/portrait_item_summer_artichoke.png" id="6_c7ryu"]
+[ext_resource type="Texture2D" uid="uid://dr3gu8mo0scey" path="res://assets/sprites/portraits/cheek/portrait_item_summer_beans.png" id="7_togqf"]
+[ext_resource type="Texture2D" uid="uid://b46jf145hvi8q" path="res://assets/sprites/portraits/cheek/portrait_item_summer_garlic.png" id="8_iasio"]
+[ext_resource type="Texture2D" uid="uid://c5qnc7aw3fdea" path="res://assets/sprites/portraits/cheek/portrait_item_summer_melon.png" id="9_im6ir"]
+[ext_resource type="Texture2D" uid="uid://fv57d8jy58l4" path="res://assets/sprites/portraits/cheek/portrait_item_summer_onion_red.png" id="10_lobks"]
+[ext_resource type="Texture2D" uid="uid://dhjhhgev3btyd" path="res://assets/sprites/portraits/cheek/portrait_item_winter_quice.png" id="11_kcajp"]
+[ext_resource type="Texture2D" uid="uid://cdl5oaiwbs1t4" path="res://assets/sprites/portraits/jaw/portrait_item_fall_beetroot.png" id="12_umqkw"]
+[ext_resource type="Texture2D" uid="uid://cahbnk5lst7x1" path="res://assets/sprites/portraits/jaw/portrait_item_fall_carrots.png" id="13_0xd4x"]
+[ext_resource type="Texture2D" uid="uid://3jk6pcym4c0n" path="res://assets/sprites/portraits/jaw/portrait_item_fall_eggplant.png" id="14_se4mm"]
+[ext_resource type="Texture2D" uid="uid://7jaa6iyx5o8t" path="res://assets/sprites/portraits/jaw/portrait_item_fall_grapes.png" id="15_vkmbt"]
+[ext_resource type="Texture2D" uid="uid://d2jibwdup5sal" path="res://assets/sprites/portraits/jaw/portrait_item_spring_aspargus.png" id="16_mghc6"]
+[ext_resource type="Texture2D" uid="uid://bowrl6kxcedhy" path="res://assets/sprites/portraits/jaw/portrait_item_summer_basil.png" id="17_tjbow"]
+[ext_resource type="Texture2D" uid="uid://b6ytxm0fmqq7c" path="res://assets/sprites/portraits/jaw/portrait_item_summer_corn.png" id="18_q0rq1"]
+[ext_resource type="Texture2D" uid="uid://dxos2thqg8r2q" path="res://assets/sprites/portraits/jaw/portrait_item_summer_fenel.png" id="19_cb5rc"]
+[ext_resource type="Texture2D" uid="uid://23202ly46sd2" path="res://assets/sprites/portraits/jaw/portrait_item_summer_lavender.png" id="20_eamox"]
+[ext_resource type="Texture2D" uid="uid://xx0u50loyciu" path="res://assets/sprites/portraits/jaw/portrait_item_summer_licorice.png" id="21_smsln"]
+[ext_resource type="Texture2D" uid="uid://ce8lf0s4k0xbq" path="res://assets/sprites/portraits/jaw/portrait_item_summer_shallots.png" id="22_bq71g"]
+[ext_resource type="Texture2D" uid="uid://bonl3fxmkobv0" path="res://assets/sprites/portraits/jaw/portrait_item_summer_wheat.png" id="23_xt8ix"]
+[ext_resource type="Texture2D" uid="uid://ceam47y1yc0og" path="res://assets/sprites/portraits/nose/portrait_item_fall_chilli.png" id="24_vvxrp"]
+[ext_resource type="Texture2D" uid="uid://lhy2hsx87s24" path="res://assets/sprites/portraits/nose/portrait_item_fall_fig.png" id="25_2fiuh"]
+[ext_resource type="Texture2D" uid="uid://dnon3fj26glrx" path="res://assets/sprites/portraits/nose/portrait_item_fall_lemon.png" id="26_5jwa6"]
+[ext_resource type="Texture2D" uid="uid://hruqqy28c2n7" path="res://assets/sprites/portraits/nose/portrait_item_fall_pear.png" id="27_iu4fj"]
+[ext_resource type="Texture2D" uid="uid://co75mccso8bp" path="res://assets/sprites/portraits/nose/portrait_item_spring_strawberry.png" id="28_kbvpi"]
+[ext_resource type="Texture2D" uid="uid://b1af3m4xnbjrv" path="res://assets/sprites/portraits/nose/portrait_item_summer_apricot.png" id="29_tjnt3"]
+[ext_resource type="Texture2D" uid="uid://bpkyrym1tuvsa" path="res://assets/sprites/portraits/nose/portrait_item_summer_blackberry.png" id="30_uaas3"]
+[ext_resource type="Texture2D" uid="uid://dp2dcb5825uk5" path="res://assets/sprites/portraits/nose/portrait_item_summer_cherry.png" id="31_ilrs5"]
+[ext_resource type="Texture2D" uid="uid://b502ntqwr17cv" path="res://assets/sprites/portraits/nose/portrait_item_summer_cucumber.png" id="32_ytfpg"]
+[ext_resource type="Texture2D" uid="uid://cqf0xjyqafc2g" path="res://assets/sprites/portraits/nose/portrait_item_summer_prune_purple.png" id="33_ce6qy"]
+[ext_resource type="Texture2D" uid="uid://b81pxjgp1ky7o" path="res://assets/sprites/portraits/nose/portrait_item_summer_prune_yellow.png" id="34_sew6y"]
+[ext_resource type="Texture2D" uid="uid://w0og7p6cmq5q" path="res://assets/sprites/portraits/nose/portrait_item_summer_walnut.png" id="35_noawh"]
+[ext_resource type="Texture2D" uid="uid://b2clf48yaiyhj" path="res://assets/sprites/portraits/nose/portrait_item_winter_parsnip.png" id="36_eqjt0"]
+
+[node name="Item_Manager" type="Node"]
+script = ExtResource("1_sr8hv")
+
+[node name="cheek" type="Node2D" parent="."]
+
+[node name="PortraitItemFallOrange" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("1_fee72")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallOrange"]
+position = Vector2(-34, -2)
+
+[node name="PortraitItemFallPotato" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("3_ef0is")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallPotato"]
+position = Vector2(-44, -13)
+
+[node name="PortraitItemFallPumpkin" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("4_6hip1")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallPumpkin"]
+position = Vector2(-50, -2)
+
+[node name="PortraitItemFallTurnip" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("5_km0qm")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallTurnip"]
+position = Vector2(-44, -8)
+
+[node name="PortraitItemSummerArtichoke" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("6_c7ryu")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerArtichoke"]
+position = Vector2(-34, 5)
+
+[node name="PortraitItemSummerBeans" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("7_togqf")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerBeans"]
+position = Vector2(-44, -2)
+
+[node name="PortraitItemSummerGarlic" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("8_iasio")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerGarlic"]
+position = Vector2(-43, -13)
+
+[node name="PortraitItemSummerMelon" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("9_im6ir")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerMelon"]
+position = Vector2(-44, -2)
+
+[node name="PortraitItemSummerOnionRed" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("10_lobks")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerOnionRed"]
+position = Vector2(-47, -5)
+
+[node name="PortraitItemWinterQuice" type="Sprite2D" parent="cheek"]
+visible = false
+position = Vector2(44, 2)
+texture = ExtResource("11_kcajp")
+script = ExtResource("2_feask")
+
+[node name="Node2D" type="Node2D" parent="cheek/PortraitItemWinterQuice"]
+position = Vector2(-40, -2)
+
+[node name="nose" type="Node2D" parent="."]
+
+[node name="PortraitItemFallChilli" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("24_vvxrp")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemFallChilli"]
+position = Vector2(5, -25)
+
+[node name="PortraitItemFallFig" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("25_2fiuh")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemFallFig"]
+position = Vector2(1, -24)
+
+[node name="PortraitItemFallLemon" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("26_5jwa6")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemFallLemon"]
+position = Vector2(1, -18)
+
+[node name="PortraitItemFallPear" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("27_iu4fj")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemFallPear"]
+position = Vector2(9, -16)
+
+[node name="PortraitItemSpringStrawberry" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("28_kbvpi")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemSpringStrawberry"]
+position = Vector2(-1, -27)
+
+[node name="PortraitItemSummerApricot" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("29_tjnt3")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerApricot"]
+position = Vector2(0, -21)
+
+[node name="PortraitItemSummerBlackberry" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("30_uaas3")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerBlackberry"]
+position = Vector2(0, -27)
+
+[node name="PortraitItemSummerCherry" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("31_ilrs5")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerCherry"]
+position = Vector2(-5, -21)
+
+[node name="PortraitItemSummerCucumber" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("32_ytfpg")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerCucumber"]
+position = Vector2(4, -21)
+
+[node name="PortraitItemSummerPrunePurple" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("33_ce6qy")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerPrunePurple"]
+position = Vector2(-8, -24)
+
+[node name="PortraitItemSummerPruneYellow" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("34_sew6y")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerPruneYellow"]
+position = Vector2(3, -21)
+
+[node name="PortraitItemSummerWalnut" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("35_noawh")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerWalnut"]
+position = Vector2(2, -19)
+
+[node name="PortraitItemWinterParsnip" type="Sprite2D" parent="nose"]
+visible = false
+position = Vector2(41, 6)
+texture = ExtResource("36_eqjt0")
+script = ExtResource("2_feask")
+face_position = 1
+
+[node name="Node2D" type="Node2D" parent="nose/PortraitItemWinterParsnip"]
+position = Vector2(16, -16)
+
+[node name="jaw" type="Node2D" parent="."]
+
+[node name="PortraitItemFallBeetroot" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("12_umqkw")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemFallBeetroot"]
+position = Vector2(-21, 20)
+
+[node name="PortraitItemFallCarrots" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("13_0xd4x")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemFallCarrots"]
+position = Vector2(-24, 22)
+
+[node name="PortraitItemFallEggplant" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("14_se4mm")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemFallEggplant"]
+position = Vector2(-29, 16)
+
+[node name="PortraitItemFallGrapes" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("15_vkmbt")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemFallGrapes"]
+position = Vector2(-21, 27)
+
+[node name="PortraitItemSpringAspargus" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("16_mghc6")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemSpringAspargus"]
+position = Vector2(-26, 23)
+
+[node name="PortraitItemSummerBasil" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("17_tjbow")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerBasil"]
+position = Vector2(-26, 27)
+
+[node name="PortraitItemSummerCorn" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("18_q0rq1")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerCorn"]
+position = Vector2(-37, 11)
+
+[node name="PortraitItemSummerFenel" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("19_cb5rc")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerFenel"]
+position = Vector2(-25, 24)
+
+[node name="PortraitItemSummerLavender" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("20_eamox")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerLavender"]
+position = Vector2(-16, 29)
+
+[node name="PortraitItemSummerLicorice" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("21_smsln")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerLicorice"]
+position = Vector2(-25, 24)
+
+[node name="PortraitItemSummerShallots" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("22_bq71g")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerShallots"]
+position = Vector2(-8, 26)
+
+[node name="PortraitItemSummerWheat" type="Sprite2D" parent="jaw"]
+visible = false
+position = Vector2(43, 3)
+texture = ExtResource("23_xt8ix")
+script = ExtResource("2_feask")
+face_position = 2
+
+[node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerWheat"]
+position = Vector2(9, 36)
