@@ -68,11 +68,11 @@ jobs:
         run: |
           mkdir ./exports/web
           mkdir ./webtemp
-          ./godot --export-release "Web" ./webtemp/$PROJECT_NAME --headless
-          mv ./webtemp/$PROJECT_NAME.html ./webtemp/index.html
+          ./godot --export-release "Web" ./webtemp/index.html --headless
           echo "Web Temp folder contents"
           ls ./webtemp
-          zip -r $PROJECT_NAME.zip ./webtemp
+          cd ./webtemp
+          zip -r $PROJECT_NAME.zip ./*
           mv $PROJECT_NAME.zip ./exports/web/$PROJECT_NAME.zip
           echo "Web Exports contents"
           ls ./exports/web/
