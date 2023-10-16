@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1y65wq6p7snw"]
+[gd_scene load_steps=11 format=3 uid="uid://c1y65wq6p7snw"]
 
 [ext_resource type="PackedScene" uid="uid://cos54k7w1dq8u" path="res://assets/prefabs/world/ground/leaves/leaf_test_ground.tscn" id="1_colpn"]
 [ext_resource type="Texture2D" uid="uid://bpcjrt1hb5mm4" path="res://assets/sprites/environment/sky/sky_tileable_bg.jpg" id="2_23vbx"]
 [ext_resource type="Texture2D" uid="uid://b682i1trunjsu" path="res://assets/sprites/environment/tree/tree_hand_1.png" id="2_sedwm"]
+[ext_resource type="Script" path="res://assets/scenes/parallax_background_fix.gd" id="2_wudny"]
 [ext_resource type="Texture2D" uid="uid://b7b7iv8bwboc6" path="res://assets/sprites/environment/tree/tree_hand_2.png" id="3_2j6er"]
 [ext_resource type="Texture2D" uid="uid://cm8jtgvavgdnn" path="res://assets/sprites/environment/tree/ground_tree_leaves.png" id="4_dc7i3"]
 [ext_resource type="Texture2D" uid="uid://cy50hupo4yq2a" path="res://assets/sprites/environment/tree/ground_tree_npc.png" id="5_b4wqp"]
@@ -134,6 +135,7 @@ position = Vector2(-512, -2560)
 position = Vector2(0, -2560)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_wudny")
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -150,35 +152,35 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(960, 0)
 
 [node name="SkyTileableBg" type="Sprite2D" parent="ParallaxBackground/sky_infinite_tile"]
-position = Vector2(480, 584)
+position = Vector2(752, -664)
 texture = ExtResource("2_23vbx")
 
 [node name="SkyTileableBg2" type="Sprite2D" parent="ParallaxBackground/sky_infinite_tile"]
-position = Vector2(2400, 584)
+position = Vector2(2672, -664)
 texture = ExtResource("2_23vbx")
 
 [node name="SkyTileableBg3" type="Sprite2D" parent="ParallaxBackground/sky_infinite_tile"]
-position = Vector2(-1440, 584)
+position = Vector2(-1168, -664)
 texture = ExtResource("2_23vbx")
 
 [node name="far_rocks_tile" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.4, 0.4)
+motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(2880, 0)
 
 [node name="GroundTreeParallax2" type="Sprite2D" parent="ParallaxBackground/far_rocks_tile"]
-position = Vector2(1440, 720)
+position = Vector2(1440, -72)
 texture = ExtResource("6_xxdm1")
 
 [node name="close_rocks_tile" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.6, 1)
+motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(2880, 0)
 
 [node name="GroundTreeParallax1" type="Sprite2D" parent="ParallaxBackground/close_rocks_tile"]
-position = Vector2(1440, -144)
+position = Vector2(1440, -142)
 texture = ExtResource("7_n2lmg")
 
 [node name="Tree" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.8, 1)
+motion_scale = Vector2(0.8, 0.8)
 
 [node name="TreeHand1" type="Sprite2D" parent="ParallaxBackground/Tree"]
 position = Vector2(1200, -376)
