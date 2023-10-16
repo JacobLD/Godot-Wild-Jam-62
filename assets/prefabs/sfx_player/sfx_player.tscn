@@ -55,37 +55,37 @@ bus = &"SFX"
 stream = ExtResource("8_xy2jw")
 bus = &"SFX"
 
-[node name="Rock" type="Node2D" parent="."]
+[node name="Rocks" type="Node2D" parent="."]
 
-[node name="1" type="AudioStreamPlayer2D" parent="Rock"]
+[node name="1" type="AudioStreamPlayer2D" parent="Rocks"]
 stream = ExtResource("9_njblq")
 bus = &"SFX"
 
-[node name="2" type="AudioStreamPlayer2D" parent="Rock"]
+[node name="2" type="AudioStreamPlayer2D" parent="Rocks"]
 stream = ExtResource("10_tbgmy")
 bus = &"SFX"
 
-[node name="3" type="AudioStreamPlayer2D" parent="Rock"]
+[node name="3" type="AudioStreamPlayer2D" parent="Rocks"]
 stream = ExtResource("11_bl4pi")
 bus = &"SFX"
 
-[node name="4" type="AudioStreamPlayer2D" parent="Rock"]
+[node name="4" type="AudioStreamPlayer2D" parent="Rocks"]
 stream = ExtResource("12_sf27n")
 bus = &"SFX"
 
-[node name="5" type="AudioStreamPlayer2D" parent="Rock"]
+[node name="5" type="AudioStreamPlayer2D" parent="Rocks"]
 stream = ExtResource("13_e3nv0")
 bus = &"SFX"
 
-[node name="6" type="AudioStreamPlayer2D" parent="Rock"]
+[node name="6" type="AudioStreamPlayer2D" parent="Rocks"]
 stream = ExtResource("14_den3r")
 bus = &"SFX"
 
-[node name="7" type="AudioStreamPlayer2D" parent="Rock"]
+[node name="7" type="AudioStreamPlayer2D" parent="Rocks"]
 stream = ExtResource("15_3ha4v")
 bus = &"SFX"
 
-[node name="8" type="AudioStreamPlayer2D" parent="Rock"]
+[node name="8" type="AudioStreamPlayer2D" parent="Rocks"]
 stream = ExtResource("16_kivp2")
 bus = &"SFX"
 

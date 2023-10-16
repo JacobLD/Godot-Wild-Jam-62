@@ -135,12 +135,16 @@ func _handle_input(delta):
 		velocity.x = move_toward(velocity.x, 0, _strafe_acc * delta)
 		_walking = false
 
-func _apply_state():	
+func _apply_state():
 	animationTree["parameters/conditions/is_idle"] = state == State.IDLING
 	animationTree["parameters/conditions/is_walking"] = state == State.WALKING
 	animationTree["parameters/conditions/has_jumped"] = state == State.JUMP
 	animationTree["parameters/conditions/is_rising"] = state == State.RISING
 	animationTree["parameters/conditions/is_falling"] = state == State.FALLING
+	animationTree["parameters/conditions/attacking"] = state == State.ATTACKING
+	animationTree["parameters/conditions/blocking"] = state == State.BLOCKING
+	animationTree["parameters/conditions/jump_attacking"] = state == State.JUMP_ATTACKING
+	animationTree["parameters/conditions/jump_blocking"] = state == State.JUMP_BLOCK
 	
 	if last_state != state:
 		print("Trans to ", State.keys()[state])
@@ -151,12 +155,6 @@ func _on_grace_timer_finished():
 	_grace_time = false
 
 func _decide_player_state():	
-	# If we are attacking then let it play
-	if state == State.ATTACKING or state == State.JUMP_ATTACKING:
-		return
-	else:
-		_attacking = false
-	
 	if Input.is_action_just_pressed("attack"):
 		_attacking = true
 		
@@ -165,8 +163,6 @@ func _decide_player_state():
 		else:
 			state = State.JUMP_ATTACKING
 		return
-	
-	
 	
 	if Input.is_action_pressed("block"):
 		_blocking = true
@@ -200,11 +196,11 @@ func on_footstep():
 			var ground_object = collision.get_collider()
 			if ground_object is Ground:
 				_last_floor_type = ground_object.type
-				$SfxPlayer.on_footstep(ground_object.type)
+				$sfx_player.on_footstep(ground_object.type)
 				return
 			
 	if is_on_floor():
-		$SfxPlayer.on_footstep(_last_floor_type)
+		$sfx_player.on_footstep(_last_floor_type)
 	
 
 
