@@ -74,7 +74,7 @@ jobs:
           cd ./webtemp
           zip -r $PROJECT_NAME.zip ./*
           cd ..
-          mv $PROJECT_NAME.zip ./exports/web/$PROJECT_NAME.zip
+          mv ./webtemp$PROJECT_NAME.zip ./exports/web/$PROJECT_NAME.zip
           echo "Web Exports contents"
           ls ./exports/web/
 
