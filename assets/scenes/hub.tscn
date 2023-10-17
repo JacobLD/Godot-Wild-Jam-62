@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1y65wq6p7snw"]
+[gd_scene load_steps=19 format=3 uid="uid://c1y65wq6p7snw"]
 
 [ext_resource type="PackedScene" uid="uid://cos54k7w1dq8u" path="res://assets/prefabs/world/ground/leaves/leaf_test_ground.tscn" id="1_colpn"]
+[ext_resource type="Script" path="res://assets/scenes/hub.gd" id="1_qxbdx"]
 [ext_resource type="Texture2D" uid="uid://bpcjrt1hb5mm4" path="res://assets/sprites/environment/sky/sky_tileable_bg.jpg" id="2_23vbx"]
 [ext_resource type="Script" path="res://scripts/parallax_background_fix.gd" id="2_nybt5"]
 [ext_resource type="Texture2D" uid="uid://b682i1trunjsu" path="res://assets/sprites/environment/tree/tree_hand_1.png" id="2_sedwm"]
@@ -9,10 +10,53 @@
 [ext_resource type="Texture2D" uid="uid://cy50hupo4yq2a" path="res://assets/sprites/environment/tree/ground_tree_npc.png" id="5_b4wqp"]
 [ext_resource type="Texture2D" uid="uid://cn6u35e1bwdai" path="res://assets/sprites/environment/tree/ground_tree_parallax_2.png" id="6_xxdm1"]
 [ext_resource type="Texture2D" uid="uid://cdvocbxvttyd3" path="res://assets/sprites/environment/tree/ground_tree_parallax_1.png" id="7_n2lmg"]
+[ext_resource type="PackedScene" uid="uid://dc04lphd2fj1a" path="res://assets/prefabs/portrait.tscn" id="10_tg5sj"]
+[ext_resource type="Texture2D" uid="uid://ct1bxfgmvic5w" path="res://assets/sprites/keys/key_e.png" id="11_bxycf"]
+[ext_resource type="Texture2D" uid="uid://dkkk86o6urwfe" path="res://assets/sprites/keys/key_q.png" id="12_qp531"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jgrps"]
 
+[sub_resource type="Animation" id="Animation_vcpnt"]
+resource_name = "fade_in_portraits"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxBackground/Tree/Portraits:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fu66x"]
+resource_name = "fade_out_portraits"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxBackground/Tree/Portraits:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qixcy"]
+_data = {
+"fade_in_portraits": SubResource("Animation_vcpnt"),
+"fade_out_portraits": SubResource("Animation_fu66x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c24vl"]
+size = Vector2(866, 466)
+
 [node name="hub" type="Node2D"]
+script = ExtResource("1_qxbdx")
 
 [node name="walls" type="Node2D" parent="."]
 
@@ -196,6 +240,40 @@ texture = ExtResource("3_2j6er")
 position = Vector2(1440, -576)
 texture = ExtResource("5_b4wqp")
 
+[node name="Portraits" type="Node2D" parent="ParallaxBackground/Tree"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1272, -424)
+
+[node name="Frame" parent="ParallaxBackground/Tree/Portraits" instance=ExtResource("10_tg5sj")]
+position = Vector2(-400, -80)
+float_range = 100
+float_speed = 5
+
+[node name="Frame2" parent="ParallaxBackground/Tree/Portraits" instance=ExtResource("10_tg5sj")]
+position = Vector2(976, -80)
+scale = Vector2(-1, 1)
+float_range = 100
+float_speed = 5
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ParallaxBackground/Tree/Portraits"]
+position = Vector2(704, -38)
+amount = 33
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 150.99
+gravity = Vector2(0, -90)
+initial_velocity_max = 21.85
+color = Color(0.666667, 0.376471, 0.054902, 1)
+
+[node name="KeyE" type="Sprite2D" parent="ParallaxBackground/Tree/Portraits/CPUParticles2D"]
+modulate = Color(1, 0.592157, 0.258824, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("11_bxycf")
+
+[node name="KeyQ" type="Sprite2D" parent="ParallaxBackground/Tree/Portraits"]
+position = Vector2(-80, -38)
+texture = ExtResource("12_qp531")
+
 [node name="leafy_ground_tile" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_offset = Vector2(1, 1)
 motion_mirroring = Vector2(2880, 0)
@@ -204,5 +282,17 @@ motion_mirroring = Vector2(2880, 0)
 position = Vector2(1440, -72)
 texture = ExtResource("4_dc7i3")
 
-[node name="Portraits" type="Node2D" parent="."]
-position = Vector2(1272, -424)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qixcy")
+}
+
+[node name="portrait_trigger" type="Area2D" parent="."]
+position = Vector2(0, -85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portrait_trigger"]
+position = Vector2(1800, -275)
+shape = SubResource("RectangleShape2D_c24vl")
+
+[connection signal="body_entered" from="portrait_trigger" to="." method="_on_portrait_trigger_body_entered"]
+[connection signal="body_exited" from="portrait_trigger" to="." method="_on_portrait_trigger_body_exited"]

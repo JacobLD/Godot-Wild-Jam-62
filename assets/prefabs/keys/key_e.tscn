@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxcfvkklfq7fh"]
+
+[ext_resource type="Texture2D" uid="uid://ct1bxfgmvic5w" path="res://assets/sprites/keys/key_e.png" id="1_hqtwr"]
+
+[node name="KeyE" type="Sprite2D"]
+texture = ExtResource("1_hqtwr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 33
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 150.99
+gravity = Vector2(0, -90)
+initial_velocity_max = 21.85
+color = Color(0.666667, 0.376471, 0.054902, 1)

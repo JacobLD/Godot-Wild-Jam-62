@@ -34,6 +34,10 @@ var last_state : PlayerController.State = State.IDLING
 
 var animationTree : AnimationTree
 
+var cheek_item : Item = null
+var nose_item : Item = null
+var jaw_item : Item = null
+
 enum State {
 	WALKING,
 	ATTACKING,
@@ -202,13 +206,11 @@ func _decide_player_state():
 
 func on_footstep():
 	if is_on_floor():
-		for i in range(get_slide_collision_count()):
-			var collision = get_slide_collision(i)
-			var ground_object = collision.get_collider()
-			if ground_object is Ground:
-				_last_floor_type = ground_object.type
-				$sfx_player.on_footstep(ground_object.type)
-				return
+		var raycast : RayCast2D = $FloorRayCast
+		if raycast.get_collider() is Ground:
+			_last_floor_type = raycast.get_collider().type
+			$sfx_player.on_footstep(raycast.get_collider().type)
+			return
 			
 	if is_on_floor():
 		$sfx_player.on_footstep(_last_floor_type)
@@ -219,10 +221,13 @@ func on_footstep():
 func set_face_item(item : Item) -> void:
 	match item.face_position:
 		item.FacePosition.CHEEK:
+			cheek_item = item
 			_set_face_item($face/cheek_pos, item)
 		item.FacePosition.NOSE:
+			nose_item = item
 			_set_face_item($face/nose_pos, item)
 		item.FacePosition.JAW:
+			jaw_item = item
 			_set_face_item($face/jaw_pos, item)
 
 func _set_face_item(face_node : Node2D, item : Item) -> void:
@@ -246,3 +251,17 @@ func _on_deferred():
 	set_face_item(nose)
 	set_face_item(cheek)
 	set_face_item(jaw)
+
+
+func get_item_at(pos : Item.FacePosition) -> Item:
+	match pos:
+		Item.FacePosition.JAW:
+			if $face/jaw_pos.get_child_count() > 0:
+				return $face/jaw_pos.get_child(0)
+		Item.FacePosition.CHEEK:
+			if $face/cheek_pos.get_child_count() > 0:
+				return $face/cheek_pos.get_child(0)
+		Item.FacePosition.NOSE:
+			if $face/nose_pos.get_child_count() > 0:
+				return $face/nose_pos.get_child(0)
+	return null
