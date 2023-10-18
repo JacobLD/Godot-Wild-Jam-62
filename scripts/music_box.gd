@@ -4,8 +4,8 @@ var _playing_track : AudioStreamPlayer = null
 @export var blend_time = 3.0
 
 var _blending : bool = false
-var _low_db : float = -25.0
-var _high_db : float = 0.0
+var _low_db : float = -32.0
+var _high_db : float = -6.0
 var _incoming_track : AudioStreamPlayer = null
 var _outgoing_track : AudioStreamPlayer = null
 
@@ -34,22 +34,22 @@ func _play_track(child_audio_player : AudioStreamPlayer, blend : bool = false):
 		_blending = true
 
 func play_tutorial_track(blend : bool) -> void:
-	_play_track($TutorialIsland, blend)
+	_play_track($tutorial, blend)
 
 func play_room_1(blend : bool) -> void:
-	_play_track($Room_1, blend)
+	_play_track($boss_1, blend)
 
 func play_room_2(blend : bool) -> void:
-	_play_track($Room_2, blend)
+	_play_track($boss_2, blend)
 
 func play_room_3(blend : bool) -> void:
-	_play_track($Room_3, blend)
+	_play_track($boss_3, blend)
 
 func play_room_4(blend : bool) -> void:
-	_play_track($Room_4, blend)
+	_play_track($boss_4, blend)
 
 func play_upgrade_hub(blend : bool) -> void:
-	_play_track($Upgrade_Hub, blend)
+	_play_track($upgrade_hub, blend)
 
 func _blend_tracks(delta):
 	if !_blending:

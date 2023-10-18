@@ -19,13 +19,7 @@ position = Vector2(-512, -232)
 MAX_STRAFE_SPEED = 1000
 STRAFE_ACC = 50
 JUMP_VELOCITY = 2500
-FALL_GRAVITY_MODIFIER = 3.0
-MAX_FALL_SPEED_IN_MPS = 50.0
 HANG_TIME_THRESHOLD_SPEED = 25
-HANG_TIME_GRAVITY_MODIFIER = 0.5
-GRACE_JUMP_TIME = 0.25
-attacking = false
-walking_complete = true
 default_gravity = 4000
 
 [node name="MusicBox" parent="." instance=ExtResource("3_8hp5f")]

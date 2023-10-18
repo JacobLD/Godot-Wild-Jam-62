@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://tvxqrrabb1de"]
+[gd_scene load_steps=34 format=3 uid="uid://tvxqrrabb1de"]
 
 [ext_resource type="Script" path="res://scripts/sfx_player.gd" id="1_0qgrq"]
 [ext_resource type="AudioStream" uid="uid://fnrsgcs0wn1a" path="res://assets/audio/footsteps/grass/footstep_grass1.wav" id="2_x76hd"]
@@ -29,7 +29,10 @@
 [ext_resource type="AudioStream" uid="uid://cum1art36ly8v" path="res://assets/audio/scyth/sfx_syth_swing2.wav" id="27_dvqqd"]
 [ext_resource type="AudioStream" uid="uid://b0gr51lufqufc" path="res://assets/audio/scyth/sfx_syth_swing3.wav" id="28_3u41p"]
 [ext_resource type="AudioStream" uid="uid://maofpgk0a6tw" path="res://assets/audio/scyth/sfx_syth_swing4.wav" id="29_xd7vx"]
-[ext_resource type="AudioStream" uid="uid://b8j06u88w2re" path="res://assets/audio/block/block.wav" id="30_vbpic"]
+[ext_resource type="AudioStream" uid="uid://cmftpgg0t1ip7" path="res://assets/audio/block/sfx_block1.wav" id="30_lxaum"]
+[ext_resource type="AudioStream" uid="uid://dy1mbvy8fdrr6" path="res://assets/audio/block/sfx_block2.wav" id="31_s52t2"]
+[ext_resource type="AudioStream" uid="uid://6xsb3duxome3" path="res://assets/audio/block/sfx_block3.wav" id="32_wqrvq"]
+[ext_resource type="AudioStream" uid="uid://bcvjw6ixl4lpb" path="res://assets/audio/block/sfx_block4.wav" id="33_ummrj"]
 
 [node name="sfx_player" type="Node2D"]
 script = ExtResource("1_0qgrq")
@@ -159,7 +162,17 @@ bus = &"SFX"
 [node name="Block" type="Node2D" parent="."]
 
 [node name="1" type="AudioStreamPlayer2D" parent="Block"]
-stream = ExtResource("30_vbpic")
-volume_db = -10.0
-pitch_scale = 0.64
+stream = ExtResource("30_lxaum")
+bus = &"SFX"
+
+[node name="2" type="AudioStreamPlayer2D" parent="Block"]
+stream = ExtResource("31_s52t2")
+bus = &"SFX"
+
+[node name="3" type="AudioStreamPlayer2D" parent="Block"]
+stream = ExtResource("32_wqrvq")
+bus = &"SFX"
+
+[node name="4" type="AudioStreamPlayer2D" parent="Block"]
+stream = ExtResource("33_ummrj")
 bus = &"SFX"
