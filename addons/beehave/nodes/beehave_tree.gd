@@ -106,6 +106,10 @@ func _physics_process(delta: float) -> void:
 
 	# Start timing for metric
 	var start_time = Time.get_ticks_usec()
+	
+	if not _internal_blackboard:
+		_internal_blackboard = Blackboard.new()
+		add_child(_internal_blackboard, false, Node.INTERNAL_MODE_BACK)
 
 	blackboard.set_value("can_send_message", _can_send_message)
 

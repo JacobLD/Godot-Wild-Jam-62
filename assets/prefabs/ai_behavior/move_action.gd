@@ -17,7 +17,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	if delta_x > 0:
 		clone.move_direction = 1
 	
-	return RUNNING
+	return SUCCESS
 
 func interrupt(actor: Node, _blackboard: Blackboard) -> void:
 	actor.stop()

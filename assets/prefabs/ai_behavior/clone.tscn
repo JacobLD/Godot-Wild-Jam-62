@@ -714,6 +714,7 @@ libraries = {
 }
 
 [node name="face" type="Node2D" parent="."]
+position = Vector2(-2, -4)
 
 [node name="PortraitItemHoodBack" type="Sprite2D" parent="face"]
 position = Vector2(11, -79)
@@ -790,9 +791,8 @@ position = Vector2(0, 120)
 rotation = -4.71239
 target_position = Vector2(0, 188)
 
-[node name="cloneAI" type="Node" parent="." node_paths=PackedStringArray("blackboard")]
+[node name="cloneAI" type="Node" parent="."]
 script = ExtResource("32_p2lji")
-blackboard = NodePath("")
 
 [node name="MoveAndAttack" type="Node" parent="cloneAI"]
 script = ExtResource("33_3hm3y")
