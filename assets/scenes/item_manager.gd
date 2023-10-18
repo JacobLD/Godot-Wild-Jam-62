@@ -1,10 +1,4 @@
 extends Node
-class_name ItemManager
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	GameManager.registerItemManager(self)
-
 
 func get_random_cheek() -> Item:
 	return _get_random_item($cheek)
@@ -25,14 +19,13 @@ func _get_random_item(child) -> Item:
 
 func _get_random_item_eclude(child : Node, items : Array) -> Item:
 	var children : Array = child.get_children()
-	var remove_index = []
 	
 	while children.size() > 0:
 		var rand_index = randi() % children.size()
 		var bad_pick = false
 		for i in range(items.size()):
 			if items[i].name == children[rand_index].name:
-				bad_pick == true
+				bad_pick = true
 				break
 		
 		if bad_pick:

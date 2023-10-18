@@ -24,30 +24,58 @@ position = Vector2(-760, -960)
 rotation = 1.5708
 
 [node name="Floor7" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -1472)
+position = Vector2(3400, -1984)
 rotation = 1.5708
 
 [node name="Floor11" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -1472)
+position = Vector2(3400, -2488)
 rotation = 1.5708
 
 [node name="Floor8" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(1352, -448)
+position = Vector2(3400, -448)
 rotation = 1.5708
 
 [node name="Floor9" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(1352, -960)
+position = Vector2(3400, -960)
 rotation = 1.5708
 
 [node name="Floor10" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(1352, -1472)
+position = Vector2(3400, -1472)
 rotation = 1.5708
 
+[node name="Floor22" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -1464)
+rotation = 1.5708
+
+[node name="Floor23" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -1976)
+rotation = 1.5708
+
+[node name="Floor24" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-760, -2488)
+rotation = 1.5708
+
+[node name="Floor18" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(1800, 64)
+rotation = 3.14159
+
+[node name="Floor19" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(2312, 64)
+rotation = 3.14159
+
+[node name="Floor20" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(2824, 64)
+rotation = 3.14159
+
+[node name="Floor21" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(3336, 64)
+rotation = 3.14159
+
 [node name="Floor12" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(776, -1472)
+position = Vector2(776, -2488)
 
 [node name="Floor13" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(264, -1472)
+position = Vector2(264, -2488)
 
 [node name="Floor16" parent="." instance=ExtResource("2_tt5pd")]
 position = Vector2(-760, -448)
@@ -55,11 +83,35 @@ position = Vector2(-760, -448)
 [node name="Floor17" parent="." instance=ExtResource("2_tt5pd")]
 position = Vector2(328, -920)
 
+[node name="Floor29" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(1904, -752)
+
+[node name="Floor30" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(1176, -1656)
+
+[node name="Floor31" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(-320, -1944)
+
+[node name="Floor32" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(2488, -1960)
+
 [node name="Floor14" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-248, -1472)
+position = Vector2(-248, -2488)
+
+[node name="Floor25" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(2312, -2488)
+
+[node name="Floor28" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(2824, -2488)
+
+[node name="Floor26" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(1800, -2488)
+
+[node name="Floor27" parent="." instance=ExtResource("2_tt5pd")]
+position = Vector2(1288, -2488)
 
 [node name="Floor15" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -1472)
+position = Vector2(-760, -2488)
 
 [node name="Floor" parent="." instance=ExtResource("3_mnlwa")]
 position = Vector2(-248, 0)

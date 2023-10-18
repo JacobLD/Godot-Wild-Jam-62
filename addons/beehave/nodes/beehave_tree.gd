@@ -112,6 +112,9 @@ func _physics_process(delta: float) -> void:
 	if _can_send_message:
 		BeehaveDebuggerMessages.process_begin(get_instance_id())
 
+	if actor == null:
+		actor = get_parent()
+
 	if self.get_child_count() == 1:
 		tick()
 

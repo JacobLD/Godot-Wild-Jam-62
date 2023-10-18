@@ -18,9 +18,9 @@ enum Type {
 
 
 func clone() -> Item:
-	var clone : Item = self.duplicate()
-	clone.type = self.type
-	clone.description = self.description
-	clone.face_position = self.face_position
+	var _clone : Item = self.duplicate()
+	_clone.type = self.type
+	_clone.description = self.description
+	_clone.face_position = self.face_position
 	
-	return clone
+	return _clone

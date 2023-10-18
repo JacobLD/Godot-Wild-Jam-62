@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr0rhbnqbevug"]
+
+[ext_resource type="PackedScene" uid="uid://c7rc6qqx50ruq" path="res://assets/scenes/item_manager.tscn" id="1_s4s1y"]
+[ext_resource type="PackedScene" uid="uid://cmln4exwtqh3a" path="res://assets/prefabs/music_box/music_box.tscn" id="2_t5q4j"]
+[ext_resource type="PackedScene" uid="uid://2wf4qmpmphaq" path="res://assets/scenes/tutorial_island.tscn" id="3_irpu0"]
+[ext_resource type="PackedScene" uid="uid://bqv4qnvnbdgkg" path="res://assets/prefabs/Player/player.tscn" id="4_0kc77"]
+[ext_resource type="PackedScene" uid="uid://68lgk5pm5msr" path="res://assets/prefabs/ai_behavior/clone.tscn" id="5_wk3t5"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_o4syq"]
+vertices = PackedVector2Array(3336, -2424, 3328, -8, -760, 8, -768, -2440)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-768, -2440, -760, 8, 3328, -8, 3336, -2424)])
+
+[node name="AITesting" type="Node2D"]
+
+[node name="Item_Manager" parent="." instance=ExtResource("1_s4s1y")]
+
+[node name="MusicBox" parent="." instance=ExtResource("2_t5q4j")]
+
+[node name="world" type="Node2D" parent="."]
+position = Vector2(-16, -64)
+
+[node name="tutorial_island" parent="world" instance=ExtResource("3_irpu0")]
+
+[node name="agents" type="Node2D" parent="world"]
+
+[node name="PlayerController" parent="world/agents" instance=ExtResource("4_0kc77")]
+position = Vector2(-200, -168)
+MAX_STRAFE_SPEED = 1000
+STRAFE_ACC = 50
+JUMP_VELOCITY = 2500
+HANG_TIME_THRESHOLD_SPEED = 25
+
+[node name="AI" parent="world/agents" instance=ExtResource("5_wk3t5")]
+position = Vector2(2576, -176)
+MAX_STRAFE_SPEED = 1000
+STRAFE_ACC = 100
+JUMP_VELOCITY = 1000
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="world"]
+navigation_polygon = SubResource("NavigationPolygon_o4syq")

@@ -14,6 +14,16 @@ func _ready():
 	test_timer.timeout.connect(assign_items)
 	test_timer.start(1)
 
+
+func _process(delta):
+	if !items_visible or item_taken:
+		return
+	
+	if Input.is_action_just_pressed("take_left"):
+		pass
+	elif Input.is_action_just_pressed("take_right"):
+		pass
+
 func assign_items():
 	
 	var positions = [Item.FacePosition.CHEEK, Item.FacePosition.JAW, Item.FacePosition.NOSE]
@@ -38,7 +48,7 @@ func _get_new_item_knowing(player_item : Item, face_pos : Item.FacePosition) -> 
 	if player_item:
 		exclusions.push_front(player_item)
 	
-	return GameManager.getItemManager().get_random_but_exclude(exclusions, face_pos)
+	return ItemManager.get_random_but_exclude(exclusions, face_pos)
 
 func _assign_portrait_items(item_changing : Item, same1 : Item, same2 : Item, portrait : Portrait):
 	portrait.set_frame(item_changing.clone())

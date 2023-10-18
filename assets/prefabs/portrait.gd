@@ -14,6 +14,8 @@ var starting_pos : float = 0
 var noise_pos = 0
 var rand_offset = randi() % 500
 
+var item : Item = null
+
 func _ready():
 	noise_gen = FastNoiseLite.new()
 	starting_pos = position.y
@@ -49,3 +51,4 @@ func set_frame(item : Item):
 	item.position = Vector2.ZERO
 	item.position.x -= item.get_child(0).position.x * frame_scale
 	item.position.y -= item.get_child(0).position.y * frame_scale
+	self.item = item

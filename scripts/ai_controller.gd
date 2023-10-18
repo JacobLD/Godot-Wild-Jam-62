@@ -1,10 +1,11 @@
 extends CharacterBody2D
-class_name PlayerController
+class_name AIController
 
 @export var MAX_STRAFE_SPEED = 600
 @export var STRAFE_ACC = 1
 @export var JUMP_VELOCITY = 0
 
+@export var MAX_FALL_VELOCITY = 50
 @export var FALL_GRAVITY_MODIFIER = 3.0
 @export var MAX_FALL_SPEED_IN_MPS = 50.0
 
@@ -28,14 +29,24 @@ var _blocking = false
 var _walking = false
 @export var walking_complete = true
 
-var state : PlayerController.State = State.IDLING
-var last_state : PlayerController.State = State.IDLING
+var state : AIController.State = State.IDLING
+var last_state : AIController.State = State.IDLING
 
 var animationTree : AnimationTree
 
 var cheek_item : Item = null
 var nose_item : Item = null
 var jaw_item : Item = null
+
+# AI VARS
+var in_melee_range : bool = false
+var move_direction : int = 0 # -1 left, 1 right
+var wants_to_attack : bool = false
+var wants_to_jump : bool = false
+var wants_to_block : bool = false
+var _attack_timer : Timer = Timer.new()
+
+# END AI VARS
 
 enum State {
 	WALKING,
@@ -70,15 +81,12 @@ func _ready():
 	high_gravity = default_gravity * FALL_GRAVITY_MODIFIER
 	low_gravity = default_gravity * HANG_TIME_GRAVITY_MODIFIER
 	
-	GameManager.registerPlayer(self)
 	animationTree = $AnimationTree
+	call_deferred("_on_deferred")
 	
-	await  get_tree().root.ready
-	_on_deferred()
+	
 
 func _physics_process(delta):
-	# Do jank Camera Smoothing
-	$Camera2D.position_smoothing_speed = max(abs(velocity.length() * delta / 3),5)
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -95,7 +103,7 @@ func _physics_process(delta):
 
 func _handle_input(delta):
 	#Flip sprite depending on input direction
-	var direction = Input.get_axis("strafe_left", "strafe_right")
+	var direction = move_direction
 	if abs(direction) > 0:
 		if !$AnimatedSprite2D.flip_h and direction < 0:
 			$AnimatedSprite2D.flip_h = true
@@ -105,7 +113,7 @@ func _handle_input(delta):
 			$face.scale.x = 1
 	
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or !_grace_timer.is_stopped()) and !_has_jumped and state != State.ATTACKING and state != State.BLOCKING:
+	if wants_to_jump and (is_on_floor() or !_grace_timer.is_stopped()) and !_has_jumped and state != State.ATTACKING and state != State.BLOCKING:
 		_has_jumped = true
 		_just_jumped = true
 		_walking = false
@@ -119,7 +127,7 @@ func _handle_input(delta):
 		current_gravity = default_gravity
 
 	# Handle The Fall
-	if (!Input.is_action_pressed("jump") or !_has_jumped) and !is_on_floor():
+	if (!wants_to_jump or !_has_jumped) and !is_on_floor():
 		current_gravity = high_gravity
 	
 	# Handle Hang time gravity
@@ -160,7 +168,7 @@ func _apply_state():
 			$sfx_player.on_swing()
 		if state == State.BLOCKING and last_state != State.JUMP_BLOCK or state == State.JUMP_BLOCK and last_state != State.BLOCKING: # To prevent double blocking sounds
 			$sfx_player.on_block()
-		#print("Trans to ", State.keys()[state])
+		print("Trans to ", State.keys()[state])
 	last_state = state
 
 
@@ -171,7 +179,11 @@ func _decide_player_state():
 	if attacking:
 		return
 	
-	if Input.is_action_just_pressed("attack"):
+	if wants_to_attack and !attacking and state == State.ATTACKING:
+		state = State.IDLING
+		return;
+	
+	if wants_to_attack:
 		attacking = true
 		
 		if is_on_floor():
@@ -180,7 +192,7 @@ func _decide_player_state():
 			state = State.JUMP_ATTACKING
 		return
 	
-	if Input.is_action_pressed("block"):
+	if wants_to_block:
 		_blocking = true
 		if is_on_floor():
 			state = State.BLOCKING
@@ -266,3 +278,18 @@ func get_item_at(pos : Item.FacePosition) -> Item:
 			if $face/nose_pos.get_child_count() > 0:
 				return $face/nose_pos.get_child(0)
 	return null
+
+
+func is_in_attack_range() -> bool:
+	return in_melee_range
+
+
+func _on_attack_area_body_entered(body):
+	if body is PlayerController:
+		print("Player in range of attack")
+		in_melee_range = true
+
+func _on_attack_area_body_exited(body):
+	if body is PlayerController:
+		print("Player NOT in range of attack")
+		in_melee_range = false
