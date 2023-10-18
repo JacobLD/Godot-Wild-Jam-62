@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cmln4exwtqh3a"]
 
 [ext_resource type="Script" path="res://scripts/music_box.gd" id="1_fpnxy"]
-[ext_resource type="AudioStream" uid="uid://b20wskraw1mos" path="res://assets/audio/music/tutorial/chill_theme.ogg" id="2_mwd2w"]
+[ext_resource type="AudioStream" uid="uid://b370qjvvi7q5" path="res://assets/audio/music/music_menu_loop_72bpm_68.ogg" id="2_mvp36"]
 [ext_resource type="AudioStream" uid="uid://b8iunsev2n508" path="res://assets/audio/music/music_boss1_loop_113bpm_44.ogg" id="3_e84xi"]
 [ext_resource type="AudioStream" uid="uid://dyypqvxk46bdj" path="res://assets/audio/music/music_boss2_loop_113bpm_44.ogg" id="4_56b10"]
 [ext_resource type="AudioStream" uid="uid://dhk7oi0ymd88q" path="res://assets/audio/music/music_boss3_loop_vbpm_44.ogg" id="5_iqkln"]
@@ -11,26 +11,32 @@
 [node name="MusicBox" type="Node"]
 script = ExtResource("1_fpnxy")
 
-[node name="TutorialIsland" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_mwd2w")
+[node name="tutorial" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mvp36")
+volume_db = -6.0
 bus = &"Music"
 
-[node name="Room_1" type="AudioStreamPlayer" parent="."]
+[node name="boss_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_e84xi")
+volume_db = -6.0
 bus = &"Music"
 
-[node name="Room_2" type="AudioStreamPlayer" parent="."]
+[node name="boss_2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_56b10")
+volume_db = -6.0
 bus = &"Music"
 
-[node name="Room_3" type="AudioStreamPlayer" parent="."]
+[node name="boss_3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_iqkln")
+volume_db = -6.0
 bus = &"Music"
 
-[node name="Room_4" type="AudioStreamPlayer" parent="."]
+[node name="boss_4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_4kvgo")
+volume_db = -6.0
 bus = &"Music"
 
-[node name="Upgrade_Hub" type="AudioStreamPlayer" parent="."]
+[node name="upgrade_hub" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_l64hp")
+volume_db = -6.0
 bus = &"Music"
