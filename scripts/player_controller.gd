@@ -2,13 +2,13 @@ extends CharacterBody2D
 class_name PlayerController
 
 @export var MAX_STRAFE_SPEED = 600
-@export var STRAFE_ACC = 1
-@export var JUMP_VELOCITY = 0
+@export var STRAFE_ACC = 50
+@export var JUMP_VELOCITY = 1600
 
 @export var FALL_GRAVITY_MODIFIER = 3.0
 @export var MAX_FALL_SPEED_IN_MPS = 50.0
 
-@export var HANG_TIME_THRESHOLD_SPEED = 500
+@export var HANG_TIME_THRESHOLD_SPEED = 25
 @export var HANG_TIME_GRAVITY_MODIFIER = 0.5
 
 @export var GRACE_JUMP_TIME = 0.25
@@ -26,7 +26,6 @@ var controls_locked = false
 var _blocking = false
 @export var attacking = false
 var _walking = false
-@export var walking_complete = true
 
 var state : PlayerController.State = State.IDLING
 var last_state : PlayerController.State = State.IDLING
@@ -57,15 +56,17 @@ var low_gravity = default_gravity * HANG_TIME_GRAVITY_MODIFIER
 
 var _last_floor_type : SFXPlayer.FloorType = SFXPlayer.FloorType.ROCK
 
+var _input_controller : InputController
+
 func _ready():
-	_grace_timer = Timer.new()
-	_grace_timer.one_shot = true
-	_grace_timer.timeout.connect(_on_grace_timer_finished)
-	add_child(_grace_timer)
+	_grace_timer = $JumpGraceTimer
 	_grace_timer.wait_time = GRACE_JUMP_TIME
+	_grace_timer.timeout.connect(_on_grace_timer_finished)
+	
+	#adjust for 100pix in a meter
 	_max_fall_speed = MAX_FALL_SPEED_IN_MPS * 100
 	_strafe_acc = STRAFE_ACC * 100
-	default_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+	
 	current_gravity = default_gravity
 	high_gravity = default_gravity * FALL_GRAVITY_MODIFIER
 	low_gravity = default_gravity * HANG_TIME_GRAVITY_MODIFIER
@@ -73,8 +74,7 @@ func _ready():
 	GameManager.registerPlayer(self)
 	animationTree = $AnimationTree
 	
-	await  get_tree().root.ready
-	_on_deferred()
+	_input_controller = $InputController
 
 func _physics_process(delta):
 	# Do jank Camera Smoothing
@@ -95,17 +95,17 @@ func _physics_process(delta):
 
 func _handle_input(delta):
 	#Flip sprite depending on input direction
-	var direction = Input.get_axis("strafe_left", "strafe_right")
+	var direction = _input_controller.input_direction()
 	if abs(direction) > 0:
-		if !$AnimatedSprite2D.flip_h and direction < 0:
-			$AnimatedSprite2D.flip_h = true
+		if !$Sprite2D.flip_h and direction < 0:
+			$Sprite2D.flip_h = true
 			$face.scale.x = -1
-		elif $AnimatedSprite2D.flip_h and direction > 0:
-			$AnimatedSprite2D.flip_h = false
+		elif $Sprite2D.flip_h and direction > 0:
+			$Sprite2D.flip_h = false
 			$face.scale.x = 1
 	
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or !_grace_timer.is_stopped()) and !_has_jumped and state != State.ATTACKING and state != State.BLOCKING:
+	if _input_controller.jump_just_pressed() and (is_on_floor() or !_grace_timer.is_stopped()) and !_has_jumped and state != State.ATTACKING and state != State.BLOCKING:
 		_has_jumped = true
 		_just_jumped = true
 		_walking = false
@@ -119,7 +119,7 @@ func _handle_input(delta):
 		current_gravity = default_gravity
 
 	# Handle The Fall
-	if (!Input.is_action_pressed("jump") or !_has_jumped) and !is_on_floor():
+	if (!_input_controller.jump_pressed() or !_has_jumped) and !is_on_floor():
 		current_gravity = high_gravity
 	
 	# Handle Hang time gravity
@@ -156,31 +156,25 @@ func _apply_state():
 	animationTree["parameters/conditions/jump_blocking"] = state == State.JUMP_BLOCK
 	
 	if last_state != state:
-		if state == State.ATTACKING or state == State.JUMP_ATTACKING:
-			$sfx_player.on_swing()
 		if state == State.BLOCKING and last_state != State.JUMP_BLOCK or state == State.JUMP_BLOCK and last_state != State.BLOCKING: # To prevent double blocking sounds
 			$sfx_player.on_block()
-		#print("Trans to ", State.keys()[state])
+		print("Trans to ", State.keys()[state])
 	last_state = state
 
 
 func _on_grace_timer_finished():
 	_grace_time = false
 
-func _decide_player_state():	
-	if attacking:
-		return
+func _decide_player_state():
 	
-	if Input.is_action_just_pressed("attack"):
-		attacking = true
-		
+	if _input_controller.attack_just_pressed():
 		if is_on_floor():
 			state = State.ATTACKING
 		else:
 			state = State.JUMP_ATTACKING
 		return
 	
-	if Input.is_action_pressed("block"):
+	if _input_controller.block_pressed():
 		_blocking = true
 		if is_on_floor():
 			state = State.BLOCKING
@@ -215,8 +209,6 @@ func on_footstep():
 			
 	if is_on_floor():
 		$sfx_player.on_footstep(_last_floor_type)
-	
-# The collider being null is causing the above sounds to fail - we need to find a better way of finding the floor object!!
 
 
 func set_face_item(item : Item) -> void:
@@ -238,21 +230,6 @@ func _set_face_item(face_node : Node2D, item : Item) -> void:
 	
 	face_node.add_child(item)
 	item.position = Vector2.ZERO
-
-func _on_deferred():
-	var jaw : Item = ItemManager.get_random_jaw()
-	jaw.visible = true
-	
-	var nose : Item = ItemManager.get_random_nose()
-	nose.visible = true
-	
-	var cheek : Item = ItemManager.get_random_cheek()
-	cheek.visible = true
-	
-	set_face_item(nose)
-	set_face_item(cheek)
-	set_face_item(jaw)
-
 
 func get_item_at(pos : Item.FacePosition) -> Item:
 	match pos:
