@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4kf8mknejx8j"]
+
+[ext_resource type="PackedScene" uid="uid://2wf4qmpmphaq" path="res://assets/scenes/tutorial_island.tscn" id="1_8aeay"]
+[ext_resource type="PackedScene" uid="uid://bqv4qnvnbdgkg" path="res://assets/prefabs/Player/player.tscn" id="2_va2y3"]
+
+[node name="player_animation_testing" type="Node2D"]
+
+[node name="world" type="Node2D" parent="."]
+
+[node name="tutorial_island" parent="world" instance=ExtResource("1_8aeay")]
+position = Vector2(-8, -64)
+
+[node name="PlayerController" parent="." instance=ExtResource("2_va2y3")]
+position = Vector2(120, -232)
