@@ -7,7 +7,7 @@ func jump_just_pressed() -> bool:
 func jump_pressed() -> bool:
 	return Input.is_action_pressed("jump")
 
-func input_direction() -> int:
+func input_direction() -> float:
 	return Input.get_axis("strafe_left", "strafe_right")
 
 func block_pressed() -> bool:
@@ -18,3 +18,6 @@ func active_just_pressed() -> bool:
 
 func attack_just_pressed() -> bool:
 	return Input.is_action_just_pressed("attack")
+
+func sprint_is_pressed() -> bool:
+	return Input.is_action_pressed("sprint")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://canmkm18615on"]
+
+[ext_resource type="Script" path="res://assets/prefabs/hitbox.gd" id="1_4pl1q"]
+
+[node name="Hitbox" type="Area2D" groups=["hitbox"]]
+script = ExtResource("1_4pl1q")
+
+[node name="IFrameTimer" type="Timer" parent="."]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://de8cnnppan8rk"]
+
+[ext_resource type="Script" path="res://assets/prefabs/attack_box/attack_box.gd" id="1_lh7nf"]
+
+[node name="attack_box" type="Area2D" groups=["attack_area"]]
+script = ExtResource("1_lh7nf")

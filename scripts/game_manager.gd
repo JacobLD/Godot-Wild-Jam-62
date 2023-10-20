@@ -20,6 +20,9 @@ func _on_start() -> void:
 func registerPlayer(player : PlayerController):
 	print("Player registered")
 	_player = player
+	_player.set_face_item(ItemManager.get_random_cheek())
+	_player.set_face_item(ItemManager.get_random_jaw())
+	_player.set_face_item(ItemManager.get_random_nose())
 
 func getPlayer() -> PlayerController:
 	if _player == null:
