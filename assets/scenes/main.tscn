@@ -16,10 +16,7 @@ position = Vector2(200, 0)
 
 [node name="PlayerController" parent="agents" instance=ExtResource("2_rekih")]
 position = Vector2(-512, -232)
-MAX_STRAFE_SPEED = 1000
-STRAFE_ACC = 50
 JUMP_VELOCITY = 2500
-HANG_TIME_THRESHOLD_SPEED = 25
 default_gravity = 4000
 
 [node name="MusicBox" parent="." instance=ExtResource("3_8hp5f")]
