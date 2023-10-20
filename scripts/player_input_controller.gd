@@ -14,7 +14,7 @@ func block_pressed() -> bool:
 	return Input.is_action_pressed("block")
 
 func active_just_pressed() -> bool:
-	return false #TODO
+	return Input.is_action_just_pressed("use_active")
 
 func attack_just_pressed() -> bool:
 	return Input.is_action_just_pressed("attack")

@@ -15,6 +15,8 @@ class_name PlayerController
 
 @export var sprint_modifier = 2.0
 
+@export var DASH_SPEED = 2400
+
 var _max_fall_speed = MAX_FALL_SPEED_IN_MPS * 100
 var _walk_acc = WALK_ACC * 100
 
@@ -28,6 +30,7 @@ var controls_locked = false
 var _blocking = false
 var _walking = false
 var _running = false
+var dashing = false
 
 var state : PlayerController.State = State.IDLING
 var last_state : PlayerController.State = State.IDLING
@@ -50,7 +53,8 @@ enum State {
 	JUMP_BLOCK,
 	RISING,
 	FALLING,
-	RUNNING
+	RUNNING,
+	DASHING
 }
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -91,6 +95,9 @@ func _physics_process(delta):
 		#Clamp fall speed
 		if velocity.y > _max_fall_speed:
 			velocity.y = _max_fall_speed
+	
+	if dashing:
+		velocity.y = 0
 
 	_handle_input(delta)
 	move_and_slide()
@@ -159,10 +166,20 @@ func _handle_input(delta):
 				velocity.x += direction * _walk_acc * delta
 				if abs(velocity.x) > MAX_WALK_SPEED:
 					velocity.x = move_toward(velocity.x, MAX_WALK_SPEED, _walk_acc * sprint_modifier * delta)
+		else:
+			if dashing:
+				velocity.x = direction * DASH_SPEED
+			else:
+				velocity.x += direction * _walk_acc * delta
+				if abs(velocity.x) > MAX_WALK_SPEED:
+					velocity.x = move_toward(velocity.x, MAX_WALK_SPEED, _walk_acc * sprint_modifier * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, _walk_acc * delta)
 		_walking = false
 		_running = false
+	
+	if _input_controller.active_just_pressed():
+		_on_active_pressed()
 
 func _apply_state():
 	animationTree["parameters/conditions/is_idle"] = state == State.IDLING
@@ -175,6 +192,7 @@ func _apply_state():
 	animationTree["parameters/conditions/jump_attacking"] = state == State.JUMP_ATTACKING
 	animationTree["parameters/conditions/jump_blocking"] = state == State.JUMP_BLOCK
 	animationTree["parameters/conditions/run"] = state == State.RUNNING
+	animationTree["parameters/conditions/dash"] = state == State.DASHING
 	
 	if last_state != state:
 		if state == State.BLOCKING and last_state != State.JUMP_BLOCK or state == State.JUMP_BLOCK and last_state != State.BLOCKING: # To prevent double blocking sounds
@@ -187,6 +205,10 @@ func _on_grace_timer_finished():
 	_grace_time = false
 
 func _decide_player_state():
+	
+	if dashing:
+		state = State.DASHING
+		return
 	
 	if _input_controller.attack_just_pressed():
 		if is_on_floor():
@@ -270,6 +292,8 @@ func get_item_at(pos : Item.FacePosition) -> Item:
 	return null
 
 
+func _on_active_pressed():
+	cheek_item.on_active(self)
 
 
 func on_attack():

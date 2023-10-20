@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://c7rc6qqx50ruq"]
+[gd_scene load_steps=39 format=3 uid="uid://c7rc6qqx50ruq"]
 
 [ext_resource type="Texture2D" uid="uid://c0hqw7k568fxi" path="res://assets/sprites/portraits/cheek/portrait_item_fall_orange.png" id="1_fee72"]
 [ext_resource type="Script" path="res://assets/scenes/item_manager.gd" id="1_sr8hv"]
 [ext_resource type="Script" path="res://assets/prefabs/item.gd" id="2_feask"]
 [ext_resource type="Texture2D" uid="uid://bshlprqy5hedg" path="res://assets/sprites/portraits/cheek/portrait_item_fall_potato.png" id="3_ef0is"]
 [ext_resource type="Texture2D" uid="uid://d1sspxde7xy85" path="res://assets/sprites/portraits/cheek/portrait_item_fall_pumpkin.png" id="4_6hip1"]
+[ext_resource type="Script" path="res://scripts/active_items/dash_active.gd" id="5_fc4i8"]
 [ext_resource type="Texture2D" uid="uid://f4l6iuia2yfs" path="res://assets/sprites/portraits/cheek/portrait_item_fall_turnip.png" id="5_km0qm"]
 [ext_resource type="Texture2D" uid="uid://c2otmslmlxe61" path="res://assets/sprites/portraits/cheek/portrait_item_summer_artichoke.png" id="6_c7ryu"]
 [ext_resource type="Texture2D" uid="uid://dr3gu8mo0scey" path="res://assets/sprites/portraits/cheek/portrait_item_summer_beans.png" id="7_togqf"]
@@ -61,8 +62,9 @@ position = Vector2(-34, -2)
 [node name="PortraitItemFallPotato" type="Sprite2D" parent="cheek"]
 visible = false
 texture = ExtResource("3_ef0is")
-script = ExtResource("2_feask")
-description = "Activate for a (small) one-time heal"
+script = ExtResource("5_fc4i8")
+dash_time = 0.2
+description = "Activate for a small dash"
 item_name = "Potato"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallPotato"]
