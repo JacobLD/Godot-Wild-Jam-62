@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4traopaoxkld"]
+
+[ext_resource type="Texture2D" uid="uid://bu7ynrxer8aim" path="res://assets/sprites/environment/ruins/arch.png" id="1_rjw8x"]
+[ext_resource type="Texture2D" uid="uid://y8pfksbcskhw" path="res://assets/sprites/environment/ruins/portal.png" id="2_fm5ne"]
+
+[node name="Portal" type="NinePatchRect"]
+offset_top = -608.0
+offset_right = 334.0
+texture = ExtResource("1_rjw8x")
+patch_margin_left = 71
+patch_margin_top = 139
+patch_margin_right = 71
+
+[node name="Portal" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(216, 336)
+scale = Vector2(0.5, 1.10532)
+texture = ExtResource("2_fm5ne")
+
+[node name="Portal2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(112, 336)
+scale = Vector2(0.5, 1.10532)
+texture = ExtResource("2_fm5ne")

@@ -4,11 +4,17 @@ var _player : PlayerController = null
 
 var _player_unlock_timer : Timer = Timer.new()
 
+signal player_item_set(item)
+
 func _ready():
-	self.call_deferred("_on_start")
+	await get_tree().root.ready
 	add_child(_player_unlock_timer)
+	_on_start()
 	_player_unlock_timer.one_shot = true
 	_player_unlock_timer.timeout.connect(_unlock_player)
+	set_player_item(ItemManager.get_starter_cheek_clone())
+	set_player_item(ItemManager.get_starter_jaw_clone())
+	set_player_item(ItemManager.get_starter_nose_clone())
 
 
 func _on_start() -> void:
@@ -26,6 +32,10 @@ func getPlayer() -> PlayerController:
 		printerr("Trying to fetch a null player body")
 	return _player
 
+
+func set_player_item(item : Item):
+	_player.set_face_item(item)
+	player_item_set.emit(item)
 
 
 

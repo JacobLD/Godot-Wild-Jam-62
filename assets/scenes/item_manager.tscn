@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://c7rc6qqx50ruq"]
+[gd_scene load_steps=39 format=3 uid="uid://c7rc6qqx50ruq"]
 
 [ext_resource type="Texture2D" uid="uid://c0hqw7k568fxi" path="res://assets/sprites/portraits/cheek/portrait_item_fall_orange.png" id="1_fee72"]
 [ext_resource type="Script" path="res://assets/scenes/item_manager.gd" id="1_sr8hv"]
 [ext_resource type="Script" path="res://assets/prefabs/item.gd" id="2_feask"]
 [ext_resource type="Texture2D" uid="uid://bshlprqy5hedg" path="res://assets/sprites/portraits/cheek/portrait_item_fall_potato.png" id="3_ef0is"]
 [ext_resource type="Texture2D" uid="uid://d1sspxde7xy85" path="res://assets/sprites/portraits/cheek/portrait_item_fall_pumpkin.png" id="4_6hip1"]
+[ext_resource type="Script" path="res://scripts/active_items/dash_active.gd" id="5_fc4i8"]
 [ext_resource type="Texture2D" uid="uid://f4l6iuia2yfs" path="res://assets/sprites/portraits/cheek/portrait_item_fall_turnip.png" id="5_km0qm"]
 [ext_resource type="Texture2D" uid="uid://c2otmslmlxe61" path="res://assets/sprites/portraits/cheek/portrait_item_summer_artichoke.png" id="6_c7ryu"]
 [ext_resource type="Texture2D" uid="uid://dr3gu8mo0scey" path="res://assets/sprites/portraits/cheek/portrait_item_summer_beans.png" id="7_togqf"]
@@ -40,6 +41,12 @@
 
 [node name="Item_Manager" type="Node"]
 script = ExtResource("1_sr8hv")
+starter_nose = NodePath("nose/PortraitItemFallChilli")
+starter_jaw = NodePath("jaw/PortraitItemFallBeetroot")
+starter_cheek = NodePath("cheek/PortraitItemFallPotato")
+common_nose = Array[NodePath]([NodePath("nose/PortraitItemFallFig"), NodePath("nose/PortraitItemFallLemon"), NodePath("nose/PortraitItemFallPear"), NodePath("nose/PortraitItemSpringStrawberry"), NodePath("nose/PortraitItemSummerApricot")])
+uncommon_nose = Array[NodePath]([NodePath("nose/PortraitItemSummerBlackberry"), NodePath("nose/PortraitItemSummerCherry"), NodePath("nose/PortraitItemSummerCucumber"), NodePath("nose/PortraitItemSummerPrunePurple")])
+rare_nose = Array[NodePath]([NodePath("nose/PortraitItemSummerPruneYellow"), NodePath("nose/PortraitItemSummerWalnut"), NodePath("nose/PortraitItemWinterParsnip")])
 
 [node name="cheek" type="Node2D" parent="."]
 
@@ -47,6 +54,7 @@ script = ExtResource("1_sr8hv")
 visible = false
 texture = ExtResource("1_fee72")
 script = ExtResource("2_feask")
+item_name = "Orange"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallOrange"]
 position = Vector2(-34, -2)
@@ -54,7 +62,10 @@ position = Vector2(-34, -2)
 [node name="PortraitItemFallPotato" type="Sprite2D" parent="cheek"]
 visible = false
 texture = ExtResource("3_ef0is")
-script = ExtResource("2_feask")
+script = ExtResource("5_fc4i8")
+dash_time = 0.2
+description = "Activate for a small dash"
+item_name = "Potato"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallPotato"]
 position = Vector2(-44, -13)
@@ -63,6 +74,7 @@ position = Vector2(-44, -13)
 visible = false
 texture = ExtResource("4_6hip1")
 script = ExtResource("2_feask")
+item_name = "Pumpkin"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallPumpkin"]
 position = Vector2(-50, -2)
@@ -71,6 +83,7 @@ position = Vector2(-50, -2)
 visible = false
 texture = ExtResource("5_km0qm")
 script = ExtResource("2_feask")
+item_name = "Turnip"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemFallTurnip"]
 position = Vector2(-44, -8)
@@ -79,6 +92,7 @@ position = Vector2(-44, -8)
 visible = false
 texture = ExtResource("6_c7ryu")
 script = ExtResource("2_feask")
+item_name = "Artichoke"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerArtichoke"]
 position = Vector2(-34, 5)
@@ -87,6 +101,7 @@ position = Vector2(-34, 5)
 visible = false
 texture = ExtResource("7_togqf")
 script = ExtResource("2_feask")
+item_name = "Beans"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerBeans"]
 position = Vector2(-44, -2)
@@ -95,6 +110,7 @@ position = Vector2(-44, -2)
 visible = false
 texture = ExtResource("8_iasio")
 script = ExtResource("2_feask")
+item_name = "Garlic"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerGarlic"]
 position = Vector2(-43, -13)
@@ -103,6 +119,7 @@ position = Vector2(-43, -13)
 visible = false
 texture = ExtResource("9_im6ir")
 script = ExtResource("2_feask")
+item_name = "Melon"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerMelon"]
 position = Vector2(-44, -2)
@@ -111,6 +128,7 @@ position = Vector2(-44, -2)
 visible = false
 texture = ExtResource("10_lobks")
 script = ExtResource("2_feask")
+item_name = "Red Onion"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemSummerOnionRed"]
 position = Vector2(-47, -5)
@@ -119,6 +137,7 @@ position = Vector2(-47, -5)
 visible = false
 texture = ExtResource("11_kcajp")
 script = ExtResource("2_feask")
+item_name = "Quice"
 
 [node name="Node2D" type="Node2D" parent="cheek/PortraitItemWinterQuice"]
 position = Vector2(-40, -2)
@@ -130,6 +149,8 @@ visible = false
 texture = ExtResource("24_vvxrp")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Chilli"
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemFallChilli"]
 position = Vector2(5, -25)
@@ -139,6 +160,10 @@ visible = false
 texture = ExtResource("25_2fiuh")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Fig"
+strength_mod = 3
+agility_mod = 2
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemFallFig"]
 position = Vector2(1, -24)
@@ -148,6 +173,10 @@ visible = false
 texture = ExtResource("26_5jwa6")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Lemon"
+agility_mod = 2
+wisdom_mod = 3
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemFallLemon"]
 position = Vector2(1, -18)
@@ -157,6 +186,10 @@ visible = false
 texture = ExtResource("27_iu4fj")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Pear"
+strength_mod = 2
+agility_mod = 3
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemFallPear"]
 position = Vector2(9, -16)
@@ -166,6 +199,10 @@ visible = false
 texture = ExtResource("28_kbvpi")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Strawberry"
+strength_mod = 2
+wisdom_mod = 3
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemSpringStrawberry"]
 position = Vector2(-1, -27)
@@ -175,6 +212,10 @@ visible = false
 texture = ExtResource("29_tjnt3")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Apricot"
+strength_mod = 3
+wisdom_mod = 2
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerApricot"]
 position = Vector2(0, -21)
@@ -184,6 +225,11 @@ visible = false
 texture = ExtResource("30_uaas3")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Blackberry"
+strength_mod = 8
+agility_mod = 5
+wisdom_mod = 2
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerBlackberry"]
 position = Vector2(0, -27)
@@ -193,6 +239,11 @@ visible = false
 texture = ExtResource("31_ilrs5")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Cherry"
+strength_mod = 2
+agility_mod = 8
+wisdom_mod = 5
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerCherry"]
 position = Vector2(-5, -21)
@@ -202,6 +253,11 @@ visible = false
 texture = ExtResource("32_ytfpg")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Cucumber"
+strength_mod = 2
+agility_mod = 5
+wisdom_mod = 8
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerCucumber"]
 position = Vector2(4, -21)
@@ -211,6 +267,11 @@ visible = false
 texture = ExtResource("33_ce6qy")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Purple Prune"
+strength_mod = 12
+agility_mod = 8
+wisdom_mod = 2
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerPrunePurple"]
 position = Vector2(-8, -24)
@@ -220,6 +281,11 @@ visible = false
 texture = ExtResource("34_sew6y")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Yellow Prune"
+strength_mod = 12
+agility_mod = 8
+wisdom_mod = 2
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerPruneYellow"]
 position = Vector2(3, -21)
@@ -229,6 +295,11 @@ visible = false
 texture = ExtResource("35_noawh")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Walnut"
+strength_mod = 2
+agility_mod = 12
+wisdom_mod = 8
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemSummerWalnut"]
 position = Vector2(2, -19)
@@ -238,6 +309,11 @@ visible = false
 texture = ExtResource("36_eqjt0")
 script = ExtResource("2_feask")
 face_position = 1
+type = 2
+item_name = "Parsnip"
+strength_mod = 2
+agility_mod = 8
+wisdom_mod = 12
 
 [node name="Node2D" type="Node2D" parent="nose/PortraitItemWinterParsnip"]
 position = Vector2(16, -16)
@@ -249,6 +325,9 @@ visible = false
 texture = ExtResource("12_umqkw")
 script = ExtResource("2_feask")
 face_position = 2
+description = "You have a small chance to dodge an incoming attack"
+type = 1
+item_name = "Beet"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemFallBeetroot"]
 visible = false
@@ -259,6 +338,8 @@ visible = false
 texture = ExtResource("13_0xd4x")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Carrots"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemFallCarrots"]
 position = Vector2(-24, 22)
@@ -268,6 +349,8 @@ visible = false
 texture = ExtResource("14_se4mm")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Eggplant"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemFallEggplant"]
 position = Vector2(-29, 16)
@@ -277,6 +360,8 @@ visible = false
 texture = ExtResource("15_vkmbt")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Grapes"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemFallGrapes"]
 position = Vector2(-21, 27)
@@ -286,6 +371,8 @@ visible = false
 texture = ExtResource("16_mghc6")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Aspargus"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemSpringAspargus"]
 position = Vector2(-26, 23)
@@ -295,6 +382,8 @@ visible = false
 texture = ExtResource("17_tjbow")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Basil"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerBasil"]
 position = Vector2(-26, 27)
@@ -304,6 +393,8 @@ visible = false
 texture = ExtResource("18_q0rq1")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Corn"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerCorn"]
 position = Vector2(-37, 11)
@@ -313,6 +404,8 @@ visible = false
 texture = ExtResource("19_cb5rc")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Fenel"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerFenel"]
 position = Vector2(-25, 24)
@@ -322,6 +415,8 @@ visible = false
 texture = ExtResource("20_eamox")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Lavender"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerLavender"]
 position = Vector2(-16, 29)
@@ -331,6 +426,8 @@ visible = false
 texture = ExtResource("21_smsln")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Licorice"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerLicorice"]
 position = Vector2(-25, 24)
@@ -340,6 +437,8 @@ visible = false
 texture = ExtResource("22_bq71g")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Shallots"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerShallots"]
 position = Vector2(-8, 26)
@@ -349,6 +448,8 @@ visible = false
 texture = ExtResource("23_xt8ix")
 script = ExtResource("2_feask")
 face_position = 2
+type = 1
+item_name = "Wheat"
 
 [node name="Node2D" type="Node2D" parent="jaw/PortraitItemSummerWheat"]
 position = Vector2(9, 36)

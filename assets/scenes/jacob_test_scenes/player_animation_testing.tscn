@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4kf8mknejx8j"]
+[gd_scene load_steps=4 format=3 uid="uid://b4kf8mknejx8j"]
 
 [ext_resource type="PackedScene" uid="uid://2wf4qmpmphaq" path="res://assets/scenes/tutorial_island.tscn" id="1_8aeay"]
 [ext_resource type="PackedScene" uid="uid://bqv4qnvnbdgkg" path="res://assets/prefabs/Player/player.tscn" id="2_va2y3"]
+[ext_resource type="PackedScene" uid="uid://bfy4vbkau78n4" path="res://assets/prefabs/dummy/practice_dummy.tscn" id="3_l187h"]
 
 [node name="player_animation_testing" type="Node2D"]
 
@@ -12,3 +13,6 @@ position = Vector2(-8, -64)
 
 [node name="PlayerController" parent="." instance=ExtResource("2_va2y3")]
 position = Vector2(120, -232)
+
+[node name="PracticeDummy" parent="." instance=ExtResource("3_l187h")]
+position = Vector2(1560, -232)

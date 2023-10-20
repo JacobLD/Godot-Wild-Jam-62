@@ -7,7 +7,7 @@ func jump_just_pressed() -> bool:
 func jump_pressed() -> bool:
 	return false
 
-func input_direction() -> int:
+func input_direction() -> float:
 	return 0
 
 func block_pressed() -> bool:
@@ -17,4 +17,7 @@ func active_just_pressed() -> bool:
 	return false
 
 func attack_just_pressed() -> bool:
+	return false
+
+func sprint_is_pressed() -> bool:
 	return false

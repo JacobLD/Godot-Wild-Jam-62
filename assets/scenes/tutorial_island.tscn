@@ -1,117 +1,356 @@
-[gd_scene load_steps=4 format=3 uid="uid://2wf4qmpmphaq"]
+[gd_scene load_steps=19 format=3 uid="uid://2wf4qmpmphaq"]
 
+[ext_resource type="Script" path="res://scripts/parallax_background_fix.gd" id="1_bjedi"]
 [ext_resource type="PackedScene" uid="uid://fhlq4rxov70m" path="res://assets/prefabs/world/ground/grass/grass_test_ground.tscn" id="1_iremy"]
+[ext_resource type="Texture2D" uid="uid://bpcjrt1hb5mm4" path="res://assets/sprites/environment/sky/sky_tileable_bg.jpg" id="2_4f6p2"]
 [ext_resource type="PackedScene" uid="uid://cbkpv41nncjvv" path="res://assets/prefabs/world/ground/rock/rock_test_ground.tscn" id="2_tt5pd"]
-[ext_resource type="PackedScene" uid="uid://cos54k7w1dq8u" path="res://assets/prefabs/world/ground/leaves/leaf_test_ground.tscn" id="3_mnlwa"]
+[ext_resource type="Texture2D" uid="uid://cn6u35e1bwdai" path="res://assets/sprites/environment/tree/ground_tree_parallax_2.png" id="3_urrim"]
+[ext_resource type="Texture2D" uid="uid://cdvocbxvttyd3" path="res://assets/sprites/environment/tree/ground_tree_parallax_1.png" id="4_dwbj1"]
+[ext_resource type="Texture2D" uid="uid://cm8jtgvavgdnn" path="res://assets/sprites/environment/tree/ground_tree_leaves.png" id="5_yrweo"]
+[ext_resource type="Texture2D" uid="uid://b6iu1o7c37nor" path="res://assets/sprites/environment/ruins/beam.png" id="9_rixu8"]
+[ext_resource type="Texture2D" uid="uid://diohcwbbt07wq" path="res://assets/sprites/environment/ruins/dead_mage.png" id="10_jdc54"]
+[ext_resource type="PackedScene" uid="uid://c4traopaoxkld" path="res://assets/prefabs/portal/portal.tscn" id="11_w0fq8"]
+[ext_resource type="PackedScene" uid="uid://bi677ehj2vfuh" path="res://assets/prefabs/portal/dun_portal.tscn" id="11_yj7nv"]
+[ext_resource type="PackedScene" uid="uid://bqv4qnvnbdgkg" path="res://assets/prefabs/Player/player.tscn" id="12_h6u32"]
+[ext_resource type="PackedScene" uid="uid://bfy4vbkau78n4" path="res://assets/prefabs/dummy/practice_dummy.tscn" id="14_gxtk1"]
+[ext_resource type="Texture2D" uid="uid://db7lcrru7y0yy" path="res://assets/sprites/environment/ruins/stella.png" id="15_0i211"]
+[ext_resource type="Texture2D" uid="uid://dqqhlyf1ioldm" path="res://assets/sprites/keys/key_a.png" id="16_g1pru"]
+[ext_resource type="Texture2D" uid="uid://c0krkjei3nmrp" path="res://assets/sprites/environment/ruins/column.png" id="17_v1bg3"]
+[ext_resource type="Texture2D" uid="uid://b2bxiuasimvcs" path="res://assets/sprites/keys/key_d.png" id="17_vknlx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jgrps"]
 
 [node name="tutorial_island" type="Node2D"]
 
-[node name="Floor2" parent="." instance=ExtResource("1_iremy")]
-position = Vector2(264, 0)
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_bjedi")
 
-[node name="Floor3" parent="." instance=ExtResource("1_iremy")]
-position = Vector2(776, 0)
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="Floor4" parent="." instance=ExtResource("1_iremy")]
-position = Vector2(-760, 0)
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Background"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -7536.0
+offset_top = -6024.0
+offset_right = 11992.0
+offset_bottom = 2880.0
+texture = SubResource("PlaceholderTexture2D_jgrps")
 
-[node name="Floor5" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -448)
+[node name="sky_infinite_tile" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="SkyTileableBg" type="Sprite2D" parent="ParallaxBackground/sky_infinite_tile"]
+position = Vector2(752, -664)
+texture = ExtResource("2_4f6p2")
+
+[node name="SkyTileableBg2" type="Sprite2D" parent="ParallaxBackground/sky_infinite_tile"]
+position = Vector2(2672, -664)
+texture = ExtResource("2_4f6p2")
+
+[node name="SkyTileableBg3" type="Sprite2D" parent="ParallaxBackground/sky_infinite_tile"]
+position = Vector2(-1168, -664)
+texture = ExtResource("2_4f6p2")
+
+[node name="far_rocks_tile" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(11520, 0)
+
+[node name="GroundTreeParallax2" type="Sprite2D" parent="ParallaxBackground/far_rocks_tile"]
+position = Vector2(1704, -280)
+scale = Vector2(4, 4)
+texture = ExtResource("3_urrim")
+
+[node name="close_rocks_tile" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(4320, 0)
+
+[node name="GroundTreeParallax1" type="Sprite2D" parent="ParallaxBackground/close_rocks_tile"]
+position = Vector2(1440, -208)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_dwbj1")
+
+[node name="leafy_ground_tile" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2(1, 1)
+motion_mirroring = Vector2(2880, 0)
+
+[node name="GroundTreeLeaves" type="Sprite2D" parent="ParallaxBackground/leafy_ground_tile"]
+position = Vector2(1440, -72)
+texture = ExtResource("5_yrweo")
+
+[node name="Colliders" type="Node2D" parent="."]
+position = Vector2(832, -64)
+
+[node name="Floor4" parent="Colliders" instance=ExtResource("1_iremy")]
+position = Vector2(-768, 0)
+scale = Vector2(8, 1)
+
+[node name="Floor34" parent="Colliders" instance=ExtResource("1_iremy")]
+position = Vector2(-1024, -480)
+
+[node name="Floor5" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-768, 64)
+rotation = 1.5708
+scale = Vector2(-6.6, 1)
+
+[node name="Floor6" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-1152, -960)
 rotation = 1.5708
 
-[node name="Floor6" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -960)
+[node name="Floor7" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(3904, -3328)
 rotation = 1.5708
 
-[node name="Floor7" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(3400, -1984)
+[node name="Floor11" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(448, -3200)
+rotation = 1.5708
+scale = Vector2(1.4, 1)
+
+[node name="Floor8" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(3392, -448)
 rotation = 1.5708
 
-[node name="Floor11" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(3400, -2488)
-rotation = 1.5708
-
-[node name="Floor8" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(3400, -448)
-rotation = 1.5708
-
-[node name="Floor9" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(3400, -960)
-rotation = 1.5708
-
-[node name="Floor10" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(3400, -1472)
-rotation = 1.5708
-
-[node name="Floor22" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -1464)
-rotation = 1.5708
-
-[node name="Floor23" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -1976)
-rotation = 1.5708
-
-[node name="Floor24" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -2488)
-rotation = 1.5708
-
-[node name="Floor18" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(1800, 64)
+[node name="Floor9" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(3392, -384)
 rotation = 3.14159
+scale = Vector2(-4.05905, 1.00007)
 
-[node name="Floor19" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(2312, 64)
+[node name="Floor16" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(4864, -832)
 rotation = 3.14159
+scale = Vector2(4.68001, 1)
 
-[node name="Floor20" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(2824, 64)
+[node name="Floor17" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(1216, -832)
 rotation = 3.14159
+scale = Vector2(3.24, 1)
 
-[node name="Floor21" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(3336, 64)
+[node name="Floor29" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(5696, -1856)
 rotation = 3.14159
+scale = Vector2(10, 1)
 
-[node name="Floor12" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(776, -2488)
+[node name="Floor30" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(5440, -384)
+rotation = 4.71239
+scale = Vector2(4.37734, 0.967295)
 
-[node name="Floor13" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(264, -2488)
+[node name="Floor31" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(4544, -2944)
+rotation = 4.71239
 
-[node name="Floor16" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -448)
+[node name="Floor32" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(4096, -2880)
+rotation = 4.71239
 
-[node name="Floor17" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(328, -920)
+[node name="Floor10" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-448, -832)
+rotation = 4.71239
+scale = Vector2(3.14866, 1)
 
-[node name="Floor29" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(1904, -752)
+[node name="Floor33" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-768, -768)
+scale = Vector2(0.119999, 1)
 
-[node name="Floor30" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(1176, -1656)
+[node name="Floor35" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-511, -1376)
+scale = Vector2(0.119999, 1)
 
-[node name="Floor31" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-320, -1944)
+[node name="Floor36" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-764, -1856)
+scale = Vector2(0.119999, 1)
 
-[node name="Floor32" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(2488, -1960)
+[node name="Floor22" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-1088, -1472)
+rotation = 1.5708
 
-[node name="Floor14" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-248, -2488)
+[node name="Floor23" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-1280, -1984)
+rotation = 1.5708
 
-[node name="Floor25" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(2312, -2488)
+[node name="Floor24" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-1152, -2488)
+rotation = 1.5708
 
-[node name="Floor28" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(2824, -2488)
+[node name="Floor12" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-128, -3968)
 
-[node name="Floor26" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(1800, -2488)
+[node name="Floor13" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(512, -1280)
+rotation = -1.5708
+scale = Vector2(1.24622, 1)
 
-[node name="Floor27" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(1288, -2488)
+[node name="Floor14" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(0, -1344)
 
-[node name="Floor15" parent="." instance=ExtResource("2_tt5pd")]
-position = Vector2(-760, -2488)
+[node name="Floor25" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(2112, -3808)
 
-[node name="Floor" parent="." instance=ExtResource("3_mnlwa")]
-position = Vector2(-248, 0)
+[node name="Floor28" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(2880, -3872)
+
+[node name="Floor26" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(1824, -3616)
+
+[node name="Floor27" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-832, -3200)
+scale = Vector2(2.55699, 1)
+
+[node name="Floor15" parent="Colliders" instance=ExtResource("2_tt5pd")]
+position = Vector2(-448, -2494)
+scale = Vector2(12.245, 1)
+
+[node name="env_sprites" type="Node2D" parent="."]
+
+[node name="Beam" type="Sprite2D" parent="env_sprites"]
+position = Vector2(192.003, -33.5449)
+scale = Vector2(0.708556, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam2" type="Sprite2D" parent="env_sprites"]
+position = Vector2(35.0021, -1598.66)
+rotation = 1.57079
+scale = Vector2(9.12065, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam8" type="Sprite2D" parent="env_sprites"]
+position = Vector2(415.999, -1756.7)
+rotation = 1.57079
+scale = Vector2(4.56017, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam17" type="Sprite2D" parent="env_sprites"]
+position = Vector2(1376, -1664.12)
+rotation = 1.57079
+scale = Vector2(1.45093, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam13" type="Sprite2D" parent="env_sprites"]
+position = Vector2(1248, -2909.38)
+rotation = 1.57079
+scale = Vector2(2.02657, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam3" type="Sprite2D" parent="env_sprites"]
+position = Vector2(4192, -225.006)
+rotation = 1.57079
+scale = Vector2(1.27115, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam4" type="Sprite2D" parent="env_sprites"]
+position = Vector2(5249.06, -480)
+rotation = 3.14159
+scale = Vector2(6.21437, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam6" type="Sprite2D" parent="env_sprites"]
+position = Vector2(4497.55, -928)
+rotation = 3.14159
+scale = Vector2(6.84551, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam7" type="Sprite2D" parent="env_sprites"]
+position = Vector2(1216.11, -928)
+rotation = 3.14159
+scale = Vector2(4.75773, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam11" type="Sprite2D" parent="env_sprites"]
+position = Vector2(3806.13, -1950)
+rotation = 3.14159
+scale = Vector2(14.0728, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam16" type="Sprite2D" parent="env_sprites"]
+position = Vector2(1121.97, -1376)
+rotation = 3.14159
+scale = Vector2(1.64972, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam12" type="Sprite2D" parent="env_sprites"]
+position = Vector2(3168.35, -2528)
+rotation = 3.14159
+scale = Vector2(15.9134, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam15" type="Sprite2D" parent="env_sprites"]
+position = Vector2(641.396, -3232)
+rotation = 3.14159
+scale = Vector2(3.66995, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam9" type="Sprite2D" parent="env_sprites"]
+position = Vector2(96, -800)
+rotation = 3.14159
+scale = Vector2(0.180376, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam10" type="Sprite2D" parent="env_sprites"]
+position = Vector2(352, -1408)
+rotation = 3.14159
+scale = Vector2(0.180376, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam14" type="Sprite2D" parent="env_sprites"]
+position = Vector2(99, -1888)
+rotation = 3.14159
+scale = Vector2(0.204647, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="Beam5" type="Sprite2D" parent="env_sprites"]
+position = Vector2(6304, -1535.94)
+rotation = 4.71239
+scale = Vector2(5.8483, 1)
+texture = ExtResource("9_rixu8")
+
+[node name="DeadMage" type="Sprite2D" parent="env_sprites"]
+position = Vector2(827.005, -185.545)
+texture = ExtResource("10_jdc54")
+
+[node name="Portal" parent="." instance=ExtResource("11_w0fq8")]
+offset_left = 5952.0
+offset_top = -2558.0
+offset_right = 6286.0
+offset_bottom = -1950.0
+
+[node name="Dun_Portal" parent="." instance=ExtResource("11_yj7nv")]
+
+[node name="PracticeDummy" parent="." instance=ExtResource("14_gxtk1")]
+position = Vector2(2112, -2152)
+
+[node name="Stella" type="Sprite2D" parent="."]
+position = Vector2(1120, -224)
+texture = ExtResource("15_0i211")
+
+[node name="KeyD" type="Sprite2D" parent="Stella"]
+modulate = Color(0.403922, 0.403922, 0.403922, 1)
+position = Vector2(64, 0)
+texture = ExtResource("17_vknlx")
+
+[node name="KeyA" type="Sprite2D" parent="Stella"]
+modulate = Color(0.458824, 0.458824, 0.458824, 1)
+position = Vector2(-64, 0)
+texture = ExtResource("16_g1pru")
+
+[node name="Stella2" type="Sprite2D" parent="."]
+position = Vector2(3584, -224)
+texture = ExtResource("15_0i211")
+
+[node name="Stella3" type="Sprite2D" parent="."]
+position = Vector2(3872, -1088)
+texture = ExtResource("15_0i211")
+
+[node name="Stella4" type="Sprite2D" parent="."]
+position = Vector2(1728, -2112)
+texture = ExtResource("15_0i211")
+
+[node name="Stella5" type="Sprite2D" parent="."]
+position = Vector2(2656, -2112)
+texture = ExtResource("15_0i211")
+
+[node name="PlayerController" parent="." instance=ExtResource("12_h6u32")]
+position = Vector2(467, -241)
+
+[node name="Column" type="Sprite2D" parent="."]
+position = Vector2(911, -2635)
+scale = Vector2(0.5, 0.408572)
+texture = ExtResource("17_v1bg3")

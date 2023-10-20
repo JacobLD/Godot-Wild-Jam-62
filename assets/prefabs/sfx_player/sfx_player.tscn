@@ -36,6 +36,8 @@
 
 [node name="sfx_player" type="Node2D"]
 script = ExtResource("1_0qgrq")
+Feet_Position = null
+Hand_Position = null
 
 [node name="Grass" type="Node2D" parent="."]
 
@@ -175,4 +177,10 @@ bus = &"SFX"
 
 [node name="4" type="AudioStreamPlayer2D" parent="Block"]
 stream = ExtResource("33_ummrj")
+bus = &"SFX"
+
+[node name="Hit" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer2D" parent="Hit"]
+stream = ExtResource("2_x76hd")
 bus = &"SFX"

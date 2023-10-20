@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1alhl4cks82c"]
+
+[ext_resource type="Script" path="res://assets/scenes/HUD.gd" id="1_1xd8e"]
+[ext_resource type="Texture2D" uid="uid://bnxsvitefrllm" path="res://assets/sprites/portraits/frame/portrait_item_frame.png" id="1_5cbwi"]
+[ext_resource type="PackedScene" uid="uid://cqk835hud6tal" path="res://assets/scenes/mouse_dialog.tscn" id="3_tfnap"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_1xd8e")
+
+[node name="passive_hover_trigger" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 510.0
+offset_right = 125.0
+offset_bottom = 586.0
+
+[node name="passive" type="Sprite2D" parent="."]
+position = Vector2(86.5, 548)
+texture = ExtResource("1_5cbwi")
+
+[node name="active_hover_trigger" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 654.0
+offset_right = 125.0
+offset_bottom = 730.0
+
+[node name="active" type="Sprite2D" parent="."]
+position = Vector2(86.5, 692)
+texture = ExtResource("1_5cbwi")
+
+[node name="stats_hover_trigger" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 49.5
+offset_top = 366.0
+offset_right = 124.5
+offset_bottom = 442.0
+
+[node name="stats" type="Sprite2D" parent="."]
+position = Vector2(86.5, 404)
+texture = ExtResource("1_5cbwi")
+
+[node name="mouse_dialog" parent="." instance=ExtResource("3_tfnap")]
+position = Vector2(0, -1)
+
+[connection signal="mouse_entered" from="passive_hover_trigger" to="." method="_on_passive_hover_trigger_mouse_entered"]
+[connection signal="mouse_exited" from="passive_hover_trigger" to="." method="_on_mouse_exit"]
+[connection signal="mouse_entered" from="active_hover_trigger" to="." method="_on_active_hover_trigger_mouse_entered"]
+[connection signal="mouse_exited" from="active_hover_trigger" to="." method="_on_mouse_exit"]
+[connection signal="mouse_entered" from="stats_hover_trigger" to="." method="_on_stats_hover_trigger_mouse_entered"]
+[connection signal="mouse_exited" from="stats_hover_trigger" to="." method="_on_mouse_exit"]

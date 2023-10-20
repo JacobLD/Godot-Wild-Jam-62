@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7tk7sd3i4j2g"]
+
+[ext_resource type="Texture2D" uid="uid://d2oafwfvg6mc5" path="res://assets/sprites/portraits/9cut_black.png" id="1_d0g0v"]
+[ext_resource type="Script" path="res://assets/prefabs/hud_cards/stats_card.gd" id="2_fvdq8"]
+
+[node name="Stats" type="NinePatchRect"]
+offset_right = 198.0
+offset_bottom = 183.0
+texture = ExtResource("1_d0g0v")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 16
+patch_margin_top = 19
+patch_margin_right = 16
+patch_margin_bottom = 17
+script = ExtResource("2_fvdq8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.054
+anchor_top = 0.054
+anchor_right = 0.943
+anchor_bottom = 0.919
+offset_left = -0.0940008
+offset_top = 2.012
+offset_right = -0.123001
+offset_bottom = -0.0180054
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Item Name"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Location:"
+
+[node name="FacePositionValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Jaw"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Strength:"
+
+[node name="StrValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Agility:"
+
+[node name="AgiValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "1"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Type" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Wisdom:"
+
+[node name="WisValue" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "1"
