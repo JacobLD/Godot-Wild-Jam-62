@@ -41,6 +41,21 @@ var cheek_item : Item = null
 var nose_item : Item = null
 var jaw_item : Item = null
 
+var health : float = 100
+var max_health : float = 100
+var str = 0
+var agi = 0
+var wis = 0
+var speed_percent_per_agi = 0.02
+var jump_percent_per_agi = 0.02
+signal died
+signal health_total_changed(new_value)
+signal current_health_changed(new_value)
+signal active_on_cooldown()
+signal active_off_cooldown()
+var can_use_active : bool = true
+var damage = 0
+
 var _last_direction = 0
 
 enum State {
@@ -154,31 +169,33 @@ func _handle_input(delta):
 	# Get the input direction and handle the movement/deceleration.
 	if direction and !_blocking and !controls_locked:
 		if is_on_floor():
-			if _input_controller.sprint_is_pressed():
+			if dashing:
+				velocity.x = direction * DASH_SPEED
+			elif !_input_controller.walk_is_pressed():
 				_running = true
 				_walking = false
 				velocity.x += direction * _walk_acc * delta * sprint_modifier
 				if abs(velocity.x) > MAX_WALK_SPEED * sprint_modifier:
-					velocity.x = move_toward(velocity.x, 0, _walk_acc * sprint_modifier * delta)
+					velocity.x = move_toward(velocity.x, 0, _walk_acc * sprint_modifier * 1.6 * delta)
 			else:
 				_walking = true
 				_running = false
 				velocity.x += direction * _walk_acc * delta
 				if abs(velocity.x) > MAX_WALK_SPEED:
-					velocity.x = move_toward(velocity.x, MAX_WALK_SPEED, _walk_acc * sprint_modifier * delta)
+					velocity.x = move_toward(velocity.x, MAX_WALK_SPEED, _walk_acc * sprint_modifier * 1.5 * delta)
 		else:
 			if dashing:
 				velocity.x = direction * DASH_SPEED
 			else:
-				velocity.x += direction * _walk_acc * delta
-				if abs(velocity.x) > MAX_WALK_SPEED:
-					velocity.x = move_toward(velocity.x, MAX_WALK_SPEED, _walk_acc * sprint_modifier * delta)
+				velocity.x += direction * _walk_acc * delta * sprint_modifier
+				if abs(velocity.x) > MAX_WALK_SPEED* sprint_modifier:
+					velocity.x = move_toward(velocity.x, MAX_WALK_SPEED, _walk_acc * sprint_modifier * 1.5 * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, _walk_acc * delta)
 		_walking = false
 		_running = false
 	
-	if _input_controller.active_just_pressed():
+	if _input_controller.active_just_pressed() and can_use_active:
 		_on_active_pressed()
 
 func _apply_state():
@@ -264,6 +281,9 @@ func set_face_item(item : Item) -> void:
 			_set_face_item($face/cheek_pos, item)
 		item.FacePosition.NOSE:
 			nose_item = item
+			set_agi(item.agility_mod)
+			set_str(item.strength_mod)
+			set_wis(item.wisdom_mod)
 			_set_face_item($face/nose_pos, item)
 		item.FacePosition.JAW:
 			jaw_item = item
@@ -274,7 +294,11 @@ func _set_face_item(face_node : Node2D, item : Item) -> void:
 	if face_node.get_child_count() > 0:
 		face_node.get_child(0).queue_free()
 	
-	face_node.add_child(item)
+	if item.get_parent() == null:
+		face_node.add_child(item)
+	else:
+		item.reparent(face_node)
+	
 	item.position = Vector2.ZERO
 	item.visible = true
 
@@ -293,8 +317,33 @@ func get_item_at(pos : Item.FacePosition) -> Item:
 
 
 func _on_active_pressed():
-	cheek_item.on_active(self)
+	can_use_active = false
+	active_on_cooldown.emit()
+	cheek_item.on_active(self).timeout.connect(_on_active_timer)
 
 
 func on_attack():
 	$attack_box.attack(500)
+
+
+# Max hp = 100 + str * 8
+# dmg = 10 + str * 3
+func set_str(new_value : int):
+	var old_health = max_health
+	max_health = new_value + new_value * 8
+	health += max_health - old_health
+	health_total_changed.emit(max_health)
+	
+	damage = 10 + new_value * 3
+
+
+func set_agi(new_value : int):
+	agi = new_value
+
+# Reduces active cooldown
+func set_wis(new_value : int):
+	wis = new_value
+
+func _on_active_timer():
+	can_use_active = true
+	active_off_cooldown.emit()

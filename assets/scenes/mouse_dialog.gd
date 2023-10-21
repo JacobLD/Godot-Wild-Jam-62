@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	position = get_global_mouse_position()
 
 
@@ -26,7 +26,8 @@ func on_show_single_item_details(item : Item):
 
 
 func on_show_compare_item_details(equiped : Item, compare : Item):
-	pass
+	$Compare.set_items(equiped, compare)
+	$Compare.visible = true
 
 
 func on_hide():

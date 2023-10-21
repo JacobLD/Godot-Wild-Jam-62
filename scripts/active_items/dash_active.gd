@@ -4,10 +4,10 @@ extends Item
 
 var _player
 
-func on_active(player : PlayerController):
+func on_active(player : PlayerController) -> SceneTreeTimer:
 	player.dashing = true
 	_player = player
-	get_tree().create_timer(dash_time).timeout.connect(on_timeout)
+	return _start_cooldown_timer(use_cooldown, player)
 
-func on_timeout():
+func _on_timeout():
 	_player.dashing = false
