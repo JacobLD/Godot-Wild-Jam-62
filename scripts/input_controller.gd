@@ -19,5 +19,5 @@ func active_just_pressed() -> bool:
 func attack_just_pressed() -> bool:
 	return false
 
-func sprint_is_pressed() -> bool:
+func walk_is_pressed() -> bool:
 	return false

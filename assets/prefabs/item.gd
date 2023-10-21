@@ -23,6 +23,8 @@ enum Type {
 @export var agility_mod : int = 1
 @export var wisdom_mod : int = 1
 
+@export var use_cooldown : float = 2
+
 func clone() -> Item:
 	var _clone : Item = self.duplicate()
 	_clone.type = self.type

@@ -5,10 +5,12 @@ var _active : Item
 var _stats : Item
 
 var frame_scale = 0.4
+var _px_per_hp = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.player_item_set.connect(on_player_item_set)
+	GameManager.player_registered.connect(_on_player_registered)
 
 
 func on_player_item_set(item : Item):
@@ -52,3 +54,25 @@ func _on_active_hover_trigger_mouse_entered():
 func _on_passive_hover_trigger_mouse_entered():
 	print("passove")
 	$mouse_dialog.on_show_single_item_details(_passive)
+
+
+func _on_player_registered(player : PlayerController):
+	player.health_total_changed.connect(_on_player_max_hp_change)
+	player.current_health_changed.connect(_on_player_hp_change)
+	player.active_off_cooldown.connect(_active_off_cooldown)
+	player.active_on_cooldown.connect(_active_on_cooldown)
+
+
+func _on_player_max_hp_change(new_max):
+	$Health_Bar_Background.size.x = new_max * _px_per_hp
+
+func _on_player_hp_change(current_hp):
+	$Health_Bar_Current.size.x = current_hp * _px_per_hp
+	$Label.text = str(current_hp)
+
+func _active_on_cooldown():
+	$active.modulate = Color(1,1,1,0.4)
+
+
+func _active_off_cooldown():
+	$active.modulate = Color(1,1,1,1)

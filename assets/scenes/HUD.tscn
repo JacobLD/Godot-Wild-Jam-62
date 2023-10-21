@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1alhl4cks82c"]
+[gd_scene load_steps=5 format=3 uid="uid://c1alhl4cks82c"]
 
 [ext_resource type="Script" path="res://assets/scenes/HUD.gd" id="1_1xd8e"]
 [ext_resource type="Texture2D" uid="uid://bnxsvitefrllm" path="res://assets/sprites/portraits/frame/portrait_item_frame.png" id="1_5cbwi"]
 [ext_resource type="PackedScene" uid="uid://cqk835hud6tal" path="res://assets/scenes/mouse_dialog.tscn" id="3_tfnap"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_esf42"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1xd8e")
@@ -45,6 +47,32 @@ texture = ExtResource("1_5cbwi")
 
 [node name="mouse_dialog" parent="." instance=ExtResource("3_tfnap")]
 position = Vector2(0, -1)
+
+[node name="Health_Bar_Background" type="TextureRect" parent="."]
+modulate = Color(0.639216, 0, 0, 1)
+offset_left = 1884.0
+offset_top = 71.0
+offset_right = 1886.0
+offset_bottom = 96.0
+rotation = -3.14159
+texture = SubResource("PlaceholderTexture2D_esf42")
+
+[node name="Health_Bar_Current" type="TextureRect" parent="."]
+modulate = Color(0.639216, 0, 0, 1)
+offset_left = 1884.0
+offset_top = 71.0
+offset_right = 2384.0
+offset_bottom = 96.0
+rotation = -3.14159
+texture = SubResource("PlaceholderTexture2D_esf42")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1839.0
+offset_top = 46.0
+offset_right = 1879.0
+offset_bottom = 72.0
+text = "100"
+horizontal_alignment = 2
 
 [connection signal="mouse_entered" from="passive_hover_trigger" to="." method="_on_passive_hover_trigger_mouse_entered"]
 [connection signal="mouse_exited" from="passive_hover_trigger" to="." method="_on_mouse_exit"]

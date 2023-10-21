@@ -1,15 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1y65wq6p7snw"]
+[gd_scene load_steps=16 format=3 uid="uid://c1y65wq6p7snw"]
 
 [ext_resource type="PackedScene" uid="uid://cos54k7w1dq8u" path="res://assets/prefabs/world/ground/leaves/leaf_test_ground.tscn" id="1_colpn"]
 [ext_resource type="Script" path="res://assets/scenes/hub.gd" id="1_qxbdx"]
-[ext_resource type="PackedScene" uid="uid://dsqiq7gm4enbm" path="res://assets/prefabs/parallax_background.tscn" id="3_twe63"]
+[ext_resource type="Texture2D" uid="uid://b682i1trunjsu" path="res://assets/sprites/environment/tree/tree_hand_1.png" id="3_ed7u1"]
+[ext_resource type="Texture2D" uid="uid://b7b7iv8bwboc6" path="res://assets/sprites/environment/tree/tree_hand_2.png" id="4_pfgsq"]
+[ext_resource type="Texture2D" uid="uid://cy50hupo4yq2a" path="res://assets/sprites/environment/tree/ground_tree_npc.png" id="5_dtfi8"]
+[ext_resource type="PackedScene" uid="uid://bi677ehj2vfuh" path="res://assets/prefabs/portal/dun_portal.tscn" id="5_m2im7"]
+[ext_resource type="PackedScene" uid="uid://c4traopaoxkld" path="res://assets/prefabs/portal/portal.tscn" id="5_rh7tu"]
+[ext_resource type="PackedScene" uid="uid://dc04lphd2fj1a" path="res://assets/prefabs/portrait.tscn" id="6_fm3cf"]
+[ext_resource type="Texture2D" uid="uid://ct1bxfgmvic5w" path="res://assets/sprites/keys/key_e.png" id="7_s38ck"]
+[ext_resource type="Texture2D" uid="uid://dkkk86o6urwfe" path="res://assets/sprites/keys/key_q.png" id="8_68w7w"]
 
 [sub_resource type="Animation" id="Animation_vcpnt"]
 resource_name = "fade_in_portraits"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ParallaxBackground/Tree/Portraits:modulate")
+tracks/0/path = NodePath("Tree/Portraits:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +31,7 @@ resource_name = "fade_out_portraits"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ParallaxBackground/Tree/Portraits:modulate")
+tracks/0/path = NodePath("Tree/Portraits:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,10 +50,18 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c24vl"]
 size = Vector2(866, 466)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo52m"]
+size = Vector2(165, 536)
+
 [node name="hub" type="Node2D"]
 script = ExtResource("1_qxbdx")
+camera_limit_right = 6712
+camera_limit_top = -2560
+spawn_point = NodePath("SpawnPoint")
+next_stage_collider = NodePath("Portal Trigger/CollisionShape2D")
 
 [node name="walls" type="Node2D" parent="."]
+position = Vector2(2048, 0)
 
 [node name="Floor" parent="walls" instance=ExtResource("1_colpn")]
 position = Vector2(0, -64)
@@ -166,7 +181,47 @@ position = Vector2(-512, -2560)
 [node name="Floor30" parent="walls" instance=ExtResource("1_colpn")]
 position = Vector2(0, -2560)
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("3_twe63")]
+[node name="Tree" type="Node2D" parent="."]
+position = Vector2(2048, 0)
+
+[node name="TreeHand1" type="Sprite2D" parent="Tree"]
+position = Vector2(1200, -376)
+texture = ExtResource("3_ed7u1")
+
+[node name="TreeHand2" type="Sprite2D" parent="Tree"]
+position = Vector2(1968, -408)
+texture = ExtResource("4_pfgsq")
+
+[node name="GroundTreeNpc" type="Sprite2D" parent="Tree"]
+position = Vector2(1440, -576)
+texture = ExtResource("5_dtfi8")
+
+[node name="Portraits" type="Node2D" parent="Tree"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1272, -424)
+
+[node name="Frame" parent="Tree/Portraits" instance=ExtResource("6_fm3cf")]
+position = Vector2(-400, -80)
+float_range = 100
+float_speed = 5
+
+[node name="Frame2" parent="Tree/Portraits" instance=ExtResource("6_fm3cf")]
+position = Vector2(976, -80)
+scale = Vector2(-1, 1)
+float_range = 100
+float_speed = 5
+
+[node name="KeyE" type="Sprite2D" parent="Tree/Portraits"]
+modulate = Color(1, 0.592157, 0.258824, 1)
+position = Vector2(704, -38)
+scale = Vector2(2, 2)
+texture = ExtResource("7_s38ck")
+
+[node name="KeyQ" type="Sprite2D" parent="Tree/Portraits"]
+modulate = Color(1, 0.592157, 0.258824, 1)
+position = Vector2(-80, -38)
+scale = Vector2(2, 2)
+texture = ExtResource("8_68w7w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -174,11 +229,32 @@ libraries = {
 }
 
 [node name="portrait_trigger" type="Area2D" parent="."]
-position = Vector2(0, -85)
+position = Vector2(2048, -85)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="portrait_trigger"]
-position = Vector2(1800, -275)
+position = Vector2(1584, -275)
 shape = SubResource("RectangleShape2D_c24vl")
+
+[node name="Dun_Portal" parent="." instance=ExtResource("5_m2im7")]
+offset_left = 64.0
+offset_right = 398.0
+
+[node name="Portal" parent="." instance=ExtResource("5_rh7tu")]
+offset_left = 6320.0
+offset_top = -672.0
+offset_right = 6654.0
+offset_bottom = -64.0
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(448, -232)
+
+[node name="Portal Trigger" type="Area2D" parent="."]
+position = Vector2(6576, -352)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal Trigger"]
+position = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_fo52m")
 
 [connection signal="body_entered" from="portrait_trigger" to="." method="_on_portrait_trigger_body_entered"]
 [connection signal="body_exited" from="portrait_trigger" to="." method="_on_portrait_trigger_body_exited"]
+[connection signal="body_entered" from="Portal Trigger" to="." method="_on_area_2d_body_entered"]

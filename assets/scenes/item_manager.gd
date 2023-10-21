@@ -59,6 +59,15 @@ func _get_random_item_eclude(child : Node, items : Array) -> Item:
 			
 	return null
 
+func get_item_exclude(face_pos : Item.FacePosition, exclude_item : Item, rarity : Rarity) -> Item:
+	var item_to_return = null
+	while item_to_return == null:
+		var temp_item = get_clone_of(rarity, face_pos)
+		if temp_item.item_name != exclude_item.item_name:
+			item_to_return = temp_item
+	
+	return item_to_return
+
 func get_random_but_exclude(items : Array, type : Item.FacePosition) -> Item:
 	match type:
 		Item.FacePosition.JAW:

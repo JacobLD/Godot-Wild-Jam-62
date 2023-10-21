@@ -1,15 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsqiq7gm4enbm"]
+[gd_scene load_steps=7 format=3 uid="uid://dsqiq7gm4enbm"]
 
 [ext_resource type="Script" path="res://scripts/parallax_background_fix.gd" id="1_f0yp3"]
 [ext_resource type="Texture2D" uid="uid://bpcjrt1hb5mm4" path="res://assets/sprites/environment/sky/sky_tileable_bg.jpg" id="2_qd622"]
 [ext_resource type="Texture2D" uid="uid://cn6u35e1bwdai" path="res://assets/sprites/environment/tree/ground_tree_parallax_2.png" id="3_gixs0"]
 [ext_resource type="Texture2D" uid="uid://cdvocbxvttyd3" path="res://assets/sprites/environment/tree/ground_tree_parallax_1.png" id="4_ufdrg"]
-[ext_resource type="Texture2D" uid="uid://b682i1trunjsu" path="res://assets/sprites/environment/tree/tree_hand_1.png" id="5_mfhat"]
-[ext_resource type="Texture2D" uid="uid://b7b7iv8bwboc6" path="res://assets/sprites/environment/tree/tree_hand_2.png" id="6_ekwd1"]
-[ext_resource type="Texture2D" uid="uid://cy50hupo4yq2a" path="res://assets/sprites/environment/tree/ground_tree_npc.png" id="7_mfciu"]
-[ext_resource type="PackedScene" uid="uid://dc04lphd2fj1a" path="res://assets/prefabs/portrait.tscn" id="8_b3sgr"]
-[ext_resource type="Texture2D" uid="uid://ct1bxfgmvic5w" path="res://assets/sprites/keys/key_e.png" id="9_vvg3t"]
-[ext_resource type="Texture2D" uid="uid://dkkk86o6urwfe" path="res://assets/sprites/keys/key_q.png" id="10_vw0o2"]
 [ext_resource type="Texture2D" uid="uid://cm8jtgvavgdnn" path="res://assets/sprites/environment/tree/ground_tree_leaves.png" id="11_38opn"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jgrps"]
@@ -60,55 +54,6 @@ motion_mirroring = Vector2(4320, 0)
 position = Vector2(1440, -208)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_ufdrg")
-
-[node name="Tree" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.8, 0.8)
-
-[node name="TreeHand1" type="Sprite2D" parent="Tree"]
-position = Vector2(1200, -376)
-texture = ExtResource("5_mfhat")
-
-[node name="TreeHand2" type="Sprite2D" parent="Tree"]
-position = Vector2(1968, -408)
-texture = ExtResource("6_ekwd1")
-
-[node name="GroundTreeNpc" type="Sprite2D" parent="Tree"]
-position = Vector2(1440, -576)
-texture = ExtResource("7_mfciu")
-
-[node name="Portraits" type="Node2D" parent="Tree"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(1272, -424)
-
-[node name="Frame" parent="Tree/Portraits" instance=ExtResource("8_b3sgr")]
-position = Vector2(-400, -80)
-float_range = 100
-float_speed = 5
-
-[node name="Frame2" parent="Tree/Portraits" instance=ExtResource("8_b3sgr")]
-position = Vector2(976, -80)
-scale = Vector2(-1, 1)
-float_range = 100
-float_speed = 5
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Tree/Portraits"]
-position = Vector2(704, -38)
-amount = 33
-emission_shape = 3
-emission_rect_extents = Vector2(1, 1)
-spread = 150.99
-gravity = Vector2(0, -90)
-initial_velocity_max = 21.85
-color = Color(0.666667, 0.376471, 0.054902, 1)
-
-[node name="KeyE" type="Sprite2D" parent="Tree/Portraits/CPUParticles2D"]
-modulate = Color(1, 0.592157, 0.258824, 1)
-scale = Vector2(2, 2)
-texture = ExtResource("9_vvg3t")
-
-[node name="KeyQ" type="Sprite2D" parent="Tree/Portraits"]
-position = Vector2(-80, -38)
-texture = ExtResource("10_vw0o2")
 
 [node name="leafy_ground_tile" type="ParallaxLayer" parent="."]
 motion_offset = Vector2(1, 1)
