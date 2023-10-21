@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bocpkwcr1ncl6"]
+[gd_scene load_steps=6 format=3 uid="uid://bocpkwcr1ncl6"]
 
 [ext_resource type="Texture2D" uid="uid://d2oafwfvg6mc5" path="res://assets/sprites/portraits/9cut_black.png" id="1_jiren"]
+[ext_resource type="Script" path="res://assets/prefabs/compare_card.gd" id="2_5hx3j"]
+[ext_resource type="PackedScene" uid="uid://6lyke4nu73li" path="res://assets/prefabs/hud_cards/active_card.tscn" id="3_4gtk5"]
+[ext_resource type="PackedScene" uid="uid://83gwjolww8bm" path="res://assets/prefabs/hud_cards/passive_card.tscn" id="4_hdtd2"]
+[ext_resource type="PackedScene" uid="uid://c7tk7sd3i4j2g" path="res://assets/prefabs/hud_cards/stats_card.tscn" id="5_hkxwt"]
 
 [node name="Compare" type="NinePatchRect"]
 visible = false
@@ -12,6 +16,7 @@ patch_margin_left = 16
 patch_margin_top = 19
 patch_margin_right = 16
 patch_margin_bottom = 17
+script = ExtResource("2_5hx3j")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -47,118 +52,20 @@ text = "Hovering"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="current" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_jiren")
-region_rect = Rect2(0, 0, 96, 96)
-patch_margin_left = 16
-patch_margin_top = 19
-patch_margin_right = 16
-patch_margin_bottom = 17
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/current"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.054
-anchor_top = 0.054
-anchor_right = 0.943
-anchor_bottom = 0.919
-offset_left = -0.0940008
-offset_top = 2.012
-offset_right = -0.123001
-offset_bottom = -0.0180054
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer"]
+[node name="ActiveDialogOld" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_4gtk5")]
 layout_mode = 2
 
-[node name="ItemNameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Item Name"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer/VBoxContainer"]
+[node name="ActiveDialogNew" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_4gtk5")]
 layout_mode = 2
 
-[node name="Type" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Type: "
-
-[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Passive"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer/VBoxContainer"]
+[node name="PassiveDialogOld" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_hdtd2")]
 layout_mode = 2
 
-[node name="Type" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Location:"
-
-[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Jaw"
-
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/current/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "What does this thing do to change the behavior of the character?"
-autowrap_mode = 2
-
-[node name="hover" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("1_jiren")
-region_rect = Rect2(0, 0, 96, 96)
-patch_margin_left = 16
-patch_margin_top = 19
-patch_margin_right = 16
-patch_margin_bottom = 17
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/hover"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.054
-anchor_top = 0.054
-anchor_right = 0.943
-anchor_bottom = 0.919
-offset_left = -0.0940008
-offset_top = 2.012
-offset_right = -0.123001
-offset_bottom = -0.0180054
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer"]
+[node name="PassiveDialogNew" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_hdtd2")]
 layout_mode = 2
 
-[node name="ItemNameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Item Name"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer/VBoxContainer"]
+[node name="StatsDialogOld" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_hkxwt")]
 layout_mode = 2
 
-[node name="Type" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="StatsDialogNew" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_hkxwt")]
 layout_mode = 2
-text = "Type: "
-
-[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Passive"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Type" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Location:"
-
-[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Jaw"
-
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/hover/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "What does this thing do to change the behavior of the character?"
-autowrap_mode = 2

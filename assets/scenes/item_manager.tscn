@@ -44,9 +44,15 @@ script = ExtResource("1_sr8hv")
 starter_nose = NodePath("nose/PortraitItemFallChilli")
 starter_jaw = NodePath("jaw/PortraitItemFallBeetroot")
 starter_cheek = NodePath("cheek/PortraitItemFallPotato")
+common_cheek = Array[NodePath]([NodePath("cheek/PortraitItemFallTurnip"), NodePath("cheek/PortraitItemSummerBeans")])
+uncommon_cheek = Array[NodePath]([NodePath("cheek/PortraitItemFallOrange"), NodePath("cheek/PortraitItemSummerMelon")])
+rare_cheek = Array[NodePath]([NodePath("cheek/PortraitItemWinterQuice"), NodePath("cheek/PortraitItemSummerOnionRed")])
 common_nose = Array[NodePath]([NodePath("nose/PortraitItemFallFig"), NodePath("nose/PortraitItemFallLemon"), NodePath("nose/PortraitItemFallPear"), NodePath("nose/PortraitItemSpringStrawberry"), NodePath("nose/PortraitItemSummerApricot")])
 uncommon_nose = Array[NodePath]([NodePath("nose/PortraitItemSummerBlackberry"), NodePath("nose/PortraitItemSummerCherry"), NodePath("nose/PortraitItemSummerCucumber"), NodePath("nose/PortraitItemSummerPrunePurple")])
 rare_nose = Array[NodePath]([NodePath("nose/PortraitItemSummerPruneYellow"), NodePath("nose/PortraitItemSummerWalnut"), NodePath("nose/PortraitItemWinterParsnip")])
+common_jaw = Array[NodePath]([NodePath("jaw/PortraitItemSummerBasil"), NodePath("jaw/PortraitItemSummerCorn")])
+uncommon_jaw = Array[NodePath]([NodePath("jaw/PortraitItemSummerFenel"), NodePath("jaw/PortraitItemSummerLavender")])
+rare_jaw = Array[NodePath]([NodePath("jaw/PortraitItemSummerLicorice"), NodePath("jaw/PortraitItemSummerShallots")])
 
 [node name="cheek" type="Node2D" parent="."]
 

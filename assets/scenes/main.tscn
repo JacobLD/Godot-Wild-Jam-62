@@ -1,24 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcbnk8myvlr3u"]
+[gd_scene load_steps=4 format=3 uid="uid://dcbnk8myvlr3u"]
 
-[ext_resource type="PackedScene" uid="uid://c1y65wq6p7snw" path="res://assets/scenes/hub.tscn" id="2_7buld"]
+[ext_resource type="PackedScene" uid="uid://dsqiq7gm4enbm" path="res://assets/prefabs/parallax_background.tscn" id="1_asrak"]
+[ext_resource type="Script" path="res://assets/scenes/world.gd" id="1_xlabw"]
 [ext_resource type="PackedScene" uid="uid://bqv4qnvnbdgkg" path="res://assets/prefabs/Player/player.tscn" id="2_rekih"]
-[ext_resource type="PackedScene" uid="uid://cmln4exwtqh3a" path="res://assets/prefabs/music_box/music_box.tscn" id="3_8hp5f"]
-[ext_resource type="PackedScene" uid="uid://c7rc6qqx50ruq" path="res://assets/scenes/item_manager.tscn" id="4_t35ke"]
 
 [node name="main" type="Node2D"]
 
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_asrak")]
+
 [node name="world" type="Node2D" parent="."]
+script = ExtResource("1_xlabw")
 
-[node name="hub" parent="world" instance=ExtResource("2_7buld")]
-position = Vector2(200, 0)
-
-[node name="agents" type="Node2D" parent="."]
-
-[node name="PlayerController" parent="agents" instance=ExtResource("2_rekih")]
-position = Vector2(-512, -232)
-JUMP_VELOCITY = 2500
-default_gravity = 4000
-
-[node name="MusicBox" parent="." instance=ExtResource("3_8hp5f")]
-
-[node name="Item_Manager" parent="." instance=ExtResource("4_t35ke")]
+[node name="PlayerController" parent="." instance=ExtResource("2_rekih")]
+position = Vector2(390, -240)
