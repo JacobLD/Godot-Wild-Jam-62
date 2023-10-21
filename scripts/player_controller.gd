@@ -46,6 +46,9 @@ var max_health : float = 100
 var str = 0
 var agi = 0
 var wis = 0
+var str_mult = 1
+var wis_mult = 1
+var agi_mult = 1
 var speed_percent_per_agi = 0.02
 var jump_percent_per_agi = 0.02
 signal died
@@ -55,6 +58,9 @@ signal active_on_cooldown()
 signal active_off_cooldown()
 var can_use_active : bool = true
 var damage = 0
+
+var i_frame_time : float = 0.2
+var dodge_chance = 0
 
 var _last_direction = 0
 
@@ -292,10 +298,12 @@ func set_face_item(item : Item) -> void:
 func _set_face_item(face_node : Node2D, item : Item) -> void:
 	item.scale = Vector2(0.25, 0.25)
 	if face_node.get_child_count() > 0:
+		face_node.get_child(0).on_remove(self)
 		face_node.get_child(0).queue_free()
 	
 	if item.get_parent() == null:
 		face_node.add_child(item)
+		item.on_add(self)
 	else:
 		item.reparent(face_node)
 	
@@ -329,6 +337,7 @@ func on_attack():
 # Max hp = 100 + str * 8
 # dmg = 10 + str * 3
 func set_str(new_value : int):
+	new_value = new_value * str_mult
 	var old_health = max_health
 	max_health = new_value + new_value * 8
 	health += max_health - old_health
@@ -337,11 +346,25 @@ func set_str(new_value : int):
 	damage = 10 + new_value * 3
 
 
+func add_health(amount : float):
+	health += amount
+	if health > max_health:
+		health = max_health
+	
+	if health <= 0:
+		died.emit()
+		#do something here
+	
+	current_health_changed.emit(health)
+
+
 func set_agi(new_value : int):
+	new_value = new_value * agi_mult
 	agi = new_value
 
 # Reduces active cooldown
 func set_wis(new_value : int):
+	new_value = new_value * wis_mult
 	wis = new_value
 
 func _on_active_timer():
