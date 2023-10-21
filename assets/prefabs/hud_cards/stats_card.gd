@@ -1,5 +1,5 @@
 extends NinePatchRect
-
+class_name StatsDialog
 
 func set_item(item : Item):
 	$MarginContainer/VBoxContainer/ItemNameLabel.text = item.item_name

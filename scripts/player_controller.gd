@@ -46,6 +46,8 @@ var max_health : float = 100
 var str = 0
 var agi = 0
 var wis = 0
+var speed_percent_per_agi = 0.02
+var jump_percent_per_agi = 0.02
 signal died
 signal health_total_changed(new_value)
 signal current_health_changed(new_value)
@@ -316,9 +318,8 @@ func get_item_at(pos : Item.FacePosition) -> Item:
 
 func _on_active_pressed():
 	can_use_active = false
-	get_tree().create_timer(cheek_item.use_cooldown).timeout.connect(_on_active_timer)
 	active_on_cooldown.emit()
-	cheek_item.on_active(self)
+	cheek_item.on_active(self).timeout.connect(_on_active_timer)
 
 
 func on_attack():
@@ -337,11 +338,11 @@ func set_str(new_value : int):
 
 
 func set_agi(new_value : int):
-	pass
+	agi = new_value
 
 # Reduces active cooldown
 func set_wis(new_value : int):
-	pass
+	wis = new_value
 
 func _on_active_timer():
 	can_use_active = true

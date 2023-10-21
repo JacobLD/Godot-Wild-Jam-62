@@ -26,7 +26,8 @@ func on_show_single_item_details(item : Item):
 
 
 func on_show_compare_item_details(equiped : Item, compare : Item):
-	pass
+	$Compare.set_items(equiped, compare)
+	$Compare.visible = true
 
 
 func on_hide():

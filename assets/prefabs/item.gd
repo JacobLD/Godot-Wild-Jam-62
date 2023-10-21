@@ -53,3 +53,14 @@ func get_face_position_text() -> String:
 		Item.FacePosition.NOSE:
 			return "Nose"
 	return "null"
+
+
+func _start_cooldown_timer(wait_time : float, player : PlayerController) -> SceneTreeTimer:
+	var converted_wait_time = wait_time - wait_time * (player.wis * 0.02)
+	print(converted_wait_time)
+	var timer = get_tree().create_timer(converted_wait_time)
+	timer.timeout.connect(_on_timeout)
+	return timer
+
+func _on_timeout():
+	pass

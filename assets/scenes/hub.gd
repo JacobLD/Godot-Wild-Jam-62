@@ -6,6 +6,8 @@ var items_visible : bool = false
 
 var item_1 : Item = null
 var item_2 : Item = null
+var player_item_1 : Item = null
+var player_item_2 : Item = null
 
 func _ready():
 	var stage_modifier = GameManager.next_stage
@@ -41,10 +43,10 @@ func assign_items(rarity):
 	var constant : Item.FacePosition = positions[rand_index]
 	positions.remove_at(rand_index)
 	
-	var player_item_1 = GameManager.getPlayer().get_item_at(positions[0])
+	player_item_1 = GameManager.getPlayer().get_item_at(positions[0])
 	item_1 = ItemManager.get_item_exclude(positions[0], player_item_1, rarity)
 	
-	var player_item_2 = GameManager.getPlayer().get_item_at(positions[1])
+	player_item_2 = GameManager.getPlayer().get_item_at(positions[1])
 	item_2 = ItemManager.get_item_exclude(positions[1], player_item_2, rarity)
 	
 	var player_item_3_constant = GameManager.getPlayer().get_item_at(constant)
@@ -81,3 +83,19 @@ func _on_portrait_trigger_body_exited(body):
 
 func _on_area_2d_body_entered(body):
 	pass # Replace with function body.
+
+
+func _on_mouse_enter_left():
+	if !items_visible or item_taken:
+		return
+	Hud.show_compare(player_item_1, item_1)
+
+
+func _on_mouse_enter_right():
+	if !items_visible or item_taken:
+		return
+	Hud.show_compare(player_item_2, item_2)
+
+
+func _on_mouse_exit():
+	Hud._on_mouse_exit()

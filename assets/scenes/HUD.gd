@@ -76,3 +76,10 @@ func _active_on_cooldown():
 
 func _active_off_cooldown():
 	$active.modulate = Color(1,1,1,1)
+
+
+func show_compare(equiped, compare):
+	$mouse_dialog.on_show_compare_item_details(equiped, compare)
+
+func hide_compare():
+	$mouse_dialog.on_hide()

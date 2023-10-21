@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct1bxfgmvic5w"
-path="res://.godot/imported/key_e.png-3649f4188fc26347ffca7b377562059f.ctex"
+uid="uid://b2vn4oyahjrm5"
+path="res://.godot/imported/sky_sun_orb.png-2a7712f5097b0307433f1a8b5f8f0b29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/keys/key_e.png"
-dest_files=["res://.godot/imported/key_e.png-3649f4188fc26347ffca7b377562059f.ctex"]
+source_file="res://assets/sprites/environment/sky/sky_sun_orb.png"
+dest_files=["res://.godot/imported/sky_sun_orb.png-2a7712f5097b0307433f1a8b5f8f0b29.ctex"]
 
 [params]
 

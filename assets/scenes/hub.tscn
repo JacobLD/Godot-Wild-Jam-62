@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bi677ehj2vfuh" path="res://assets/prefabs/portal/dun_portal.tscn" id="5_m2im7"]
 [ext_resource type="PackedScene" uid="uid://c4traopaoxkld" path="res://assets/prefabs/portal/portal.tscn" id="5_rh7tu"]
 [ext_resource type="PackedScene" uid="uid://dc04lphd2fj1a" path="res://assets/prefabs/portrait.tscn" id="6_fm3cf"]
-[ext_resource type="Texture2D" uid="uid://ct1bxfgmvic5w" path="res://assets/sprites/keys/key_e.png" id="7_s38ck"]
-[ext_resource type="Texture2D" uid="uid://dkkk86o6urwfe" path="res://assets/sprites/keys/key_q.png" id="8_68w7w"]
+[ext_resource type="Texture2D" uid="uid://b4ve0t3o3lw6j" path="res://assets/sprites/keys/Keys_framed_e.png" id="7_bwo7h"]
+[ext_resource type="Texture2D" uid="uid://cn1xw7l537fbc" path="res://assets/sprites/keys/Keys_framed_q.png" id="8_6g7id"]
 
 [sub_resource type="Animation" id="Animation_vcpnt"]
 resource_name = "fade_in_portraits"
@@ -212,16 +212,12 @@ float_range = 100
 float_speed = 5
 
 [node name="KeyE" type="Sprite2D" parent="Tree/Portraits"]
-modulate = Color(1, 0.592157, 0.258824, 1)
 position = Vector2(704, -38)
-scale = Vector2(2, 2)
-texture = ExtResource("7_s38ck")
+texture = ExtResource("7_bwo7h")
 
 [node name="KeyQ" type="Sprite2D" parent="Tree/Portraits"]
-modulate = Color(1, 0.592157, 0.258824, 1)
 position = Vector2(-80, -38)
-scale = Vector2(2, 2)
-texture = ExtResource("8_68w7w")
+texture = ExtResource("8_6g7id")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -255,6 +251,26 @@ position = Vector2(6576, -352)
 position = Vector2(2.5, 20)
 shape = SubResource("RectangleShape2D_fo52m")
 
+[node name="Left Trigger" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2749.0
+offset_top = -736.0
+offset_right = 3101.0
+offset_bottom = -268.0
+
+[node name="Left Trigger2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4120.0
+offset_top = -728.0
+offset_right = 4472.0
+offset_bottom = -260.0
+
 [connection signal="body_entered" from="portrait_trigger" to="." method="_on_portrait_trigger_body_entered"]
 [connection signal="body_exited" from="portrait_trigger" to="." method="_on_portrait_trigger_body_exited"]
 [connection signal="body_entered" from="Portal Trigger" to="." method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="Left Trigger" to="." method="_on_mouse_enter_left"]
+[connection signal="mouse_exited" from="Left Trigger" to="." method="_on_mouse_exit"]
+[connection signal="mouse_entered" from="Left Trigger2" to="." method="_on_mouse_enter_right"]
+[connection signal="mouse_exited" from="Left Trigger2" to="." method="_on_mouse_exit"]
