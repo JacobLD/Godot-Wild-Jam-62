@@ -293,17 +293,19 @@ func set_face_item(item : Item) -> void:
 			_set_face_item($face/nose_pos, item)
 		item.FacePosition.JAW:
 			jaw_item = item
+			var children = $face/jaw_pos.get_children()
+			if children.size() > 0:
+				children[0].on_remove(self)
 			_set_face_item($face/jaw_pos, item)
+			item.on_add(self)
 
 func _set_face_item(face_node : Node2D, item : Item) -> void:
 	item.scale = Vector2(0.25, 0.25)
 	if face_node.get_child_count() > 0:
-		face_node.get_child(0).on_remove(self)
 		face_node.get_child(0).queue_free()
 	
 	if item.get_parent() == null:
 		face_node.add_child(item)
-		item.on_add(self)
 	else:
 		item.reparent(face_node)
 	

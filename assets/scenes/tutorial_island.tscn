@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://2wf4qmpmphaq"]
+[gd_scene load_steps=36 format=3 uid="uid://2wf4qmpmphaq"]
 
 [ext_resource type="Script" path="res://assets/scenes/tutorial_island.gd" id="1_5htvt"]
 [ext_resource type="Texture2D" uid="uid://cuifi555bx7yk" path="res://assets/sprites/level_0-a_Notes.jpg" id="2_n5t5w"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bxrwi0lekmbk4" path="res://assets/sprites/keys/Keys_framed_d.png" id="25_qiqm5"]
 [ext_resource type="Texture2D" uid="uid://dtqdvpe2tay2e" path="res://assets/sprites/keys/keys_framed_space.png" id="26_cc1vg"]
 [ext_resource type="Texture2D" uid="uid://b7fiq40dox77x" path="res://assets/sprites/keys/Keys_framed_w.png" id="27_a8bdj"]
+[ext_resource type="PackedScene" uid="uid://4jf2kc372lwy" path="res://assets/prefabs/hourglass/hourglass.tscn" id="28_c0pb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1bve"]
 size = Vector2(416, 64)
@@ -121,7 +122,6 @@ type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Floor17"]
 position = Vector2(321.539, 31.9999)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_47bm8")
 
 [node name="Floor35" type="StaticBody2D" parent="Colliders"]
@@ -654,6 +654,9 @@ texture = ExtResource("27_a8bdj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1824, -298)
 shape = SubResource("RectangleShape2D_3b7uy")
+
+[node name="hourglass" parent="." instance=ExtResource("28_c0pb6")]
+position = Vector2(2780, -2828)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_portal_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_portal_exit"]

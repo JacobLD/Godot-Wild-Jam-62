@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://4jf2kc372lwy"]
+
+[ext_resource type="Script" path="res://assets/prefabs/hourglass/hourglass.gd" id="1_47tua"]
+[ext_resource type="Texture2D" uid="uid://be3haq455cdk4" path="res://assets/sprites/pickups/collectible_hourglass.png" id="2_81ret"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urmce"]
+size = Vector2(96, 126)
+
+[sub_resource type="Animation" id="Animation_rws6s"]
+resource_name = "float"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollectibleHourglass:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -24), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dd11d"]
+_data = {
+"float": SubResource("Animation_rws6s")
+}
+
+[node name="hourglass" type="Node2D"]
+script = ExtResource("1_47tua")
+
+[node name="CollectibleHourglass" type="Sprite2D" parent="."]
+position = Vector2(0, -0.705516)
+texture = ExtResource("2_81ret")
+
+[node name="Area2D" type="Area2D" parent="CollectibleHourglass"]
+position = Vector2(0, 0.705516)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleHourglass/Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_urmce")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dd11d")
+}
+
+[connection signal="body_entered" from="CollectibleHourglass/Area2D" to="." method="_on_area_2d_body_entered"]

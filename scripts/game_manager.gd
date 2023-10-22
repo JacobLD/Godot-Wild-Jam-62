@@ -97,4 +97,5 @@ func _load_stage(stage : PackedScene):
 	_player.reparent(new_stage.spawn_point_node)
 	_player.position = Vector2.ZERO
 	old_stage.queue_free()
+	Parallax.start_over(new_stage.stage_time)
 	changing_stages = false

@@ -1,43 +1,114 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsqiq7gm4enbm"]
+[gd_scene load_steps=17 format=3 uid="uid://dsqiq7gm4enbm"]
 
 [ext_resource type="Script" path="res://scripts/parallax_background_fix.gd" id="1_f0yp3"]
 [ext_resource type="Texture2D" uid="uid://bpcjrt1hb5mm4" path="res://assets/sprites/environment/sky/sky_tileable_bg.jpg" id="2_qd622"]
 [ext_resource type="Texture2D" uid="uid://6w6jcja737un" path="res://assets/sprites/environment/branch/parallax_layer3.png" id="3_aposs"]
 [ext_resource type="Texture2D" uid="uid://cn6u35e1bwdai" path="res://assets/sprites/environment/tree/ground_tree_parallax_2.png" id="3_gixs0"]
+[ext_resource type="Texture2D" uid="uid://b2vn4oyahjrm5" path="res://assets/sprites/environment/sky/sky_sun_orb.png" id="3_iwqjt"]
+[ext_resource type="Texture2D" uid="uid://bhwspx4kqmxb1" path="res://assets/sprites/environment/sky/sky_cloud_head.png" id="4_1ovde"]
 [ext_resource type="Texture2D" uid="uid://c7tspstxofby3" path="res://assets/sprites/environment/branch/parallax_layer2.png" id="4_eydh2"]
 [ext_resource type="Texture2D" uid="uid://cdvocbxvttyd3" path="res://assets/sprites/environment/tree/ground_tree_parallax_1.png" id="4_ufdrg"]
+[ext_resource type="Texture2D" uid="uid://cwmfbjjcsqilp" path="res://assets/sprites/environment/sky/sky_cloud_foot back.png" id="5_fl0l7"]
+[ext_resource type="Texture2D" uid="uid://cndwm5ptgq3sk" path="res://assets/sprites/environment/sky/sky_cloud_hand_forward.png" id="6_xxd65"]
+[ext_resource type="Texture2D" uid="uid://c3ybn3mqo04qb" path="res://assets/sprites/environment/sky/sky_cloud_foot forward.png" id="7_cp20h"]
+[ext_resource type="Texture2D" uid="uid://mver62miyi48" path="res://assets/sprites/environment/sky/sky_cloud_hand_back.png" id="8_kdl5i"]
 [ext_resource type="Texture2D" uid="uid://cm8jtgvavgdnn" path="res://assets/sprites/environment/tree/ground_tree_leaves.png" id="11_38opn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m5fs2"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jgrps"]
 
+[sub_resource type="Curve2D" id="Curve2D_sxdo8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -160, -768, 0, 0, 0, 0, 160, -1056, 0, 0, 0, 0, 448, -1152, 0, 0, 0, 0, 864, -1248, 0, 0, 0, 0, 1216, -1280, 0, 0, 0, 0, 1568, -1248, 0, 0, 0, 0, 1984, -1152, 0, 0, 0, 0, 2304, -1056, 0, 0, 0, 0, 2592, -768)
+}
+point_count = 9
+
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource("1_f0yp3")
+sky_start = NodePath("sky_start")
+sky_end = NodePath("sky_end")
 
 [node name="Background" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+modulate = Color(0.726563, 0.746094, 0.71875, 1)
+offset_left = -7136.0
+offset_top = -672.0
+offset_right = 12392.0
+offset_bottom = 4992.0
+texture = SubResource("CanvasTexture_m5fs2")
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
 modulate = Color(0, 0, 0, 1)
-offset_left = -7536.0
-offset_top = -6024.0
-offset_right = 11992.0
-offset_bottom = 2880.0
+offset_left = -6976.0
+offset_top = -6336.0
+offset_right = 12552.0
+offset_bottom = -672.0
 texture = SubResource("PlaceholderTexture2D_jgrps")
 
 [node name="sky_infinite_tile" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(960, 0)
 
-[node name="SkyTileableBg" type="Sprite2D" parent="sky_infinite_tile"]
+[node name="skyholder" type="Node2D" parent="sky_infinite_tile"]
+position = Vector2(0, -544)
+
+[node name="SkyTileableBg" type="Sprite2D" parent="sky_infinite_tile/skyholder"]
 position = Vector2(768, -1024)
 texture = ExtResource("2_qd622")
 
-[node name="SkyTileableBg2" type="Sprite2D" parent="sky_infinite_tile"]
+[node name="SkyTileableBg2" type="Sprite2D" parent="sky_infinite_tile/skyholder"]
 position = Vector2(2688, -1024)
 texture = ExtResource("2_qd622")
 
-[node name="SkyTileableBg3" type="Sprite2D" parent="sky_infinite_tile"]
+[node name="SkyTileableBg3" type="Sprite2D" parent="sky_infinite_tile/skyholder"]
 position = Vector2(-1152, -1024)
 texture = ExtResource("2_qd622")
+
+[node name="sun" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+
+[node name="SkySunOrb" type="Sprite2D" parent="sun"]
+position = Vector2(0, -1408)
+texture = ExtResource("3_iwqjt")
+
+[node name="clouds_back" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.12, 0.12)
+motion_mirroring = Vector2(2500, 0)
+
+[node name="cloudsholder" type="Node2D" parent="clouds_back"]
+
+[node name="SkyCloudHead" type="Sprite2D" parent="clouds_back/cloudsholder"]
+position = Vector2(-2336, -1632)
+texture = ExtResource("4_1ovde")
+
+[node name="SkyCloudFootBack" type="Sprite2D" parent="clouds_back/cloudsholder"]
+position = Vector2(1472, -1024)
+texture = ExtResource("5_fl0l7")
+
+[node name="SkyCloudFootForward" type="Sprite2D" parent="clouds_back/cloudsholder"]
+position = Vector2(-2624, -864)
+texture = ExtResource("7_cp20h")
+
+[node name="clouds_front" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.12, 0.12)
+motion_mirroring = Vector2(2500, 0)
+
+[node name="cloudsholder" type="Node2D" parent="clouds_front"]
+
+[node name="SkyCloudHandForward" type="Sprite2D" parent="clouds_front/cloudsholder"]
+position = Vector2(-2944, -1489)
+texture = ExtResource("6_xxd65")
+
+[node name="SkyCloudHandForward2" type="Sprite2D" parent="clouds_front/cloudsholder"]
+position = Vector2(-640, -736)
+texture = ExtResource("6_xxd65")
+
+[node name="SkyCloudHandBack" type="Sprite2D" parent="clouds_front/cloudsholder"]
+position = Vector2(544, -1056)
+texture = ExtResource("8_kdl5i")
 
 [node name="far_trees" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.2, 0.2)
@@ -82,3 +153,12 @@ motion_mirroring = Vector2(2880, 0)
 [node name="GroundTreeLeaves" type="Sprite2D" parent="leafy_ground_tile"]
 position = Vector2(1440, -72)
 texture = ExtResource("11_38opn")
+
+[node name="sky_end" type="Node2D" parent="."]
+position = Vector2(0, 608)
+
+[node name="sky_start" type="Node2D" parent="."]
+position = Vector2(0, -544)
+
+[node name="sun_path" type="Path2D" parent="."]
+curve = SubResource("Curve2D_sxdo8")
