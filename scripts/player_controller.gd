@@ -220,6 +220,10 @@ func _apply_state():
 	if last_state != state:
 		if state == State.BLOCKING and last_state != State.JUMP_BLOCK or state == State.JUMP_BLOCK and last_state != State.BLOCKING: # To prevent double blocking sounds
 			$sfx_player.on_block()
+		
+		if state == State.DASHING and last_state != State.DASHING:
+			$sfx_player.on_dash()
+			
 		print("Trans to ", State.keys()[state])
 	last_state = state
 

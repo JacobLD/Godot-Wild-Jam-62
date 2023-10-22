@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://2wf4qmpmphaq"]
+[gd_scene load_steps=35 format=3 uid="uid://2wf4qmpmphaq"]
 
 [ext_resource type="Script" path="res://assets/scenes/tutorial_island.gd" id="1_5htvt"]
 [ext_resource type="Texture2D" uid="uid://cuifi555bx7yk" path="res://assets/sprites/level_0-a_Notes.jpg" id="2_n5t5w"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dtqdvpe2tay2e" path="res://assets/sprites/keys/keys_framed_space.png" id="26_cc1vg"]
 [ext_resource type="Texture2D" uid="uid://b7fiq40dox77x" path="res://assets/sprites/keys/Keys_framed_w.png" id="27_a8bdj"]
 [ext_resource type="PackedScene" uid="uid://4jf2kc372lwy" path="res://assets/prefabs/hourglass/hourglass.tscn" id="28_c0pb6"]
+[ext_resource type="Texture2D" uid="uid://ctmgtcra6fanj" path="res://assets/sprites/keys/keys_framed_shift.png" id="28_d18jx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1bve"]
 size = Vector2(416, 64)
@@ -59,7 +60,6 @@ position = Vector2(1706, -2234)
 texture = ExtResource("2_n5t5w")
 
 [node name="Colliders" type="Node2D" parent="."]
-visible = false
 position = Vector2(832, -64)
 
 [node name="Floor4" type="StaticBody2D" parent="Colliders"]
@@ -136,7 +136,7 @@ script = ExtResource("3_puxc3")
 type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/Floor36"]
-position = Vector2(400.003, 81)
+position = Vector2(391.67, 170)
 shape = SubResource("RectangleShape2D_tsvmv")
 
 [node name="Floor22" type="StaticBody2D" parent="Colliders"]
@@ -497,7 +497,7 @@ rotation = -6.28318
 texture = ExtResource("14_jnjfx")
 
 [node name="FieldBranchEnd" type="Sprite2D" parent="back_env_sprites"]
-position = Vector2(213, -2607)
+position = Vector2(208, -2517)
 texture = ExtResource("8_s3kec")
 
 [node name="FieldBranchEnd2" type="Sprite2D" parent="back_env_sprites"]
@@ -634,5 +634,9 @@ texture = ExtResource("27_a8bdj")
 
 [node name="hourglass" parent="." instance=ExtResource("28_c0pb6")]
 position = Vector2(2780, -2828)
+
+[node name="KeysFramedShift" type="Sprite2D" parent="."]
+position = Vector2(926, -2348)
+texture = ExtResource("28_d18jx")
 
 [connection signal="time_to_go" from="back_env_sprites/Portal" to="." method="_on_portal_time_to_go"]

@@ -36,3 +36,7 @@ func _play_random_child_at(pos : Vector2, child : Node) -> void:
 	var sound_node : AudioStreamPlayer2D = child_arr.pick_random()
 	sound_node.position = pos
 	sound_node.play()
+
+
+func on_dash(pos = self.position):
+	_play_random_child_at(pos, $Dash)

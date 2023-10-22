@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://tvxqrrabb1de"]
+[gd_scene load_steps=37 format=3 uid="uid://tvxqrrabb1de"]
 
 [ext_resource type="Script" path="res://scripts/sfx_player.gd" id="1_0qgrq"]
 [ext_resource type="AudioStream" uid="uid://fnrsgcs0wn1a" path="res://assets/audio/footsteps/grass/footstep_grass1.wav" id="2_x76hd"]
@@ -33,6 +33,9 @@
 [ext_resource type="AudioStream" uid="uid://dy1mbvy8fdrr6" path="res://assets/audio/block/sfx_block2.wav" id="31_s52t2"]
 [ext_resource type="AudioStream" uid="uid://6xsb3duxome3" path="res://assets/audio/block/sfx_block3.wav" id="32_wqrvq"]
 [ext_resource type="AudioStream" uid="uid://bcvjw6ixl4lpb" path="res://assets/audio/block/sfx_block4.wav" id="33_ummrj"]
+[ext_resource type="AudioStream" uid="uid://cg0nhytfdnih1" path="res://assets/audio/actives/sfx_dash1.wav" id="34_nx2up"]
+[ext_resource type="AudioStream" uid="uid://pbqyxqkin1xo" path="res://assets/audio/actives/sfx_dash2.wav" id="35_petso"]
+[ext_resource type="AudioStream" uid="uid://cnmqagrsshj0n" path="res://assets/audio/actives/sfx_dash3.wav" id="36_jbrxl"]
 
 [node name="sfx_player" type="Node2D"]
 script = ExtResource("1_0qgrq")
@@ -181,4 +184,18 @@ bus = &"SFX"
 
 [node name="1" type="AudioStreamPlayer2D" parent="Hit"]
 stream = ExtResource("2_x76hd")
+bus = &"SFX"
+
+[node name="Dash" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer2D" parent="Dash"]
+stream = ExtResource("34_nx2up")
+bus = &"SFX"
+
+[node name="2" type="AudioStreamPlayer2D" parent="Dash"]
+stream = ExtResource("35_petso")
+bus = &"SFX"
+
+[node name="3" type="AudioStreamPlayer2D" parent="Dash"]
+stream = ExtResource("36_jbrxl")
 bus = &"SFX"

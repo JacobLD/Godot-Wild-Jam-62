@@ -10,6 +10,7 @@ signal player_registered(player)
 
 var hub_scene : PackedScene = preload("res://assets/scenes/hub.tscn")
 var tutorial_scene : PackedScene = preload("res://assets/scenes/tutorial_island.tscn")
+var level_1_scene : PackedScene = preload("res://assets/scenes/level1a.tscn")
 
 var next_stage = 1
 
@@ -23,7 +24,7 @@ func _ready():
 	set_player_item(ItemManager.get_starter_jaw_clone())
 	set_player_item(ItemManager.get_starter_nose_clone())
 	load_tutorial()
-	#get_tree().create_timer(1).timeout.connect(enter_hub)
+	#get_tree().create_timer(1).timeout.connect(enter_level_1)
 
 
 func register_world(world : Node2D):
@@ -69,6 +70,9 @@ var changing_stages = false
 
 func enter_hub():
 	load_stage(hub_scene)
+
+func enter_level_1():
+	load_stage(level_1_scene)
 
 func _unlock_player():
 	_player.controls_locked = false

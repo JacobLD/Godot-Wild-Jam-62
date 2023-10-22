@@ -10,3 +10,9 @@ script = ExtResource("1_xlabw")
 
 [node name="PlayerController" parent="." instance=ExtResource("2_rekih")]
 position = Vector2(390, -240)
+MAX_WALK_SPEED = 450
+WALK_ACC = 40
+FALL_GRAVITY_MODIFIER = 2.0
+MAX_FALL_SPEED_IN_MPS = 26.0
+HANG_TIME_THRESHOLD_SPEED = 10
+default_gravity = 2500

@@ -60,6 +60,7 @@ script = ExtResource("1_qxbdx")
 camera_limit_right = 6712
 camera_limit_top = -2560
 spawn_point = NodePath("SpawnPoint")
+next_stage_collider = null
 
 [node name="walls" type="Node2D" parent="."]
 position = Vector2(2048, 0)

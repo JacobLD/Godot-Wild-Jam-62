@@ -852,7 +852,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-669, -315)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1osqf"]
-size = Vector2(104, 288)
+size = Vector2(70, 288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d5ba"]
 size = Vector2(120, 208)
@@ -885,7 +885,6 @@ parameters/conditions/jump_blocking = false
 parameters/conditions/run = false
 
 [node name="face" type="Node2D" parent="."]
-position = Vector2(0, 1)
 
 [node name="PortraitItemHoodBack" type="Sprite2D" parent="face"]
 position = Vector2(11, -79)
@@ -929,7 +928,7 @@ position = Vector2(0, 168)
 [node name="hand_pos" type="Node2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 24)
+position = Vector2(-1, 24)
 shape = SubResource("RectangleShape2D_1osqf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
