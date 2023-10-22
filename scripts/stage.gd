@@ -8,6 +8,7 @@ class_name Stage
 @export var spawn_point : NodePath
 var spawn_point_node : Node2D
 @export var next_stage_collider : NodePath
+@export var stage_time : float = 60
 var collider_trigger
 
 func on_added():

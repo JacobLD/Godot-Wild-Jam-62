@@ -24,6 +24,7 @@ GameManager="*res://scripts/game_manager.gd"
 ItemManager="*res://assets/scenes/item_manager.tscn"
 MusicBox="*res://assets/prefabs/music_box/music_box.tscn"
 Hud="*res://assets/scenes/HUD.tscn"
+Parallax="*res://assets/prefabs/parallax_background.tscn"
 
 [debug]
 

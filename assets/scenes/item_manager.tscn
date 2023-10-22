@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c7rc6qqx50ruq"]
+[gd_scene load_steps=40 format=3 uid="uid://c7rc6qqx50ruq"]
 
 [ext_resource type="Texture2D" uid="uid://c0hqw7k568fxi" path="res://assets/sprites/portraits/cheek/portrait_item_fall_orange.png" id="1_fee72"]
 [ext_resource type="Script" path="res://assets/scenes/item_manager.gd" id="1_sr8hv"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://lhy2hsx87s24" path="res://assets/sprites/portraits/nose/portrait_item_fall_fig.png" id="25_2fiuh"]
 [ext_resource type="Texture2D" uid="uid://dnon3fj26glrx" path="res://assets/sprites/portraits/nose/portrait_item_fall_lemon.png" id="26_5jwa6"]
 [ext_resource type="Texture2D" uid="uid://hruqqy28c2n7" path="res://assets/sprites/portraits/nose/portrait_item_fall_pear.png" id="27_iu4fj"]
+[ext_resource type="Script" path="res://scripts/passive_items/dodge_passive.gd" id="28_hdxen"]
 [ext_resource type="Texture2D" uid="uid://co75mccso8bp" path="res://assets/sprites/portraits/nose/portrait_item_spring_strawberry.png" id="28_kbvpi"]
 [ext_resource type="Texture2D" uid="uid://b1af3m4xnbjrv" path="res://assets/sprites/portraits/nose/portrait_item_summer_apricot.png" id="29_tjnt3"]
 [ext_resource type="Texture2D" uid="uid://bpkyrym1tuvsa" path="res://assets/sprites/portraits/nose/portrait_item_summer_blackberry.png" id="30_uaas3"]
@@ -329,7 +330,7 @@ position = Vector2(16, -16)
 [node name="PortraitItemFallBeetroot" type="Sprite2D" parent="jaw"]
 visible = false
 texture = ExtResource("12_umqkw")
-script = ExtResource("2_feask")
+script = ExtResource("28_hdxen")
 face_position = 2
 description = "You have a small chance to dodge an incoming attack"
 type = 1
