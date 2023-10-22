@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://co7wc4xhca3d7"]
+[gd_scene load_steps=56 format=3 uid="uid://co7wc4xhca3d7"]
 
 [ext_resource type="Script" path="res://assets/scenes/level1a.gd" id="1_gn6wf"]
 [ext_resource type="Script" path="res://assets/prefabs/world/ground/ground.gd" id="2_xrbo6"]
@@ -23,13 +23,13 @@
 [ext_resource type="Texture2D" uid="uid://cjyx5udxd22j4" path="res://assets/sprites/environment/ruins/statue_pumpkin.png" id="21_5tmxj"]
 [ext_resource type="Texture2D" uid="uid://b27x3t0tibfpt" path="res://assets/sprites/environment/ruins/corner_diamond.png" id="22_qfne4"]
 [ext_resource type="Texture2D" uid="uid://b8o2lfglxhoww" path="res://assets/sprites/environment/ruins/beam_checkered.png" id="23_cpnm2"]
-[ext_resource type="Texture2D" path="res://assets/sprites/environment/ruins/beam_blood_checkered.png" id="25_n8jle"]
+[ext_resource type="Texture2D" uid="uid://buhy75j743bb4" path="res://assets/sprites/environment/ruins/beam_blood_checkered.png" id="25_n8jle"]
 [ext_resource type="Texture2D" uid="uid://ca1o1yv4jpnmo" path="res://assets/sprites/environment/ruins/cube_small_checkered.png" id="26_oo6ls"]
 [ext_resource type="AudioStream" uid="uid://dl5dqk7n5rmeq" path="res://assets/audio/portal/sfx_portal.wav" id="27_adgy0"]
-[ext_resource type="Texture2D" path="res://assets/sprites/environment/level_black_frame_tileable.png" id="27_l4wux"]
+[ext_resource type="Texture2D" uid="uid://nyqqlngldegp" path="res://assets/sprites/environment/level_black_frame_tileable.png" id="27_l4wux"]
 [ext_resource type="PackedScene" uid="uid://deqyr0ovlrvax" path="res://assets/prefabs/portal/portal.tscn" id="28_bgyn5"]
 [ext_resource type="Texture2D" uid="uid://b6iu1o7c37nor" path="res://assets/sprites/environment/ruins/beam.png" id="28_vuih7"]
-[ext_resource type="Texture2D" path="res://assets/sprites/environment/ruins/liquid_pool.png" id="29_4h22f"]
+[ext_resource type="Texture2D" uid="uid://b5yyarmbilqlk" path="res://assets/sprites/environment/ruins/liquid_pool.png" id="29_4h22f"]
 [ext_resource type="PackedScene" uid="uid://4jf2kc372lwy" path="res://assets/prefabs/hourglass/hourglass.tscn" id="30_hatba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaprh"]
@@ -91,9 +91,6 @@ size = Vector2(61, 1096)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2p70g"]
 size = Vector2(308, 152)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nqco"]
-size = Vector2(1693, 133)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1ne1"]
 size = Vector2(335, 963)
@@ -992,9 +989,8 @@ shape = SubResource("RectangleShape2D_2p70g")
 position = Vector2(1042, -120)
 script = ExtResource("2_xrbo6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor22"]
-position = Vector2(765.5, 48.5)
-shape = SubResource("RectangleShape2D_4nqco")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="prefabcollissions/Floor22"]
+polygon = PackedVector2Array(-111, 56.5, -41, -4.5, 532, -19.5, 1610, -16.5, 1611, 111.5, -82, 116.5)
 
 [node name="Floor23" type="StaticBody2D" parent="prefabcollissions"]
 position = Vector2(1669, -762)

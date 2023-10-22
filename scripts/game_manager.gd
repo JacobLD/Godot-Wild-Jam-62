@@ -24,7 +24,7 @@ func _ready():
 	set_player_item(ItemManager.get_starter_jaw_clone())
 	set_player_item(ItemManager.get_starter_nose_clone())
 	load_tutorial()
-	#get_tree().create_timer(1).timeout.connect(enter_level_1)
+	get_tree().create_timer(1).timeout.connect(enter_level_1)
 
 
 func register_world(world : Node2D):
