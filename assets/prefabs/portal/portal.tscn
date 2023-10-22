@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bu7ynrxer8aim" path="res://assets/sprites/environment/ruins/arch.png" id="1_rjw8x"]
 [ext_resource type="Script" path="res://assets/prefabs/portal/portal.gd" id="2_372qj"]
 [ext_resource type="Texture2D" uid="uid://y8pfksbcskhw" path="res://assets/sprites/environment/ruins/portal.png" id="2_fm5ne"]
-[ext_resource type="Texture2D" uid="uid://cctg2vox7kn4i" path="res://assets/sprites/portal_glow.png" id="4_cgvci"]
+[ext_resource type="Texture2D" path="res://assets/sprites/portal_glow.png" id="4_cgvci"]
 [ext_resource type="Texture2D" uid="uid://b0bctf7uvnlsb" path="res://assets/sprites/environment/ruins/stand.png" id="5_4sloi"]
 [ext_resource type="AudioStream" uid="uid://dl5dqk7n5rmeq" path="res://assets/audio/portal/sfx_portal.wav" id="6_r4t7x"]
 
