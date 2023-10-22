@@ -13,6 +13,8 @@ var collider_trigger
 
 @export var stage_time : float = 60
 
+@export var clones : Array[NodePath]
+
 func on_added():
 	get_viewport().get_camera_2d().limit_left = camera_limit_left
 	get_viewport().get_camera_2d().limit_bottom = camera_limit_bottom

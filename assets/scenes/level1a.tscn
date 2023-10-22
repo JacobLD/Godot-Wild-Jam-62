@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://co7wc4xhca3d7"]
+[gd_scene load_steps=60 format=3 uid="uid://co7wc4xhca3d7"]
 
 [ext_resource type="Script" path="res://assets/scenes/level1a.gd" id="1_gn6wf"]
 [ext_resource type="Script" path="res://assets/prefabs/world/ground/ground.gd" id="2_xrbo6"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://b6iu1o7c37nor" path="res://assets/sprites/environment/ruins/beam.png" id="28_vuih7"]
 [ext_resource type="Texture2D" uid="uid://b5yyarmbilqlk" path="res://assets/sprites/environment/ruins/liquid_pool.png" id="29_4h22f"]
 [ext_resource type="PackedScene" uid="uid://4jf2kc372lwy" path="res://assets/prefabs/hourglass/hourglass.tscn" id="30_hatba"]
+[ext_resource type="PackedScene" uid="uid://dipaccdt5gtx5" path="res://assets/prefabs/ai_behavior/clone.tscn" id="32_bcqwx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaprh"]
 size = Vector2(734, 79)
@@ -103,11 +104,21 @@ size = Vector2(48, 276)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vj7t2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulxu2"]
+size = Vector2(46, 664)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngpa8"]
+size = Vector2(1932, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57b0w"]
+size = Vector2(47, 266)
+
 [node name="level1a" type="Node2D"]
 script = ExtResource("1_gn6wf")
 camera_limit_right = 3383
 camera_limit_top = -4645
 spawn_point = NodePath("SpawnPoint")
+respawn_point = NodePath("RespawnPoint")
 
 [node name="sprites" type="Node2D" parent="."]
 position = Vector2(-142, -0.5)
@@ -476,7 +487,6 @@ texture = ExtResource("16_kxabs")
 [node name="FieldBranchEnd4" type="Sprite2D" parent="sprites"]
 position = Vector2(220, -2368)
 rotation = -1.57459
-scale = Vector2(1, 1)
 texture = ExtResource("12_d1f32")
 
 [node name="FieldBranchHor-to-vert3" type="Sprite2D" parent="sprites"]
@@ -1020,6 +1030,30 @@ shape = SubResource("RectangleShape2D_m6wln")
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(357, -301.5)
 
+[node name="AI" type="Node2D" parent="."]
+
+[node name="agent_1" type="Node2D" parent="AI"]
+
+[node name="Clone" parent="AI/agent_1" instance=ExtResource("32_bcqwx")]
+position = Vector2(2139, -2774)
+patrol_points = Array[NodePath]([NodePath("../../patrol_points/Node2D"), NodePath("../../patrol_points/Node2D2"), NodePath("../../patrol_points/Node2D3")])
+
+[node name="Area2D" type="Area2D" parent="AI/agent_1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AI/agent_1/Area2D"]
+polygon = PackedVector2Array(537, -2604, 537, -3233, 2404, -3231, 2404, -3025, 2629, -3020, 2630, -3155, 2777, -3155, 2777, -2964, 2750, -2962, 2716, -2776, 2569, -2606)
+
+[node name="patrol_points" type="Node2D" parent="AI"]
+
+[node name="Node2D" type="Node2D" parent="AI/patrol_points"]
+position = Vector2(663, -2774)
+
+[node name="Node2D2" type="Node2D" parent="AI/patrol_points"]
+position = Vector2(1382, -2774)
+
+[node name="Node2D3" type="Node2D" parent="AI/patrol_points"]
+position = Vector2(2393, -2774)
+
 [node name="RespawnPoint" type="Node2D" parent="."]
 position = Vector2(2068, -371)
 
@@ -1056,3 +1090,35 @@ texture = ExtResource("14_3kfk7")
 position = Vector2(2344, -176.5)
 texture = ExtResource("14_3kfk7")
 flip_h = true
+
+[node name="ai_bounds" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ai_bounds"]
+position = Vector2(531, -3083)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ai_bounds/StaticBody2D"]
+position = Vector2(-17, 145)
+shape = SubResource("RectangleShape2D_ulxu2")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="ai_bounds"]
+position = Vector2(531, -3083)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ai_bounds/StaticBody2D2"]
+position = Vector2(956, -185)
+shape = SubResource("RectangleShape2D_ngpa8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="ai_bounds"]
+position = Vector2(531, -3083)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ai_bounds/StaticBody2D3"]
+position = Vector2(1897.5, -73)
+shape = SubResource("RectangleShape2D_57b0w")
+
+[connection signal="body_entered" from="AI/agent_1/Area2D" to="AI/agent_1/Clone" method="_on_player_enter_zone"]
+[connection signal="body_exited" from="AI/agent_1/Area2D" to="AI/agent_1/Clone" method="_on_player_exit_zone"]

@@ -52,7 +52,7 @@ var agi_mult = 1
 var speed_percent_per_agi = 0.02
 var jump_percent_per_agi = 0.02
 signal died
-signal health_total_changed(new_value)
+signal health_total_changed(new_value, current_hp)
 signal current_health_changed(new_value)
 signal active_on_cooldown()
 signal active_off_cooldown()
@@ -62,7 +62,7 @@ var damage = 0
 var i_frame_time : float = 0.2
 var dodge_chance = 0
 
-var _last_direction = 0
+var _current_direction = 1
 
 enum State {
 	WALKING,
@@ -88,7 +88,16 @@ var _last_floor_type : SFXPlayer.FloorType = SFXPlayer.FloorType.ROCK
 
 var _input_controller : InputController
 
+@export var is_player_and_not_clone : bool = false
+
 func _ready():
+	if is_player_and_not_clone:
+		init_values()
+		GameManager.registerPlayer(self)
+	animationTree = $AnimationTree
+	_input_controller = $InputController
+
+func init_values():
 	_grace_timer = $JumpGraceTimer
 	_grace_timer.wait_time = GRACE_JUMP_TIME
 	_grace_timer.timeout.connect(_on_grace_timer_finished)
@@ -100,15 +109,11 @@ func _ready():
 	current_gravity = default_gravity
 	high_gravity = default_gravity * FALL_GRAVITY_MODIFIER
 	low_gravity = default_gravity * HANG_TIME_GRAVITY_MODIFIER
-	
-	GameManager.registerPlayer(self)
-	animationTree = $AnimationTree
-	
-	_input_controller = $InputController
 
 func _physics_process(delta):
 	# Do jank Camera Smoothing
-	$Camera2D.position_smoothing_speed = max(abs(velocity.length() * delta / 3),5)
+	if is_player_and_not_clone:
+		$Camera2D.position_smoothing_speed = max(abs(velocity.length() * delta / 3),5)
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -125,23 +130,17 @@ func _physics_process(delta):
 	_decide_player_state()
 	_apply_state()
 
+func _process(delta):
+	var direction = _input_controller.input_direction()
+	if abs(direction) > 0:
+		if direction != _current_direction:
+			_current_direction = direction
+			apply_scale(Vector2(-1, 1))
+
 
 func _handle_input(delta):
-	#Flip sprite depending on input direction
+	#Flip player depending on input direction
 	var direction = _input_controller.input_direction()
-	if direction != _last_direction:
-		_last_direction = direction
-		if abs(direction) > 0:
-			if !$Sprite2D.flip_h and direction < 0:
-				$Sprite2D.flip_h = true
-				$face.scale.x = -1
-				$face.position.x = $face.position.x * -1
-				$attack_box.scale.x = -1
-			elif $Sprite2D.flip_h and direction > 0:
-				$Sprite2D.flip_h = false
-				$face.scale.x = 1
-				$face.position.x = $face.position.x * -1
-				$attack_box.scale.x = 1
 	
 	# Handle Jump.
 	if _input_controller.jump_just_pressed() and (is_on_floor() or !_grace_timer.is_stopped()) and !_has_jumped and state != State.ATTACKING and state != State.BLOCKING:
@@ -224,7 +223,7 @@ func _apply_state():
 		if state == State.DASHING and last_state != State.DASHING:
 			$sfx_player.on_dash()
 			
-		print("Trans to ", State.keys()[state])
+		#print("Trans to ", State.keys()[state])
 	last_state = state
 
 
@@ -337,7 +336,7 @@ func _on_active_pressed():
 
 
 func on_attack():
-	$attack_box.attack(500)
+	$attack_box.attack(damage)
 
 
 # Max hp = 100 + str * 8
@@ -345,15 +344,17 @@ func on_attack():
 func set_str(new_value : int):
 	new_value = new_value * str_mult
 	var old_health = max_health
-	max_health = new_value + new_value * 8
+	max_health = 100 + new_value * 8
 	health += max_health - old_health
-	health_total_changed.emit(max_health)
+	health_total_changed.emit(max_health, health)
 	
 	damage = 10 + new_value * 3
 
 
 func add_health(amount : float):
+	print("Health change: ", amount)
 	health += amount
+	print("New health" , health)
 	if health > max_health:
 		health = max_health
 	
@@ -376,3 +377,20 @@ func set_wis(new_value : int):
 func _on_active_timer():
 	can_use_active = true
 	active_off_cooldown.emit()
+
+
+func on_take_damage(amount, source):
+	if _blocking and state != State.ATTACKING:
+		$sfx_player.on_parry()
+	else:
+		$sfx_player.on_damage()
+		add_health(-amount)
+	
+	var dv_hit = 800
+	
+	if source.global_position.x > global_position.x:
+		velocity.x -= dv_hit
+	else:
+		velocity.x += dv_hit
+
+

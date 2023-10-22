@@ -1,4 +1,5 @@
 extends InputController
+class_name AIInputController
 
 var wants_to_jump = false
 var input_dir : float = 0.0

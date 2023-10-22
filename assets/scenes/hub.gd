@@ -95,3 +95,7 @@ func _on_mouse_enter_right():
 
 func _on_mouse_exit():
 	Hud._on_mouse_exit()
+
+
+func _on_time_to_go():
+	GameManager.exit_hub()
