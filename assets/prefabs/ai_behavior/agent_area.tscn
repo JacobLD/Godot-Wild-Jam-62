@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxdirbejumghm"]
+
+[ext_resource type="PackedScene" uid="uid://dipaccdt5gtx5" path="res://assets/prefabs/ai_behavior/clone.tscn" id="1_okj7a"]
+
+[node name="agent_1" type="Node2D"]
+
+[node name="Clone" parent="." instance=ExtResource("1_okj7a")]
+position = Vector2(2139, -2774)
+patrol_points = Array[NodePath]([NodePath("../patrol_points/Node2D"), NodePath("../patrol_points/Node2D2"), NodePath("../patrol_points/Node2D3")])
+
+[node name="patrol_points" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="patrol_points"]
+
+[node name="Node2D2" type="Node2D" parent="patrol_points"]
+
+[node name="Node2D3" type="Node2D" parent="patrol_points"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="Clone" method="_on_player_enter_zone"]
+[connection signal="body_exited" from="Area2D" to="Clone" method="_on_player_exit_zone"]

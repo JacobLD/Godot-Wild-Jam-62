@@ -912,7 +912,6 @@ parameters/conditions/jump_blocking = false
 parameters/conditions/run = false
 
 [node name="face" type="Node2D" parent="."]
-position = Vector2(0, -1)
 
 [node name="PortraitItemHoodBack" type="Sprite2D" parent="face"]
 position = Vector2(11, -79)

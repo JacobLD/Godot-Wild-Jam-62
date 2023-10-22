@@ -29,3 +29,12 @@ func _ready():
 
 func on_respawn():
 	GameManager.getPlayer().respawn(get_node(respawn_point))
+
+
+func _on_portal_time_to_go():
+	GameManager.enter_hub()
+
+
+func _on_death_pool_body_entered(body):
+	if body is PlayerController:
+		body.add_health(-9999)

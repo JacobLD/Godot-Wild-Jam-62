@@ -86,9 +86,9 @@ func patrol_points(AI : AIController):
 	if target_point == null:
 		var rand_point_path = AI.patrol_points.pick_random()
 		target_point = AI.get_node(rand_point_path)
-		orig_direction = get_move_direction(AI, target_point.position) 
+		orig_direction = get_move_direction(AI, target_point.global_position) 
 	
-	input_controller.input_dir = get_move_direction(AI, target_point.position)
+	input_controller.input_dir = get_move_direction(AI, target_point.global_position)
 	
 	if input_controller.input_dir == -1 and orig_direction == 1 or input_controller.input_dir == 1 and orig_direction == -1:
 		target_point = null
@@ -101,7 +101,7 @@ func _on_patrol_timer_timeout():
 
 # returns the resulting move direction
 func get_move_direction(AI : AIController, target_pos : Vector2) -> int:
-	if AI.position.x > target_pos.x:
+	if AI.global_position.x > target_pos.x:
 		return -1 
 	else:
 		return 1 

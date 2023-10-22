@@ -52,7 +52,7 @@ func set_clone(clone : AIController):
 	clone.DASH_SPEED = dash_speed
 	clone.init_values()
 	
-	clone.set_face_item(cheek_item)
-	clone.set_face_item(nose_item)
-	clone.set_face_item(jaw_item)
+	clone.set_face_item(cheek_item.clone())
+	clone.set_face_item(nose_item.clone())
+	clone.set_face_item(jaw_item.clone())
 	

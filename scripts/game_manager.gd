@@ -11,6 +11,9 @@ signal player_registered(player)
 var hub_scene : PackedScene = preload("res://assets/scenes/hub.tscn")
 var tutorial_scene : PackedScene = preload("res://assets/scenes/tutorial_island.tscn")
 var level_1_scene : PackedScene = preload("res://assets/scenes/level1a.tscn")
+var level_2_scene : PackedScene = preload("res://assets/scenes/level2a.tscn")
+var level_3_scene : PackedScene = preload("res://assets/scenes/level3a.tscn")
+var level_4_scene : PackedScene = preload("res://assets/scenes/level4a.tscn")
 
 var next_stage = 1
 
@@ -26,11 +29,14 @@ func _ready():
 	set_player_item(ItemManager.get_starter_jaw_clone())
 	set_player_item(ItemManager.get_starter_nose_clone())
 	load_tutorial()
-	get_tree().create_timer(1).timeout.connect(test_level)
+	#get_tree().create_timer(1).timeout.connect(test_level)
 
 func test_level():
 	previous_player_props.append(PlayerProps.new(_player))
-	load_stage(level_1_scene)
+	previous_player_props.append(PlayerProps.new(_player))
+	previous_player_props.append(PlayerProps.new(_player))
+	previous_player_props.append(PlayerProps.new(_player))
+	load_stage(level_4_scene)
 	
 
 func register_world(world : Node2D):
@@ -64,11 +70,11 @@ func exit_hub():
 		1:
 			load_stage(level_1_scene)
 		2:
-			pass
+			load_stage(level_2_scene)
 		3:
-			pass
+			load_stage(level_3_scene)
 		4:
-			pass
+			load_stage(level_4_scene)
 	next_stage += 1
 	#unhide screen
 
@@ -117,3 +123,6 @@ func on_player_died():
 	
 	_player.done_dying = true
 	new_stage.respawn_player()
+
+func win():
+	print("TODO WIN")

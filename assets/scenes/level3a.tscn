@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cfgtsmjk3o7xo"]
+[gd_scene load_steps=33 format=3 uid="uid://d3pmnas8i8xug"]
 
-[ext_resource type="Texture2D" uid="uid://dewvh3rbmuk6p" path="res://assets/sprites/level_3-a.jpg" id="1_he8nf"]
+[ext_resource type="Script" path="res://assets/scenes/level3a.gd" id="1_kbxx0"]
 [ext_resource type="Texture2D" uid="uid://nyqqlngldegp" path="res://assets/sprites/environment/level_black_frame_tileable.png" id="2_c8jpb"]
 [ext_resource type="Texture2D" uid="uid://ctgs4o0bncutq" path="res://assets/sprites/environment/ruins/beam2.png" id="2_skolw"]
 [ext_resource type="Texture2D" uid="uid://b0bctf7uvnlsb" path="res://assets/sprites/environment/ruins/stand.png" id="3_jkixm"]
@@ -16,11 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://ca1o1yv4jpnmo" path="res://assets/sprites/environment/ruins/cube_small_checkered.png" id="12_msnf7"]
 [ext_resource type="Texture2D" uid="uid://y8pfksbcskhw" path="res://assets/sprites/environment/ruins/portal.png" id="14_iae4h"]
 [ext_resource type="Texture2D" uid="uid://cjyx5udxd22j4" path="res://assets/sprites/environment/ruins/statue_pumpkin.png" id="15_20gxw"]
-[ext_resource type="Texture2D" uid="uid://ca33wvtcbrcbx" path="res://assets/sprites/environment/ruins/fountain_stained.png" id="17_4mqf0"]
-[ext_resource type="Texture2D" uid="uid://dn3ci02rlkdkg" path="res://assets/sprites/environment/ruins/stella_stained.png" id="17_28qyq"]
-[ext_resource type="Texture2D" uid="uid://b1nx200jqp76l" path="res://assets/sprites/environment/ruins/liquid_flow.png" id="18_3u0fk"]
+[ext_resource type="PackedScene" uid="uid://pu2x7ejqy2id" path="res://assets/prefabs/fountain/fountain.tscn" id="15_uw5es"]
 [ext_resource type="Texture2D" uid="uid://b5yyarmbilqlk" path="res://assets/sprites/environment/ruins/liquid_pool.png" id="20_2hk7t"]
 [ext_resource type="Script" path="res://assets/prefabs/world/ground/ground.gd" id="21_1jbxe"]
+[ext_resource type="PackedScene" uid="uid://dipaccdt5gtx5" path="res://assets/prefabs/ai_behavior/clone.tscn" id="22_bxo70"]
+[ext_resource type="PackedScene" uid="uid://deqyr0ovlrvax" path="res://assets/prefabs/portal/portal.tscn" id="22_e00q8"]
+[ext_resource type="PackedScene" uid="uid://4jf2kc372lwy" path="res://assets/prefabs/hourglass/hourglass.tscn" id="24_wa2s3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_iemyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lql2v"]
 size = Vector2(1594, 184)
@@ -46,17 +49,30 @@ size = Vector2(68, 145)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps61i"]
 size = Vector2(212.5, 71)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwhka"]
+size = Vector2(1896, 218)
+
 [node name="level3a" type="Node2D"]
+script = ExtResource("1_kbxx0")
+camera_limit_right = 9990
+camera_limit_top = -3781
+spawn_point = NodePath("SpawnPoint")
+respawn_point = NodePath("SpawnPoint")
+clones = Array[NodePath]([NodePath("agents/agent_1/Clone"), NodePath("agents/agent_2/Clone"), NodePath("agents/agent_3/Clone")])
 
-[node name="Level3-a" type="Sprite2D" parent="."]
-position = Vector2(5000, -1929)
-texture = ExtResource("1_he8nf")
-
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node2D" parent="."]
 
 [node name="Arch2" type="Sprite2D" parent="Node"]
 position = Vector2(2583, -2585)
 texture = ExtResource("4_e2tlr")
+
+[node name="TextureRect" type="TextureRect" parent="Node"]
+modulate = Color(0.0625, 0.0664063, 0.0664063, 1)
+offset_left = 4158.0
+offset_top = -340.0
+offset_right = 6055.0
+offset_bottom = -153.0
+texture = SubResource("CanvasTexture_iemyh")
 
 [node name="Arch3" type="Sprite2D" parent="Node"]
 position = Vector2(3145, -2582)
@@ -262,17 +278,20 @@ texture = ExtResource("2_c8jpb")
 [node name="LevelBlackFrameTileable2" type="Sprite2D" parent="Node"]
 position = Vector2(44.9996, -1893)
 rotation = -1.57286
+scale = Vector2(1, 1)
 texture = ExtResource("2_c8jpb")
 
 [node name="LevelBlackFrameTileable4" type="Sprite2D" parent="Node"]
 position = Vector2(9948, -1940)
 rotation = -1.57286
+scale = Vector2(1, 1)
 texture = ExtResource("2_c8jpb")
 flip_h = true
 
 [node name="BeamBloodCheckered" type="Sprite2D" parent="Node"]
 position = Vector2(1604, -329)
 rotation = -1.56898
+scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond" type="Sprite2D" parent="Node"]
@@ -286,6 +305,7 @@ texture = ExtResource("8_a8lys")
 [node name="BeamBloodCheckered2" type="Sprite2D" parent="Node"]
 position = Vector2(4119, -332)
 rotation = -1.56898
+scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond3" type="Sprite2D" parent="Node"]
@@ -351,6 +371,7 @@ texture = ExtResource("9_8q11d")
 [node name="BeamBloodCheckered10" type="Sprite2D" parent="Node"]
 position = Vector2(1604, -329)
 rotation = -1.56898
+scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond5" type="Sprite2D" parent="Node"]
@@ -429,6 +450,7 @@ texture = ExtResource("8_a8lys")
 [node name="BeamBloodCheckered16" type="Sprite2D" parent="Node"]
 position = Vector2(1952, -2160)
 rotation = -1.56898
+scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond7" type="Sprite2D" parent="Node"]
@@ -442,6 +464,7 @@ texture = ExtResource("8_a8lys")
 [node name="BeamBloodCheckered22" type="Sprite2D" parent="Node"]
 position = Vector2(3769, -2158)
 rotation = -1.56898
+scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond9" type="Sprite2D" parent="Node"]
@@ -687,6 +710,7 @@ texture = ExtResource("8_a8lys")
 [node name="BeamBloodCheckered23" type="Sprite2D" parent="Node"]
 position = Vector2(8603, -330)
 rotation = -1.56898
+scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond19" type="Sprite2D" parent="Node"]
@@ -712,6 +736,7 @@ texture = ExtResource("9_8q11d")
 [node name="BeamBloodCheckered26" type="Sprite2D" parent="Node"]
 position = Vector2(6088, -327)
 rotation = -1.56898
+scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond21" type="Sprite2D" parent="Node"]
@@ -810,6 +835,18 @@ texture = ExtResource("9_8q11d")
 [node name="Cube30" type="Sprite2D" parent="Node"]
 position = Vector2(7692, -2156)
 texture = ExtResource("9_8q11d")
+
+[node name="fountain" parent="Node" instance=ExtResource("15_uw5es")]
+position = Vector2(4473, -541)
+
+[node name="fountain2" parent="Node" instance=ExtResource("15_uw5es")]
+position = Vector2(4899, -542)
+
+[node name="fountain3" parent="Node" instance=ExtResource("15_uw5es")]
+position = Vector2(5318, -544)
+
+[node name="fountain4" parent="Node" instance=ExtResource("15_uw5es")]
+position = Vector2(5738, -547)
 
 [node name="Cube31" type="Sprite2D" parent="Node"]
 position = Vector2(8045, -2158)
@@ -1027,54 +1064,6 @@ scale = Vector2(2.55346, 1.75262)
 texture = ExtResource("2_c8jpb")
 flip_v = true
 
-[node name="StellaStained" type="Sprite2D" parent="Node"]
-position = Vector2(4472, -543)
-texture = ExtResource("17_28qyq")
-
-[node name="StellaStained2" type="Sprite2D" parent="Node"]
-position = Vector2(4898, -544)
-texture = ExtResource("17_28qyq")
-
-[node name="StellaStained3" type="Sprite2D" parent="Node"]
-position = Vector2(5319, -546)
-texture = ExtResource("17_28qyq")
-
-[node name="StellaStained4" type="Sprite2D" parent="Node"]
-position = Vector2(5738, -546)
-texture = ExtResource("17_28qyq")
-
-[node name="FountainStained" type="Sprite2D" parent="Node"]
-position = Vector2(4473, -546)
-texture = ExtResource("17_4mqf0")
-
-[node name="FountainStained2" type="Sprite2D" parent="Node"]
-position = Vector2(4898, -547)
-texture = ExtResource("17_4mqf0")
-
-[node name="FountainStained3" type="Sprite2D" parent="Node"]
-position = Vector2(5321, -551)
-texture = ExtResource("17_4mqf0")
-
-[node name="FountainStained4" type="Sprite2D" parent="Node"]
-position = Vector2(5742, -550)
-texture = ExtResource("17_4mqf0")
-
-[node name="LiquidFlow" type="Sprite2D" parent="Node"]
-position = Vector2(4471, -473)
-texture = ExtResource("18_3u0fk")
-
-[node name="LiquidFlow2" type="Sprite2D" parent="Node"]
-position = Vector2(4899, -476)
-texture = ExtResource("18_3u0fk")
-
-[node name="LiquidFlow3" type="Sprite2D" parent="Node"]
-position = Vector2(5320, -479)
-texture = ExtResource("18_3u0fk")
-
-[node name="LiquidFlow4" type="Sprite2D" parent="Node"]
-position = Vector2(5744, -477)
-texture = ExtResource("18_3u0fk")
-
 [node name="StatuePumpkin" type="Sprite2D" parent="Node"]
 position = Vector2(7336, -3227)
 texture = ExtResource("15_20gxw")
@@ -1103,7 +1092,7 @@ texture = ExtResource("20_2hk7t")
 position = Vector2(5878, -371)
 texture = ExtResource("20_2hk7t")
 
-[node name="collissions" type="Node" parent="."]
+[node name="collissions" type="Node2D" parent="."]
 
 [node name="Floor" type="StaticBody2D" parent="collissions"]
 position = Vector2(-39, -184)
@@ -1300,3 +1289,100 @@ type = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collissions/Floor14"]
 position = Vector2(1864, 257)
 shape = SubResource("RectangleShape2D_ps61i")
+
+[node name="death_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death_area"]
+position = Vector2(5108, -271)
+shape = SubResource("RectangleShape2D_pwhka")
+
+[node name="Portal" parent="." instance=ExtResource("22_e00q8")]
+position = Vector2(7338, -2650)
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(951, -398)
+
+[node name="agents" type="Node2D" parent="."]
+
+[node name="agent_1" type="Node2D" parent="agents"]
+
+[node name="Clone" parent="agents/agent_1" instance=ExtResource("22_bxo70")]
+position = Vector2(2873, -2585)
+patrol_points = Array[NodePath]([NodePath("../patrol_points/Node2D"), NodePath("../patrol_points/Node2D2"), NodePath("../patrol_points/Node2D3")])
+
+[node name="patrol_points" type="Node2D" parent="agents/agent_1"]
+
+[node name="Node2D" type="Node2D" parent="agents/agent_1/patrol_points"]
+position = Vector2(2173, -2552)
+
+[node name="Node2D2" type="Node2D" parent="agents/agent_1/patrol_points"]
+position = Vector2(2601, -2567)
+
+[node name="Node2D3" type="Node2D" parent="agents/agent_1/patrol_points"]
+position = Vector2(3430, -2559)
+
+[node name="Area2D" type="Area2D" parent="agents/agent_1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="agents/agent_1/Area2D"]
+polygon = PackedVector2Array(1924, -2411, 1920, -2903, 2468, -3245, 3334, -3238, 3691, -3156, 3801, -2403)
+
+[node name="agent_2" type="Node2D" parent="agents"]
+position = Vector2(-111, 1834)
+
+[node name="Clone" parent="agents/agent_2" instance=ExtResource("22_bxo70")]
+position = Vector2(2873, -2585)
+patrol_points = Array[NodePath]([NodePath("../patrol_points/Node2D"), NodePath("../patrol_points/Node2D2"), NodePath("../patrol_points/Node2D3")])
+
+[node name="patrol_points" type="Node2D" parent="agents/agent_2"]
+
+[node name="Node2D" type="Node2D" parent="agents/agent_2/patrol_points"]
+position = Vector2(2173, -2552)
+
+[node name="Node2D2" type="Node2D" parent="agents/agent_2/patrol_points"]
+position = Vector2(2601, -2567)
+
+[node name="Node2D3" type="Node2D" parent="agents/agent_2/patrol_points"]
+position = Vector2(3430, -2559)
+
+[node name="Area2D" type="Area2D" parent="agents/agent_2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="agents/agent_2/Area2D"]
+polygon = PackedVector2Array(1681, -2412, 1661, -3220, 4148, -3195, 4267, -2414)
+
+[node name="agent_3" type="Node2D" parent="agents"]
+position = Vector2(4364, 1839)
+
+[node name="Clone" parent="agents/agent_3" instance=ExtResource("22_bxo70")]
+position = Vector2(2873, -2585)
+patrol_points = Array[NodePath]([NodePath("../patrol_points/Node2D"), NodePath("../patrol_points/Node2D2"), NodePath("../patrol_points/Node2D3")])
+
+[node name="patrol_points" type="Node2D" parent="agents/agent_3"]
+
+[node name="Node2D" type="Node2D" parent="agents/agent_3/patrol_points"]
+position = Vector2(2173, -2552)
+
+[node name="Node2D2" type="Node2D" parent="agents/agent_3/patrol_points"]
+position = Vector2(2601, -2567)
+
+[node name="Node2D3" type="Node2D" parent="agents/agent_3/patrol_points"]
+position = Vector2(3430, -2559)
+
+[node name="Area2D" type="Area2D" parent="agents/agent_3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="agents/agent_3/Area2D"]
+polygon = PackedVector2Array(1681, -2412, 1661, -3220, 4148, -3195, 4267, -2414)
+
+[node name="hourglass" parent="." instance=ExtResource("24_wa2s3")]
+position = Vector2(5105, -785)
+
+[node name="hourglass2" parent="." instance=ExtResource("24_wa2s3")]
+position = Vector2(5104, -3046)
+
+[connection signal="body_entered" from="death_area" to="." method="_on_death_area_body_entered"]
+[connection signal="time_to_go" from="Portal" to="." method="_on_portal_time_to_go"]
+[connection signal="body_entered" from="agents/agent_1/Area2D" to="agents/agent_1/Clone" method="_on_player_enter_zone" flags=18]
+[connection signal="body_exited" from="agents/agent_1/Area2D" to="agents/agent_1/Clone" method="_on_player_exit_zone" flags=18]
+[connection signal="body_entered" from="agents/agent_2/Area2D" to="agents/agent_2/Clone" method="_on_player_enter_zone" flags=18]
+[connection signal="body_exited" from="agents/agent_2/Area2D" to="agents/agent_2/Clone" method="_on_player_exit_zone" flags=18]
+[connection signal="body_entered" from="agents/agent_3/Area2D" to="agents/agent_3/Clone" method="_on_player_enter_zone" flags=18]
+[connection signal="body_exited" from="agents/agent_3/Area2D" to="agents/agent_3/Clone" method="_on_player_exit_zone" flags=18]

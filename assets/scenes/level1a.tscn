@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://co7wc4xhca3d7"]
+[gd_scene load_steps=61 format=3 uid="uid://co7wc4xhca3d7"]
 
 [ext_resource type="Script" path="res://assets/scenes/level1a.gd" id="1_gn6wf"]
 [ext_resource type="Script" path="res://assets/prefabs/world/ground/ground.gd" id="2_xrbo6"]
@@ -113,12 +113,16 @@ size = Vector2(1932, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57b0w"]
 size = Vector2(47, 266)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2x4b"]
+size = Vector2(705, 160)
+
 [node name="level1a" type="Node2D"]
 script = ExtResource("1_gn6wf")
 camera_limit_right = 3383
 camera_limit_top = -4645
 spawn_point = NodePath("SpawnPoint")
-respawn_point = NodePath("RespawnPoint")
+respawn_point = NodePath("SpawnPoint")
+clones = Array[NodePath]([NodePath("AI/agent_1/Clone")])
 
 [node name="sprites" type="Node2D" parent="."]
 position = Vector2(-142, -0.5)
@@ -1037,23 +1041,23 @@ position = Vector2(357, -301.5)
 
 [node name="Clone" parent="AI/agent_1" instance=ExtResource("32_bcqwx")]
 position = Vector2(2139, -2774)
-patrol_points = Array[NodePath]([NodePath("../../patrol_points/Node2D"), NodePath("../../patrol_points/Node2D2"), NodePath("../../patrol_points/Node2D3")])
+patrol_points = Array[NodePath]([NodePath("../patrol_points/Node2D"), NodePath("../patrol_points/Node2D2"), NodePath("../patrol_points/Node2D3")])
+
+[node name="patrol_points" type="Node2D" parent="AI/agent_1"]
+
+[node name="Node2D" type="Node2D" parent="AI/agent_1/patrol_points"]
+position = Vector2(948, -2774)
+
+[node name="Node2D2" type="Node2D" parent="AI/agent_1/patrol_points"]
+position = Vector2(1613, -2773)
+
+[node name="Node2D3" type="Node2D" parent="AI/agent_1/patrol_points"]
+position = Vector2(2393, -2774)
 
 [node name="Area2D" type="Area2D" parent="AI/agent_1"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AI/agent_1/Area2D"]
 polygon = PackedVector2Array(537, -2604, 537, -3233, 2404, -3231, 2404, -3025, 2629, -3020, 2630, -3155, 2777, -3155, 2777, -2964, 2750, -2962, 2716, -2776, 2569, -2606)
-
-[node name="patrol_points" type="Node2D" parent="AI"]
-
-[node name="Node2D" type="Node2D" parent="AI/patrol_points"]
-position = Vector2(663, -2774)
-
-[node name="Node2D2" type="Node2D" parent="AI/patrol_points"]
-position = Vector2(1382, -2774)
-
-[node name="Node2D3" type="Node2D" parent="AI/patrol_points"]
-position = Vector2(2393, -2774)
 
 [node name="RespawnPoint" type="Node2D" parent="."]
 position = Vector2(2068, -371)
@@ -1121,5 +1125,14 @@ collision_mask = 16
 position = Vector2(1897.5, -73)
 shape = SubResource("RectangleShape2D_57b0w")
 
-[connection signal="body_entered" from="AI/agent_1/Area2D" to="AI/agent_1/Clone" method="_on_player_enter_zone"]
-[connection signal="body_exited" from="AI/agent_1/Area2D" to="AI/agent_1/Clone" method="_on_player_exit_zone"]
+[node name="death_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death_area"]
+position = Vector2(2077.5, -195)
+shape = SubResource("RectangleShape2D_p2x4b")
+disabled = true
+
+[connection signal="time_to_go" from="sprites/Portal2" to="." method="_on_portal_2_time_to_go"]
+[connection signal="body_entered" from="AI/agent_1/Area2D" to="AI/agent_1/Clone" method="_on_player_enter_zone" flags=18]
+[connection signal="body_exited" from="AI/agent_1/Area2D" to="AI/agent_1/Clone" method="_on_player_exit_zone" flags=18]
+[connection signal="body_entered" from="death_area" to="." method="_on_death_area_body_entered"]
