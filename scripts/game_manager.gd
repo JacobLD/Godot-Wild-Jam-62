@@ -83,6 +83,7 @@ func load_tutorial():
 	new_stage.on_added()
 	_player.reparent(new_stage.spawn_point_node)
 	_player.position = Vector2.ZERO
+	Parallax.start_over(new_stage.stage_time)
 
 func load_stage(stage : PackedScene):
 	changing_stages = true
