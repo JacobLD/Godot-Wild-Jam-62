@@ -55,6 +55,7 @@ script = ExtResource("1_5htvt")
 camera_limit_right = 3374
 camera_limit_top = -4405
 spawn_point = NodePath("SpawnPoint")
+stage_time = 15.0
 
 [node name="Level0-aNotes" type="Sprite2D" parent="."]
 visible = false

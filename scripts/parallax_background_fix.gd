@@ -6,6 +6,7 @@ var level_time : float = 60
 var timer : Timer = Timer.new()
 @export var sky_start : NodePath
 @export var sky_end : NodePath
+var cloud_dark_threshold : float = 0.8
 
 var timer_offset : float = 0
 var time_added : float = 0
@@ -41,15 +42,21 @@ func _process(delta):
 	if !timer.is_stopped():
 		var path : Path2D = $sun_path
 		var curve : Curve2D = path.curve
-		var distance_on_curve = lerp(0.0, curve.get_baked_length(), lerp_denom())
+		var lerp_denom = lerp_denom()
+		var distance_on_curve = lerp(curve.get_baked_length(), 0.0,  lerp_denom)
 		
 		$sun/SkySunOrb.position = curve.sample_baked(distance_on_curve)
-		$sky_infinite_tile/skyholder.position.y = lerp(get_node(sky_end).position.y, get_node(sky_start).position.y, lerp_denom())
+		$sky_infinite_tile/skyholder.position.y = lerp(get_node(sky_start).position.y, get_node(sky_end).position.y, lerp_denom)
+		
+		if lerp_denom >= cloud_dark_threshold:
+			$clouds_back/cloudsholder.modulate = lerp(Color(1,1,1,1), Color(0.2,0.2,0.2,1), (lerp_denom - 0.8)*5)
+			$clouds_front/cloudsholder.modulate = lerp(Color(1,1,1,1), Color(0.2,0.2,0.2,1), (lerp_denom - 0.8)*5)
 
 func start_over(new_level_time):
 	timer_offset = 0.0
 	level_time = new_level_time
 	timer.start(level_time)
+	print(level_time)
 
 
 func _timeout():
@@ -57,10 +64,10 @@ func _timeout():
 
 
 func add_time(amount):
-	timer_offset =  (timer.wait_time - timer.time_left) / timer.wait_time
-	time_added += amount
+	var time_passed = timer.wait_time - timer.time_left
+	timer_offset =  time_passed / timer.wait_time
 	timer.start(timer.time_left + amount)
 
 
 func lerp_denom():
-	return (timer.time_left - time_added) / (timer.wait_time) + timer_offset
+	return ((timer.wait_time - timer.time_left) * (1-timer_offset) / (timer.wait_time))  + timer_offset
