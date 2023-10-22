@@ -37,15 +37,17 @@ func test_level():
 	previous_player_props.append(PlayerProps.new(_player))
 	previous_player_props.append(PlayerProps.new(_player))
 	load_stage(level_4_scene)
-	
+
+func on_splash_complete():
+	_player.controls_locked = false
 
 func register_world(world : Node2D):
 	_world = world
 
 func _on_start() -> void:
-	MusicBox.play_upgrade_hub(false)
-	if _player:
-		_player_unlock_timer.start(3)
+	MusicBox.play_tutorial_track(false)
+	Splashes.start()
+	get_tree().create_timer(3).timeout.connect(on_splash_complete)
 
 
 func registerPlayer(player : PlayerController):
@@ -69,18 +71,23 @@ func exit_hub():
 	match next_stage:
 		1:
 			load_stage(level_1_scene)
+			MusicBox.play_room_1(true)
 		2:
 			load_stage(level_2_scene)
+			MusicBox.play_room_2(true)
 		3:
 			load_stage(level_3_scene)
+			MusicBox.play_room_3(true)
 		4:
 			load_stage(level_4_scene)
+			MusicBox.play_room_4(true)
 	next_stage += 1
 	#unhide screen
 
 var changing_stages = false
 
 func enter_hub():
+	MusicBox.play_upgrade_hub(true)
 	previous_player_props.append(PlayerProps.new(_player))
 	load_stage(hub_scene)
 
@@ -125,4 +132,5 @@ func on_player_died():
 	new_stage.respawn_player()
 
 func win():
-	print("TODO WIN")
+	_player.controls_locked = false
+	Splashes.on_win()

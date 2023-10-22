@@ -99,7 +99,7 @@ func get_clone_of(rarity : Rarity, type : Item.FacePosition):
 				Item.FacePosition.JAW:
 					return _get_clone_from(uncommon_jaw)
 				Item.FacePosition.CHEEK:
-					return _get_clone_from(uncommon_cheek)
+					return _get_clone_from(common_cheek)
 				Item.FacePosition.NOSE:
 					return _get_clone_from(uncommon_nose)
 		Rarity.Rare:
@@ -107,7 +107,7 @@ func get_clone_of(rarity : Rarity, type : Item.FacePosition):
 				Item.FacePosition.JAW:
 					return _get_clone_from(rare_jaw)
 				Item.FacePosition.CHEEK:
-					return _get_clone_from(rare_cheek)
+					return _get_clone_from(common_cheek)
 				Item.FacePosition.NOSE:
 					return _get_clone_from(rare_nose)
 

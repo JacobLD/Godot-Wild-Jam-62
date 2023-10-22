@@ -14,6 +14,7 @@ config/name="Godot Wild Jam 62"
 run/main_scene="res://assets/scenes/main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 run/max_fps=60
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,6 +26,7 @@ ItemManager="*res://assets/scenes/item_manager.tscn"
 MusicBox="*res://assets/prefabs/music_box/music_box.tscn"
 Hud="*res://assets/scenes/HUD.tscn"
 Parallax="*res://assets/prefabs/parallax_background.tscn"
+Splashes="*res://assets/scenes/splashes.tscn"
 
 [debug]
 

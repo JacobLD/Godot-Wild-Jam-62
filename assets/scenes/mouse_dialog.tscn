@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqk835hud6tal"]
+[gd_scene load_steps=5 format=3 uid="uid://cqk835hud6tal"]
 
 [ext_resource type="Script" path="res://assets/scenes/mouse_dialog.gd" id="1_t3nrj"]
 [ext_resource type="PackedScene" uid="uid://6lyke4nu73li" path="res://assets/prefabs/hud_cards/active_card.tscn" id="2_bb7gn"]
 [ext_resource type="PackedScene" uid="uid://c7tk7sd3i4j2g" path="res://assets/prefabs/hud_cards/stats_card.tscn" id="3_qs168"]
 [ext_resource type="PackedScene" uid="uid://83gwjolww8bm" path="res://assets/prefabs/hud_cards/passive_card.tscn" id="4_v7l0t"]
-[ext_resource type="PackedScene" uid="uid://bocpkwcr1ncl6" path="res://assets/prefabs/compare_card.tscn" id="5_lkju0"]
 
 [node name="mouse_dialog" type="Node2D"]
 script = ExtResource("1_t3nrj")
@@ -14,5 +13,3 @@ script = ExtResource("1_t3nrj")
 [node name="Stats" parent="." instance=ExtResource("3_qs168")]
 
 [node name="Passive" parent="." instance=ExtResource("4_v7l0t")]
-
-[node name="Compare" parent="." instance=ExtResource("5_lkju0")]
