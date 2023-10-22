@@ -49,7 +49,6 @@ size = Vector2(212.5, 71)
 [node name="level3a" type="Node2D"]
 
 [node name="Level3-a" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(5000, -1929)
 texture = ExtResource("1_he8nf")
 
@@ -263,20 +262,17 @@ texture = ExtResource("2_c8jpb")
 [node name="LevelBlackFrameTileable2" type="Sprite2D" parent="Node"]
 position = Vector2(44.9996, -1893)
 rotation = -1.57286
-scale = Vector2(1, 1)
 texture = ExtResource("2_c8jpb")
 
 [node name="LevelBlackFrameTileable4" type="Sprite2D" parent="Node"]
 position = Vector2(9948, -1940)
 rotation = -1.57286
-scale = Vector2(1, 1)
 texture = ExtResource("2_c8jpb")
 flip_h = true
 
 [node name="BeamBloodCheckered" type="Sprite2D" parent="Node"]
 position = Vector2(1604, -329)
 rotation = -1.56898
-scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond" type="Sprite2D" parent="Node"]
@@ -290,7 +286,6 @@ texture = ExtResource("8_a8lys")
 [node name="BeamBloodCheckered2" type="Sprite2D" parent="Node"]
 position = Vector2(4119, -332)
 rotation = -1.56898
-scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond3" type="Sprite2D" parent="Node"]
@@ -356,7 +351,6 @@ texture = ExtResource("9_8q11d")
 [node name="BeamBloodCheckered10" type="Sprite2D" parent="Node"]
 position = Vector2(1604, -329)
 rotation = -1.56898
-scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond5" type="Sprite2D" parent="Node"]
@@ -435,7 +429,6 @@ texture = ExtResource("8_a8lys")
 [node name="BeamBloodCheckered16" type="Sprite2D" parent="Node"]
 position = Vector2(1952, -2160)
 rotation = -1.56898
-scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond7" type="Sprite2D" parent="Node"]
@@ -449,7 +442,6 @@ texture = ExtResource("8_a8lys")
 [node name="BeamBloodCheckered22" type="Sprite2D" parent="Node"]
 position = Vector2(3769, -2158)
 rotation = -1.56898
-scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond9" type="Sprite2D" parent="Node"]
@@ -695,7 +687,6 @@ texture = ExtResource("8_a8lys")
 [node name="BeamBloodCheckered23" type="Sprite2D" parent="Node"]
 position = Vector2(8603, -330)
 rotation = -1.56898
-scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond19" type="Sprite2D" parent="Node"]
@@ -721,7 +712,6 @@ texture = ExtResource("9_8q11d")
 [node name="BeamBloodCheckered26" type="Sprite2D" parent="Node"]
 position = Vector2(6088, -327)
 rotation = -1.56898
-scale = Vector2(1, 1)
 texture = ExtResource("7_1xdyj")
 
 [node name="CornerDiamond21" type="Sprite2D" parent="Node"]
