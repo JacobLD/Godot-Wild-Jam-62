@@ -460,12 +460,13 @@ texture = ExtResource("19_q8chy")
 flip_h = true
 
 [node name="FieldBranchSmall2" type="Sprite2D" parent="sprites"]
-position = Vector2(2102, -2047)
+position = Vector2(1979, -2052.5)
+scale = Vector2(0.966258, 1)
 texture = ExtResource("19_q8chy")
 flip_h = true
 
 [node name="FieldBranchHor4" type="Sprite2D" parent="sprites"]
-position = Vector2(1797, -2053)
+position = Vector2(1691, -2054.5)
 texture = ExtResource("16_kxabs")
 
 [node name="FieldBranchHor5" type="Sprite2D" parent="sprites"]
@@ -784,7 +785,7 @@ type = 2
 
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="collisionpolygons/Floor25"]
 position = Vector2(-221, 72)
-polygon = PackedVector2Array(237, -2429.5, 284, -2425.5, 300, -2158.5, 369, -2115.5, 1957, -2110.5, 2126, -2067.5, 2328, -2070.5, 2120, -1998.5, 359, -1979.5, 233, -1945.5, 202, -1779.5, 145, -1858.5, 165, -2428.5)
+polygon = PackedVector2Array(237, -2429.5, 284, -2425.5, 300, -2158.5, 369, -2115.5, 1854, -2115.5, 1983, -2078.5, 2195, -2073.5, 1981, -1992.5, 359, -1979.5, 233, -1945.5, 202, -1779.5, 145, -1858.5, 165, -2428.5)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisionpolygons/Floor25"]
 position = Vector2(-221, 72)

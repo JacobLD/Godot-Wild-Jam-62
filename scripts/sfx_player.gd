@@ -21,6 +21,8 @@ func on_block(pos = self.position):
 func on_damage(pos = self.position):
 	_play_random_child_at(pos, $Damage)
 
+func on_dodge(pos = self.position):
+	_play_random_child_at(pos, $Dodge)
 
 func on_hit(pos = self.position):
 	_play_random_child_at(pos, $Hit)

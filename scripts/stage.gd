@@ -21,3 +21,11 @@ func on_added():
 	get_viewport().get_camera_2d().limit_right = camera_limit_right
 	get_viewport().get_camera_2d().limit_top = camera_limit_top
 	spawn_point_node = get_node(spawn_point)
+
+
+func _ready():
+	GameManager.getPlayer().died.connect(on_respawn)
+
+
+func on_respawn():
+	GameManager.getPlayer().respawn(get_node(respawn_point))

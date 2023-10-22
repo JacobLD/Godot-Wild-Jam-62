@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://tvxqrrabb1de"]
+[gd_scene load_steps=43 format=3 uid="uid://tvxqrrabb1de"]
 
 [ext_resource type="Script" path="res://scripts/sfx_player.gd" id="1_0qgrq"]
 [ext_resource type="AudioStream" uid="uid://fnrsgcs0wn1a" path="res://assets/audio/footsteps/grass/footstep_grass1.wav" id="2_x76hd"]
@@ -41,6 +41,7 @@
 [ext_resource type="AudioStream" uid="uid://2841c3ahbwih" path="res://assets/audio/hit/sfx_hit2.wav" id="39_eb30k"]
 [ext_resource type="AudioStream" uid="uid://ddcvmm5vhm8e5" path="res://assets/audio/hit/sfx_hit3.wav" id="40_hkjl3"]
 [ext_resource type="AudioStream" uid="uid://dmwaxib3g0l3q" path="res://assets/audio/hit/sfx_hit4.wav" id="41_qwqyg"]
+[ext_resource type="AudioStream" uid="uid://7bedp36v7t61" path="res://assets/audio/actives/sfx_dodge.wav" id="42_260d4"]
 
 [node name="sfx_player" type="Node2D"]
 script = ExtResource("1_0qgrq")
@@ -227,4 +228,10 @@ bus = &"SFX"
 
 [node name="4" type="AudioStreamPlayer2D" parent="Damage"]
 stream = ExtResource("41_qwqyg")
+bus = &"SFX"
+
+[node name="Dodge" type="Node2D" parent="."]
+
+[node name="1" type="AudioStreamPlayer2D" parent="Dodge"]
+stream = ExtResource("42_260d4")
 bus = &"SFX"

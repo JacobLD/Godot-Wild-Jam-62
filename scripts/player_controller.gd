@@ -90,6 +90,8 @@ var _input_controller : InputController
 
 @export var is_player_and_not_clone : bool = false
 
+var done_dying = true
+
 func _ready():
 	if is_player_and_not_clone:
 		init_values()
@@ -132,7 +134,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	var direction = _input_controller.input_direction()
-	if abs(direction) > 0:
+	if abs(direction) > 0 and !controls_locked:
 		if direction != _current_direction:
 			_current_direction = direction
 			apply_scale(Vector2(-1, 1))
@@ -357,9 +359,11 @@ func add_health(amount : float):
 	print("New health" , health)
 	if health > max_health:
 		health = max_health
+	if health < 0:
+		health = 0
 	
-	if health <= 0:
-		died.emit()
+	if health == 0:
+		on_death()
 		#do something here
 	
 	current_health_changed.emit(health)
@@ -380,13 +384,18 @@ func _on_active_timer():
 
 
 func on_take_damage(amount, source):
+	
+	if randf() < dodge_chance:
+		$sfx_player.on_dodge()
+		return
+	
 	if _blocking and state != State.ATTACKING:
 		$sfx_player.on_parry()
 	else:
 		$sfx_player.on_damage()
 		add_health(-amount)
 	
-	var dv_hit = 800
+	var dv_hit = 1600 + source.str_mult * 100
 	
 	if source.global_position.x > global_position.x:
 		velocity.x -= dv_hit
@@ -394,3 +403,27 @@ func on_take_damage(amount, source):
 		velocity.x += dv_hit
 
 
+func on_death():
+	var death_animation_time = 1.0
+	$AnimationTree.active = false
+	controls_locked = true
+	if !is_player_and_not_clone:
+		#play animation
+		get_tree().create_timer(death_animation_time).timeout.connect(_on_death_complete_clone)
+	else:
+		#play animation
+		get_tree().create_timer(death_animation_time).timeout.connect(_on_death_complete_player)
+	
+
+func respawn(respawn_point : Node2D):
+	$AnimationTree.active = true
+	controls_locked = false
+	add_health(max_health)
+	global_position = respawn_point.global_position
+
+func _on_death_complete_player():
+	died.emit()
+
+func _on_death_complete_clone():
+	died.emit()
+	queue_free()

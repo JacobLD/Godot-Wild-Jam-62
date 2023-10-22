@@ -65,7 +65,7 @@ func _on_player_registered(player : PlayerController):
 
 func _on_player_max_hp_change(new_max, current_hp):
 	$Health_Bar_Background.size.x = new_max * _px_per_hp
-	$Label.text = str(current_hp)
+	_on_player_hp_change(current_hp)
 
 func _on_player_hp_change(current_hp):
 	$Health_Bar_Current.size.x = current_hp * _px_per_hp

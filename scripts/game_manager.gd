@@ -111,3 +111,9 @@ func _load_stage(stage : PackedScene):
 	old_stage.queue_free()
 	Parallax.start_over(new_stage.stage_time)
 	changing_stages = false
+
+
+func on_player_died():
+	
+	_player.done_dying = true
+	new_stage.respawn_player()
