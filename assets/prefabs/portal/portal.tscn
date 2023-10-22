@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://deqyr0ovlrvax"]
+[gd_scene load_steps=10 format=3 uid="uid://deqyr0ovlrvax"]
 
 [ext_resource type="Texture2D" uid="uid://bu7ynrxer8aim" path="res://assets/sprites/environment/ruins/arch.png" id="1_rjw8x"]
 [ext_resource type="Script" path="res://assets/prefabs/portal/portal.gd" id="2_372qj"]
 [ext_resource type="Texture2D" uid="uid://y8pfksbcskhw" path="res://assets/sprites/environment/ruins/portal.png" id="2_fm5ne"]
 [ext_resource type="Texture2D" uid="uid://cctg2vox7kn4i" path="res://assets/sprites/portal_glow.png" id="4_cgvci"]
+[ext_resource type="Texture2D" uid="uid://b0bctf7uvnlsb" path="res://assets/sprites/environment/ruins/stand.png" id="5_4sloi"]
+[ext_resource type="AudioStream" uid="uid://dl5dqk7n5rmeq" path="res://assets/audio/portal/sfx_portal.wav" id="6_r4t7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3b7uy"]
 size = Vector2(352, 496)
@@ -37,6 +39,20 @@ tracks/1/keys = {
 "method": &"on_completed"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ysvfs"]
 _data = {
@@ -68,6 +84,17 @@ modulate = Color(1, 1, 1, 0)
 z_index = 3
 position = Vector2(0, -16)
 texture = ExtResource("4_cgvci")
+
+[node name="Stand" type="Sprite2D" parent="."]
+position = Vector2(-139, 142)
+texture = ExtResource("5_4sloi")
+
+[node name="Stand2" type="Sprite2D" parent="."]
+position = Vector2(141, 142)
+texture = ExtResource("5_4sloi")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_r4t7x")
 
 [connection signal="body_entered" from="Arch/PortalArea" to="." method="_on_portal_entered"]
 [connection signal="body_exited" from="Arch/PortalArea" to="." method="_on_portal_exit"]

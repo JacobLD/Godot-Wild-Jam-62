@@ -583,14 +583,6 @@ texture = ExtResource("17_v1bg3")
 [node name="Portal" parent="back_env_sprites" instance=ExtResource("20_nejsx")]
 position = Vector2(1821, -302)
 
-[node name="Stand" type="Sprite2D" parent="back_env_sprites"]
-position = Vector2(1681, -164)
-texture = ExtResource("22_c3ca1")
-
-[node name="Stand2" type="Sprite2D" parent="back_env_sprites"]
-position = Vector2(1962, -165)
-texture = ExtResource("22_c3ca1")
-
 [node name="Stand3" type="Sprite2D" parent="back_env_sprites"]
 position = Vector2(2173, -164)
 texture = ExtResource("22_c3ca1")
