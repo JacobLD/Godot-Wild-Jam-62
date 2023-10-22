@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://2wf4qmpmphaq"]
+[gd_scene load_steps=34 format=3 uid="uid://2wf4qmpmphaq"]
 
 [ext_resource type="Script" path="res://assets/scenes/tutorial_island.gd" id="1_5htvt"]
 [ext_resource type="Texture2D" uid="uid://cuifi555bx7yk" path="res://assets/sprites/level_0-a_Notes.jpg" id="2_n5t5w"]
@@ -18,9 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://bg6xmi58xrd8h" path="res://assets/sprites/environment/branch/field_branch_Trunk_wall.png" id="15_kda4q"]
 [ext_resource type="Texture2D" uid="uid://bpndgm0vvslrm" path="res://assets/sprites/environment/branch/field_crop.png" id="16_vdm0g"]
 [ext_resource type="Texture2D" uid="uid://c0krkjei3nmrp" path="res://assets/sprites/environment/ruins/column.png" id="17_v1bg3"]
-[ext_resource type="Texture2D" uid="uid://y8pfksbcskhw" path="res://assets/sprites/environment/ruins/portal.png" id="18_ye8aa"]
 [ext_resource type="Texture2D" uid="uid://cldll3bkanx0b" path="res://assets/sprites/environment/ruins/ball.png" id="19_q7jfe"]
-[ext_resource type="Texture2D" uid="uid://bu7ynrxer8aim" path="res://assets/sprites/environment/ruins/arch.png" id="21_hxqpf"]
+[ext_resource type="PackedScene" uid="uid://deqyr0ovlrvax" path="res://assets/prefabs/portal/portal.tscn" id="20_nejsx"]
 [ext_resource type="Texture2D" uid="uid://b0bctf7uvnlsb" path="res://assets/sprites/environment/ruins/stand.png" id="22_c3ca1"]
 [ext_resource type="Texture2D" uid="uid://cjyx5udxd22j4" path="res://assets/sprites/environment/ruins/statue_pumpkin.png" id="23_43iud"]
 [ext_resource type="Texture2D" uid="uid://b7g0f1nxyappm" path="res://assets/sprites/keys/Keys_framed_a.png" id="24_siccg"]
@@ -47,15 +46,11 @@ size = Vector2(1066.68, 134)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhfsi"]
 size = Vector2(3520, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b7uy"]
-size = Vector2(352, 496)
-
 [node name="tutorial_island" type="Node2D"]
 script = ExtResource("1_5htvt")
 camera_limit_right = 3374
 camera_limit_top = -4405
 spawn_point = NodePath("SpawnPoint")
-stage_time = 15.0
 
 [node name="Level0-aNotes" type="Sprite2D" parent="."]
 visible = false
@@ -573,10 +568,6 @@ texture = ExtResource("16_vdm0g")
 position = Vector2(2605, -1959)
 texture = ExtResource("16_vdm0g")
 
-[node name="Portal" type="Sprite2D" parent="back_env_sprites"]
-position = Vector2(1822, -305)
-texture = ExtResource("18_ye8aa")
-
 [node name="Ball" type="Sprite2D" parent="back_env_sprites"]
 position = Vector2(1476, -653)
 texture = ExtResource("19_q7jfe")
@@ -589,9 +580,8 @@ texture = ExtResource("17_v1bg3")
 position = Vector2(1476, -409)
 texture = ExtResource("17_v1bg3")
 
-[node name="Arch" type="Sprite2D" parent="back_env_sprites"]
-position = Vector2(1823, -443)
-texture = ExtResource("21_hxqpf")
+[node name="Portal" parent="back_env_sprites" instance=ExtResource("20_nejsx")]
+position = Vector2(1821, -302)
 
 [node name="Stand" type="Sprite2D" parent="back_env_sprites"]
 position = Vector2(1681, -164)
@@ -650,14 +640,7 @@ texture = ExtResource("16_vdm0g")
 position = Vector2(1822, -602)
 texture = ExtResource("27_a8bdj")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1824, -298)
-shape = SubResource("RectangleShape2D_3b7uy")
-
 [node name="hourglass" parent="." instance=ExtResource("28_c0pb6")]
 position = Vector2(2780, -2828)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_portal_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_portal_exit"]
+[connection signal="time_to_go" from="back_env_sprites/Portal" to="." method="_on_portal_time_to_go"]
