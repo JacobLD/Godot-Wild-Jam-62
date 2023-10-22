@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk348tswnlbxq"]
+[gd_scene load_steps=39 format=3 uid="uid://dk348tswnlbxq"]
 
 [ext_resource type="Texture2D" uid="uid://bgex5g73g78vj" path="res://assets/sprites/level_2-a.jpg" id="1_vmctw"]
 [ext_resource type="Texture2D" uid="uid://d1q8c1o3fgfru" path="res://assets/sprites/environment/ruins/cube.png" id="2_q3c02"]
@@ -8,14 +8,141 @@
 [ext_resource type="Texture2D" uid="uid://b0bctf7uvnlsb" path="res://assets/sprites/environment/ruins/stand.png" id="6_wumqo"]
 [ext_resource type="Texture2D" uid="uid://bu7ynrxer8aim" path="res://assets/sprites/environment/ruins/arch.png" id="7_6cdn2"]
 [ext_resource type="Texture2D" uid="uid://c0krkjei3nmrp" path="res://assets/sprites/environment/ruins/column.png" id="8_fpvqb"]
+[ext_resource type="Texture2D" uid="uid://b6iu1o7c37nor" path="res://assets/sprites/environment/ruins/beam.png" id="9_ea3ha"]
+[ext_resource type="Texture2D" uid="uid://4dlncoohkx1v" path="res://assets/sprites/environment/ruins/foot.png" id="10_men8j"]
+[ext_resource type="Texture2D" uid="uid://y8pfksbcskhw" path="res://assets/sprites/environment/ruins/portal.png" id="11_d5a66"]
+[ext_resource type="Texture2D" uid="uid://nyqqlngldegp" path="res://assets/sprites/environment/level_black_frame_tileable.png" id="12_fgylc"]
+[ext_resource type="Texture2D" uid="uid://cjyx5udxd22j4" path="res://assets/sprites/environment/ruins/statue_pumpkin.png" id="12_xmgpk"]
+[ext_resource type="Texture2D" uid="uid://buhy75j743bb4" path="res://assets/sprites/environment/ruins/beam_blood_checkered.png" id="14_fljhx"]
+[ext_resource type="Texture2D" uid="uid://b8o2lfglxhoww" path="res://assets/sprites/environment/ruins/beam_checkered.png" id="15_vveeq"]
+[ext_resource type="Texture2D" uid="uid://daqg1rdlr0xo" path="res://assets/sprites/environment/branch/field_tuto_a-d.png" id="16_iww7l"]
+[ext_resource type="Texture2D" uid="uid://dn3ci02rlkdkg" path="res://assets/sprites/environment/ruins/stella_stained.png" id="17_xxqxa"]
+[ext_resource type="Texture2D" uid="uid://ca33wvtcbrcbx" path="res://assets/sprites/environment/ruins/fountain_stained.png" id="18_lph8x"]
+[ext_resource type="Texture2D" uid="uid://b1nx200jqp76l" path="res://assets/sprites/environment/ruins/liquid_flow.png" id="19_f71pg"]
+[ext_resource type="Texture2D" uid="uid://db7lcrru7y0yy" path="res://assets/sprites/environment/ruins/stella.png" id="20_2qfq5"]
+[ext_resource type="Texture2D" uid="uid://b5yyarmbilqlk" path="res://assets/sprites/environment/ruins/liquid_pool.png" id="21_v7gwm"]
+[ext_resource type="Script" path="res://assets/prefabs/world/ground/ground.gd" id="22_iys1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ckj"]
+size = Vector2(4822, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_835vk"]
+size = Vector2(18, 4855)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfpxk"]
+size = Vector2(206, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5m8l"]
+size = Vector2(3288, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqp1d"]
+size = Vector2(69, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5g4g"]
+size = Vector2(2242, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8cd5"]
+size = Vector2(61, 1129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8admu"]
+size = Vector2(1186.5, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txwu7"]
+size = Vector2(1194, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wucl"]
+size = Vector2(1821, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1abdj"]
+size = Vector2(426, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ic81"]
+size = Vector2(74, 1432)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4str0"]
+size = Vector2(28, 1658)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a55xl"]
+size = Vector2(481, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf5py"]
+size = Vector2(66, 422)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7g7s"]
+size = Vector2(66, 990)
 
 [node name="level2a" type="Node2D"]
 
 [node name="Level2-a" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(2625, -2486)
 texture = ExtResource("1_vmctw")
 
 [node name="sprites" type="Node" parent="."]
+
+[node name="StellaStained" type="Sprite2D" parent="sprites"]
+position = Vector2(819, -2778)
+texture = ExtResource("17_xxqxa")
+
+[node name="FountainStained" type="Sprite2D" parent="sprites"]
+position = Vector2(817, -2798)
+texture = ExtResource("18_lph8x")
+
+[node name="LiquidFlow" type="Sprite2D" parent="sprites"]
+position = Vector2(811, -2701)
+texture = ExtResource("19_f71pg")
+
+[node name="StellaStained2" type="Sprite2D" parent="sprites"]
+position = Vector2(1239, -2778)
+texture = ExtResource("17_xxqxa")
+
+[node name="FountainStained2" type="Sprite2D" parent="sprites"]
+position = Vector2(1237, -2798)
+texture = ExtResource("18_lph8x")
+
+[node name="LiquidFlow2" type="Sprite2D" parent="sprites"]
+position = Vector2(1231, -2701)
+texture = ExtResource("19_f71pg")
+
+[node name="Stella5" type="Sprite2D" parent="sprites"]
+position = Vector2(1448, -2779)
+texture = ExtResource("20_2qfq5")
+
+[node name="Stella6" type="Sprite2D" parent="sprites"]
+position = Vector2(1029, -2778)
+texture = ExtResource("20_2qfq5")
+
+[node name="StellaStained4" type="Sprite2D" parent="sprites"]
+position = Vector2(2082, -2776)
+texture = ExtResource("17_xxqxa")
+
+[node name="FountainStained4" type="Sprite2D" parent="sprites"]
+position = Vector2(2078, -2799)
+texture = ExtResource("18_lph8x")
+
+[node name="LiquidFlow4" type="Sprite2D" parent="sprites"]
+position = Vector2(2072, -2702)
+texture = ExtResource("19_f71pg")
+
+[node name="StellaStained5" type="Sprite2D" parent="sprites"]
+position = Vector2(2499, -2775)
+texture = ExtResource("17_xxqxa")
+
+[node name="FountainStained5" type="Sprite2D" parent="sprites"]
+position = Vector2(2496, -2799)
+texture = ExtResource("18_lph8x")
+
+[node name="LiquidFlow5" type="Sprite2D" parent="sprites"]
+position = Vector2(2490, -2702)
+texture = ExtResource("19_f71pg")
+
+[node name="Stella" type="Sprite2D" parent="sprites"]
+position = Vector2(2708, -2777)
+texture = ExtResource("20_2qfq5")
+
+[node name="Stella2" type="Sprite2D" parent="sprites"]
+position = Vector2(2290, -2776)
+texture = ExtResource("20_2qfq5")
 
 [node name="Cube" type="Sprite2D" parent="sprites"]
 position = Vector2(165, -729)
@@ -36,6 +163,22 @@ flip_h = true
 position = Vector2(174, -1083)
 texture = ExtResource("2_q3c02")
 flip_h = true
+
+[node name="Cube8" type="Sprite2D" parent="sprites"]
+position = Vector2(2215, -460)
+texture = ExtResource("2_q3c02")
+
+[node name="Cube16" type="Sprite2D" parent="sprites"]
+position = Vector2(4379, -379)
+texture = ExtResource("2_q3c02")
+
+[node name="Cube17" type="Sprite2D" parent="sprites"]
+position = Vector2(4262, -729)
+texture = ExtResource("2_q3c02")
+
+[node name="Cube18" type="Sprite2D" parent="sprites"]
+position = Vector2(4305, -1083)
+texture = ExtResource("2_q3c02")
 
 [node name="Cube5" type="Sprite2D" parent="sprites"]
 position = Vector2(141, -2129)
@@ -62,8 +205,46 @@ position = Vector2(146, -3530)
 texture = ExtResource("2_q3c02")
 flip_h = true
 
+[node name="Cube13" type="Sprite2D" parent="sprites"]
+position = Vector2(185, -3879)
+texture = ExtResource("2_q3c02")
+flip_h = true
+
+[node name="Cube14" type="Sprite2D" parent="sprites"]
+position = Vector2(734, -4366)
+rotation = 1.76493
+texture = ExtResource("2_q3c02")
+flip_h = true
+
+[node name="Cube15" type="Sprite2D" parent="sprites"]
+position = Vector2(633, -3956)
+rotation = 2.54125
+texture = ExtResource("2_q3c02")
+flip_h = true
+
+[node name="Cube19" type="Sprite2D" parent="sprites"]
+position = Vector2(2691, -4529)
+rotation = 2.41587
+texture = ExtResource("2_q3c02")
+flip_h = true
+
 [node name="Cube12" type="Sprite2D" parent="sprites"]
 position = Vector2(246, -4229)
+texture = ExtResource("2_q3c02")
+flip_h = true
+
+[node name="Cube20" type="Sprite2D" parent="sprites"]
+position = Vector2(3218, -4380)
+texture = ExtResource("2_q3c02")
+flip_h = true
+
+[node name="Cube21" type="Sprite2D" parent="sprites"]
+position = Vector2(3712, -4384)
+texture = ExtResource("2_q3c02")
+flip_h = true
+
+[node name="Cube22" type="Sprite2D" parent="sprites"]
+position = Vector2(4202, -4380)
 texture = ExtResource("2_q3c02")
 flip_h = true
 
@@ -96,6 +277,41 @@ flip_h = true
 position = Vector2(757, -1174)
 texture = ExtResource("4_2ufkn")
 
+[node name="Beam" type="Sprite2D" parent="sprites"]
+position = Vector2(600, -3503)
+rotation = -0.990474
+texture = ExtResource("9_ea3ha")
+
+[node name="Beam2" type="Sprite2D" parent="sprites"]
+position = Vector2(487, -4232)
+rotation = -1.30296
+texture = ExtResource("9_ea3ha")
+
+[node name="Ball3" type="Sprite2D" parent="sprites"]
+position = Vector2(2498, -790)
+texture = ExtResource("5_cmlcg")
+
+[node name="Ball4" type="Sprite2D" parent="sprites"]
+position = Vector2(3138, -481)
+texture = ExtResource("5_cmlcg")
+
+[node name="Ball5" type="Sprite2D" parent="sprites"]
+position = Vector2(2220, -921)
+texture = ExtResource("5_cmlcg")
+
+[node name="Foot" type="Sprite2D" parent="sprites"]
+position = Vector2(2229, -246)
+texture = ExtResource("10_men8j")
+flip_h = true
+
+[node name="Portal" type="Sprite2D" parent="sprites"]
+position = Vector2(2850, -438)
+texture = ExtResource("11_d5a66")
+
+[node name="Portal2" type="Sprite2D" parent="sprites"]
+position = Vector2(2850, -438)
+texture = ExtResource("11_d5a66")
+
 [node name="CornerDiamond4" type="Sprite2D" parent="sprites"]
 position = Vector2(897, -1175)
 texture = ExtResource("4_2ufkn")
@@ -122,6 +338,150 @@ texture = ExtResource("4_2ufkn")
 position = Vector2(897, -1175)
 texture = ExtResource("4_2ufkn")
 
+[node name="CubeSmallCheckered8" type="Sprite2D" parent="sprites"]
+position = Vector2(2989, -2570)
+rotation = 1.56714
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond14" type="Sprite2D" parent="sprites"]
+position = Vector2(2919, -2570)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond15" type="Sprite2D" parent="sprites"]
+position = Vector2(3059, -2571)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered10" type="Sprite2D" parent="sprites"]
+position = Vector2(2494, -3121)
+rotation = 1.56714
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond25" type="Sprite2D" parent="sprites"]
+position = Vector2(2424, -3121)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond26" type="Sprite2D" parent="sprites"]
+position = Vector2(2564, -3122)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered11" type="Sprite2D" parent="sprites"]
+position = Vector2(2286, -3406)
+rotation = 1.56714
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond27" type="Sprite2D" parent="sprites"]
+position = Vector2(2216, -3406)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond28" type="Sprite2D" parent="sprites"]
+position = Vector2(2356, -3407)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered12" type="Sprite2D" parent="sprites"]
+position = Vector2(1033, -2702)
+rotation = 1.56714
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond37" type="Sprite2D" parent="sprites"]
+position = Vector2(963, -2702)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond38" type="Sprite2D" parent="sprites"]
+position = Vector2(1103, -2703)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered14" type="Sprite2D" parent="sprites"]
+position = Vector2(2507, -2700)
+rotation = 1.56714
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond41" type="Sprite2D" parent="sprites"]
+position = Vector2(2437, -2700)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond42" type="Sprite2D" parent="sprites"]
+position = Vector2(2577, -2701)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered9" type="Sprite2D" parent="sprites"]
+position = Vector2(4046, -2140)
+rotation = 1.56714
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond16" type="Sprite2D" parent="sprites"]
+position = Vector2(3976, -2140)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond17" type="Sprite2D" parent="sprites"]
+position = Vector2(4116, -2141)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond18" type="Sprite2D" parent="sprites"]
+position = Vector2(4188, -2563)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond20" type="Sprite2D" parent="sprites"]
+position = Vector2(4607, -2563)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond19" type="Sprite2D" parent="sprites"]
+position = Vector2(4188, -1586)
+texture = ExtResource("4_2ufkn")
+
+[node name="Column" type="Sprite2D" parent="sprites"]
+position = Vector2(407, -1114)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand6" type="Sprite2D" parent="sprites"]
+position = Vector2(404, -2126)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand7" type="Sprite2D" parent="sprites"]
+position = Vector2(405, -1987)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column2" type="Sprite2D" parent="sprites"]
+position = Vector2(407, -1743)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand8" type="Sprite2D" parent="sprites"]
+position = Vector2(411, -2760)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand9" type="Sprite2D" parent="sprites"]
+position = Vector2(412, -2621)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column3" type="Sprite2D" parent="sprites"]
+position = Vector2(414, -2377)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand10" type="Sprite2D" parent="sprites"]
+position = Vector2(397, -3384)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand11" type="Sprite2D" parent="sprites"]
+position = Vector2(406, -3248)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column4" type="Sprite2D" parent="sprites"]
+position = Vector2(408, -3004)
+texture = ExtResource("8_fpvqb")
+
+[node name="Column5" type="Sprite2D" parent="sprites"]
+position = Vector2(413, -3635)
+rotation = 0.0559985
+texture = ExtResource("8_fpvqb")
+
 [node name="Ball" type="Sprite2D" parent="sprites"]
 position = Vector2(681, -266)
 texture = ExtResource("5_cmlcg")
@@ -134,12 +494,232 @@ texture = ExtResource("6_wumqo")
 position = Vector2(414, -875)
 texture = ExtResource("6_wumqo")
 
+[node name="Column6" type="Sprite2D" parent="sprites"]
+position = Vector2(2502, -550)
+texture = ExtResource("8_fpvqb")
+
+[node name="Column7" type="Sprite2D" parent="sprites"]
+position = Vector2(3382, -381)
+rotation = -0.86341
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand13" type="Sprite2D" parent="sprites"]
+position = Vector2(2509, -311)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand16" type="Sprite2D" parent="sprites"]
+position = Vector2(2711, -297)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand14" type="Sprite2D" parent="sprites"]
+position = Vector2(2989, -309)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand15" type="Sprite2D" parent="sprites"]
+position = Vector2(3198, -309)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand12" type="Sprite2D" parent="sprites"]
+position = Vector2(2210, -747)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand4" type="Sprite2D" parent="sprites"]
+position = Vector2(404, -1497)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand5" type="Sprite2D" parent="sprites"]
+position = Vector2(405, -1358)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column8" type="Sprite2D" parent="sprites"]
+position = Vector2(1251, -1968)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand17" type="Sprite2D" parent="sprites"]
+position = Vector2(1250, -1721)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand18" type="Sprite2D" parent="sprites"]
+position = Vector2(1249, -2210)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column9" type="Sprite2D" parent="sprites"]
+position = Vector2(1603, -1967)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand19" type="Sprite2D" parent="sprites"]
+position = Vector2(1601, -1722)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand20" type="Sprite2D" parent="sprites"]
+position = Vector2(1601, -2209)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column10" type="Sprite2D" parent="sprites"]
+position = Vector2(1953, -1973)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand21" type="Sprite2D" parent="sprites"]
+position = Vector2(1951, -1721)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand22" type="Sprite2D" parent="sprites"]
+position = Vector2(1951, -2215)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column11" type="Sprite2D" parent="sprites"]
+position = Vector2(2301, -1971)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand23" type="Sprite2D" parent="sprites"]
+position = Vector2(2299, -1721)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand24" type="Sprite2D" parent="sprites"]
+position = Vector2(2299, -2213)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column12" type="Sprite2D" parent="sprites"]
+position = Vector2(2652, -1969)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand25" type="Sprite2D" parent="sprites"]
+position = Vector2(2650, -1720)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand26" type="Sprite2D" parent="sprites"]
+position = Vector2(2650, -2211)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column13" type="Sprite2D" parent="sprites"]
+position = Vector2(2989, -3861)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand30" type="Sprite2D" parent="sprites"]
+position = Vector2(2987, -3612)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand31" type="Sprite2D" parent="sprites"]
+position = Vector2(2987, -4103)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column15" type="Sprite2D" parent="sprites"]
+position = Vector2(3467, -3861)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand35" type="Sprite2D" parent="sprites"]
+position = Vector2(3465, -3612)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand36" type="Sprite2D" parent="sprites"]
+position = Vector2(3465, -4103)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column16" type="Sprite2D" parent="sprites"]
+position = Vector2(3969, -3861)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand37" type="Sprite2D" parent="sprites"]
+position = Vector2(3967, -3612)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand38" type="Sprite2D" parent="sprites"]
+position = Vector2(3967, -4103)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column17" type="Sprite2D" parent="sprites"]
+position = Vector2(4442, -3861)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand39" type="Sprite2D" parent="sprites"]
+position = Vector2(4440, -3612)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand40" type="Sprite2D" parent="sprites"]
+position = Vector2(4440, -4103)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
+[node name="Column14" type="Sprite2D" parent="sprites"]
+position = Vector2(2989, -2952)
+texture = ExtResource("8_fpvqb")
+
+[node name="Stand32" type="Sprite2D" parent="sprites"]
+position = Vector2(2987, -2703)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand34" type="Sprite2D" parent="sprites"]
+position = Vector2(2995, -3334)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand33" type="Sprite2D" parent="sprites"]
+position = Vector2(2987, -3194)
+texture = ExtResource("6_wumqo")
+flip_v = true
+
 [node name="Stand2" type="Sprite2D" parent="sprites"]
 position = Vector2(264, -310)
 texture = ExtResource("6_wumqo")
 
+[node name="StatuePumpkin" type="Sprite2D" parent="sprites"]
+position = Vector2(2843, -1024)
+texture = ExtResource("12_xmgpk")
+
+[node name="LevelBlackFrameTileable" type="Sprite2D" parent="sprites"]
+position = Vector2(2631.5, -33.25)
+scale = Vector2(1.3414, 0.97644)
+texture = ExtResource("12_fgylc")
+flip_v = true
+
+[node name="LevelBlackFrameTileable4" type="Sprite2D" parent="sprites"]
+position = Vector2(2627, -4894)
+scale = Vector2(1.3414, 0.97644)
+texture = ExtResource("12_fgylc")
+
+[node name="LevelBlackFrameTileable2" type="Sprite2D" parent="sprites"]
+position = Vector2(107.694, -2481.27)
+rotation = -1.57711
+scale = Vector2(1.27798, 1.24472)
+texture = ExtResource("12_fgylc")
+
+[node name="LevelBlackFrameTileable3" type="Sprite2D" parent="sprites"]
+position = Vector2(5175.15, -2471.45)
+rotation = -1.57711
+scale = Vector2(1.28672, 1.48122)
+texture = ExtResource("12_fgylc")
+flip_v = true
+
 [node name="Arch" type="Sprite2D" parent="sprites"]
 position = Vector2(408, -593)
+texture = ExtResource("7_6cdn2")
+
+[node name="Stand27" type="Sprite2D" parent="sprites"]
+position = Vector2(1237, -3957)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand29" type="Sprite2D" parent="sprites"]
+position = Vector2(1096, -4518)
+texture = ExtResource("6_wumqo")
+
+[node name="Stand28" type="Sprite2D" parent="sprites"]
+position = Vector2(959, -3959)
+texture = ExtResource("6_wumqo")
+
+[node name="Arch3" type="Sprite2D" parent="sprites"]
+position = Vector2(1103, -4242)
+texture = ExtResource("7_6cdn2")
+
+[node name="Arch2" type="Sprite2D" parent="sprites"]
+position = Vector2(2843, -583)
 texture = ExtResource("7_6cdn2")
 
 [node name="CubeSmallCheckered4" type="Sprite2D" parent="sprites"]
@@ -155,11 +735,728 @@ texture = ExtResource("4_2ufkn")
 position = Vector2(967.5, -1581)
 texture = ExtResource("4_2ufkn")
 
+[node name="Ball2" type="Sprite2D" parent="sprites"]
+position = Vector2(455, -3874)
+texture = ExtResource("5_cmlcg")
+
+[node name="Ball6" type="Sprite2D" parent="sprites"]
+position = Vector2(1098, -4692)
+texture = ExtResource("5_cmlcg")
+
+[node name="Ball7" type="Sprite2D" parent="sprites"]
+position = Vector2(2513, -4680)
+texture = ExtResource("5_cmlcg")
+
+[node name="Ball8" type="Sprite2D" parent="sprites"]
+position = Vector2(2985, -4589)
+texture = ExtResource("5_cmlcg")
+
+[node name="Ball9" type="Sprite2D" parent="sprites"]
+position = Vector2(3472, -4564)
+texture = ExtResource("5_cmlcg")
+
+[node name="Ball10" type="Sprite2D" parent="sprites"]
+position = Vector2(3947, -4568)
+texture = ExtResource("5_cmlcg")
+
+[node name="BeamBloodCheckered" type="Sprite2D" parent="sprites"]
+position = Vector2(1178, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered2" type="Sprite2D" parent="sprites"]
+position = Vector2(1528, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered3" type="Sprite2D" parent="sprites"]
+position = Vector2(1878, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered4" type="Sprite2D" parent="sprites"]
+position = Vector2(2228, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="CornerDiamond33" type="Sprite2D" parent="sprites"]
+position = Vector2(967.5, -1581)
+texture = ExtResource("4_2ufkn")
+
+[node name="BeamBloodCheckered10" type="Sprite2D" parent="sprites"]
+position = Vector2(1178, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered11" type="Sprite2D" parent="sprites"]
+position = Vector2(1528, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered12" type="Sprite2D" parent="sprites"]
+position = Vector2(1878, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered13" type="Sprite2D" parent="sprites"]
+position = Vector2(2228, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered5" type="Sprite2D" parent="sprites"]
+position = Vector2(2578, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="CornerDiamond34" type="Sprite2D" parent="sprites"]
+position = Vector2(2847, -3472)
+texture = ExtResource("4_2ufkn")
+
+[node name="BeamBloodCheckered14" type="Sprite2D" parent="sprites"]
+position = Vector2(3057.5, -3472)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered15" type="Sprite2D" parent="sprites"]
+position = Vector2(3407.5, -3472)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered16" type="Sprite2D" parent="sprites"]
+position = Vector2(3757.5, -3472)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered17" type="Sprite2D" parent="sprites"]
+position = Vector2(4107.5, -3472)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered18" type="Sprite2D" parent="sprites"]
+position = Vector2(4457.5, -3472)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered6" type="Sprite2D" parent="sprites"]
+position = Vector2(2928, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered7" type="Sprite2D" parent="sprites"]
+position = Vector2(3278, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered8" type="Sprite2D" parent="sprites"]
+position = Vector2(3628, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamBloodCheckered9" type="Sprite2D" parent="sprites"]
+position = Vector2(3978, -1581)
+texture = ExtResource("14_fljhx")
+
+[node name="BeamCheckered" type="Sprite2D" parent="sprites"]
+position = Vector2(4188, -1793)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered2" type="Sprite2D" parent="sprites"]
+position = Vector2(4187, -2143)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered3" type="Sprite2D" parent="sprites"]
+position = Vector2(4189, -2355)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered5" type="Sprite2D" parent="sprites"]
+position = Vector2(4609, -2772)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered4" type="Sprite2D" parent="sprites"]
+position = Vector2(4398, -2563)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered28" type="Sprite2D" parent="sprites"]
+position = Vector2(2639, -2355)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered29" type="Sprite2D" parent="sprites"]
+position = Vector2(2289, -2355)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered30" type="Sprite2D" parent="sprites"]
+position = Vector2(1940, -2354)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered31" type="Sprite2D" parent="sprites"]
+position = Vector2(1589, -2354)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered32" type="Sprite2D" parent="sprites"]
+position = Vector2(1240, -2356)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered33" type="Sprite2D" parent="sprites"]
+position = Vector2(891, -2353)
+texture = ExtResource("15_vveeq")
+
+[node name="CornerDiamond29" type="Sprite2D" parent="sprites"]
+position = Vector2(811, -3819)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond30" type="Sprite2D" parent="sprites"]
+position = Vector2(1929, -3818)
+texture = ExtResource("4_2ufkn")
+
+[node name="BeamCheckered16" type="Sprite2D" parent="sprites"]
+position = Vector2(1720, -3818)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered17" type="Sprite2D" parent="sprites"]
+position = Vector2(1371, -3818)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered18" type="Sprite2D" parent="sprites"]
+position = Vector2(1021, -3818)
+texture = ExtResource("15_vveeq")
+
+[node name="CornerDiamond31" type="Sprite2D" parent="sprites"]
+position = Vector2(1300, -4593)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond32" type="Sprite2D" parent="sprites"]
+position = Vector2(2418, -4592)
+texture = ExtResource("4_2ufkn")
+
+[node name="BeamCheckered19" type="Sprite2D" parent="sprites"]
+position = Vector2(2209, -4592)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered20" type="Sprite2D" parent="sprites"]
+position = Vector2(1860, -4592)
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered21" type="Sprite2D" parent="sprites"]
+position = Vector2(1510, -4592)
+texture = ExtResource("15_vveeq")
+
+[node name="CornerDiamond21" type="Sprite2D" parent="sprites"]
+position = Vector2(4607, -2982.98)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond22" type="Sprite2D" parent="sprites"]
+position = Vector2(5026, -2982.98)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond23" type="Sprite2D" parent="sprites"]
+position = Vector2(4668, -3474)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond24" type="Sprite2D" parent="sprites"]
+position = Vector2(5023, -4589)
+texture = ExtResource("4_2ufkn")
+
+[node name="BeamCheckered6" type="Sprite2D" parent="sprites"]
+position = Vector2(5028, -3191.98)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered8" type="Sprite2D" parent="sprites"]
+position = Vector2(5028, -3541)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered9" type="Sprite2D" parent="sprites"]
+position = Vector2(5028.08, -3887.97)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered10" type="Sprite2D" parent="sprites"]
+position = Vector2(5028.08, -4236.98)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered12" type="Sprite2D" parent="sprites"]
+position = Vector2(2428.08, -3335.98)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered13" type="Sprite2D" parent="sprites"]
+position = Vector2(2428.08, -3685)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered14" type="Sprite2D" parent="sprites"]
+position = Vector2(2428.16, -4031.97)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered15" type="Sprite2D" parent="sprites"]
+position = Vector2(2428.16, -4380.98)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered11" type="Sprite2D" parent="sprites"]
+position = Vector2(5028, -4385)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered22" type="Sprite2D" parent="sprites"]
+position = Vector2(2849, -2561)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered23" type="Sprite2D" parent="sprites"]
+position = Vector2(2849.08, -2907.97)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered24" type="Sprite2D" parent="sprites"]
+position = Vector2(2849.08, -3256.98)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered7" type="Sprite2D" parent="sprites"]
+position = Vector2(4817, -2982.98)
+texture = ExtResource("15_vveeq")
+
+[node name="Beam3" type="Sprite2D" parent="sprites"]
+position = Vector2(2642, -4250)
+texture = ExtResource("9_ea3ha")
+
 [node name="CubeSmallCheckered5" type="Sprite2D" parent="sprites"]
 position = Vector2(967.5, -1651)
 texture = ExtResource("3_w8kg5")
 flip_h = true
 
-[node name="Column" type="Sprite2D" parent="."]
-position = Vector2(405, -1113)
-texture = ExtResource("8_fpvqb")
+[node name="CornerDiamond43" type="Sprite2D" parent="sprites"]
+position = Vector2(1555.5, -3540)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond44" type="Sprite2D" parent="sprites"]
+position = Vector2(1555.5, -3400)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered15" type="Sprite2D" parent="sprites"]
+position = Vector2(1555.5, -3470)
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond45" type="Sprite2D" parent="sprites"]
+position = Vector2(3767.5, -3178)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond46" type="Sprite2D" parent="sprites"]
+position = Vector2(3767.5, -3038)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered16" type="Sprite2D" parent="sprites"]
+position = Vector2(3767.5, -3108)
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond11" type="Sprite2D" parent="sprites"]
+position = Vector2(2849.5, -2357)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond35" type="Sprite2D" parent="sprites"]
+position = Vector2(678, -3464)
+texture = ExtResource("4_2ufkn")
+
+[node name="BeamCheckered25" type="Sprite2D" parent="sprites"]
+position = Vector2(679, -2559)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered26" type="Sprite2D" parent="sprites"]
+position = Vector2(679.081, -2905.97)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="BeamCheckered27" type="Sprite2D" parent="sprites"]
+position = Vector2(679.081, -3254.98)
+rotation = -1.57126
+texture = ExtResource("15_vveeq")
+
+[node name="CornerDiamond36" type="Sprite2D" parent="sprites"]
+position = Vector2(679.5, -2355)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond12" type="Sprite2D" parent="sprites"]
+position = Vector2(2849.5, -2217)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered6" type="Sprite2D" parent="sprites"]
+position = Vector2(2849.5, -2287)
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond13" type="Sprite2D" parent="sprites"]
+position = Vector2(963.5, -2215)
+texture = ExtResource("4_2ufkn")
+
+[node name="FieldTutoA-d" type="Sprite2D" parent="sprites"]
+position = Vector2(285, -4336)
+texture = ExtResource("16_iww7l")
+
+[node name="StellaStained3" type="Sprite2D" parent="sprites"]
+position = Vector2(1660, -2779)
+texture = ExtResource("17_xxqxa")
+
+[node name="FountainStained3" type="Sprite2D" parent="sprites"]
+position = Vector2(1658, -2799)
+texture = ExtResource("18_lph8x")
+
+[node name="LiquidFlow3" type="Sprite2D" parent="sprites"]
+position = Vector2(1652, -2702)
+texture = ExtResource("19_f71pg")
+
+[node name="Stella3" type="Sprite2D" parent="sprites"]
+position = Vector2(1869, -2772)
+texture = ExtResource("20_2qfq5")
+
+[node name="Stella4" type="Sprite2D" parent="sprites"]
+position = Vector2(1454, -2783)
+texture = ExtResource("20_2qfq5")
+
+[node name="CubeSmallCheckered13" type="Sprite2D" parent="sprites"]
+position = Vector2(1915, -2702)
+rotation = 1.56714
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="CornerDiamond39" type="Sprite2D" parent="sprites"]
+position = Vector2(1845, -2702)
+texture = ExtResource("4_2ufkn")
+
+[node name="CornerDiamond40" type="Sprite2D" parent="sprites"]
+position = Vector2(1985, -2703)
+texture = ExtResource("4_2ufkn")
+
+[node name="CubeSmallCheckered7" type="Sprite2D" parent="sprites"]
+position = Vector2(963.5, -2285)
+texture = ExtResource("3_w8kg5")
+flip_h = true
+
+[node name="LiquidPool" type="Sprite2D" parent="sprites"]
+position = Vector2(882, -2605)
+texture = ExtResource("21_v7gwm")
+
+[node name="LiquidPool2" type="Sprite2D" parent="sprites"]
+position = Vector2(1231, -2605)
+texture = ExtResource("21_v7gwm")
+
+[node name="LiquidPool3" type="Sprite2D" parent="sprites"]
+position = Vector2(1576.5, -2605)
+texture = ExtResource("21_v7gwm")
+
+[node name="LiquidPool4" type="Sprite2D" parent="sprites"]
+position = Vector2(1925.5, -2605)
+texture = ExtResource("21_v7gwm")
+
+[node name="LiquidPool5" type="Sprite2D" parent="sprites"]
+position = Vector2(2306, -2604)
+texture = ExtResource("21_v7gwm")
+
+[node name="LiquidPool7" type="Sprite2D" parent="sprites"]
+position = Vector2(2113, -2603)
+texture = ExtResource("21_v7gwm")
+
+[node name="LiquidPool6" type="Sprite2D" parent="sprites"]
+position = Vector2(2641, -2603)
+texture = ExtResource("21_v7gwm")
+
+[node name="prefabcollissions" type="Node" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(238, -198)
+script = ExtResource("22_iys1t")
+type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor"]
+position = Vector2(2411, 35.5)
+shape = SubResource("RectangleShape2D_x0ckj")
+
+[node name="Floor3" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(238, -198)
+script = ExtResource("22_iys1t")
+type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor3"]
+position = Vector2(2327, -4645)
+shape = SubResource("RectangleShape2D_x0ckj")
+
+[node name="Floor2" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(4792, -1278)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor2"]
+position = Vector2(243, -1270.5)
+shape = SubResource("RectangleShape2D_835vk")
+
+[node name="Floor4" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(4792, -1278)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor4"]
+position = Vector2(-4576, -1270)
+shape = SubResource("RectangleShape2D_835vk")
+
+[node name="Floor5" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor5"]
+position = Vector2(12.5, 77)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor6" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor6"]
+position = Vector2(150, -444)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor7" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor7"]
+position = Vector2(151, -442)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor11" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor11"]
+position = Vector2(3368, -1409)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor30" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor30"]
+position = Vector2(1814, -2386)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor32" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor32"]
+position = Vector2(1826, -1971)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor33" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor33"]
+position = Vector2(1240, -1971)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor34" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor34"]
+position = Vector2(357, -1972)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor31" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(677, -731)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor31"]
+position = Vector2(1605, -2677)
+shape = SubResource("RectangleShape2D_gfpxk")
+
+[node name="Floor8" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(938, -1613)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor8"]
+position = Vector2(1636, 32)
+shape = SubResource("RectangleShape2D_d5m8l")
+
+[node name="Floor9" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1155, -1371)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor9"]
+position = Vector2(-187.5, 55)
+shape = SubResource("RectangleShape2D_iqp1d")
+
+[node name="Floor10" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1155, -1371)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor10"]
+position = Vector2(-187, -284)
+shape = SubResource("RectangleShape2D_iqp1d")
+
+[node name="Floor12" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1155, -1371)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor12"]
+position = Vector2(-193, -919)
+shape = SubResource("RectangleShape2D_iqp1d")
+
+[node name="Floor16" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1155, -1371)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor16"]
+position = Vector2(398, -2097)
+shape = SubResource("RectangleShape2D_iqp1d")
+
+[node name="Floor17" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1155, -1371)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor17"]
+position = Vector2(2614, -1729)
+shape = SubResource("RectangleShape2D_iqp1d")
+
+[node name="Floor18" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1155, -1371)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor18"]
+position = Vector2(1693, -910)
+shape = SubResource("RectangleShape2D_iqp1d")
+
+[node name="Floor13" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(654, -2386)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor13"]
+position = Vector2(1109, 29.5)
+shape = SubResource("RectangleShape2D_t5g4g")
+
+[node name="Floor19" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(654, -2386)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor19"]
+position = Vector2(1109, 29.5)
+shape = SubResource("RectangleShape2D_t5g4g")
+
+[node name="Floor14" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(947, -2601)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor14"]
+position = Vector2(-269.5, -331.5)
+shape = SubResource("RectangleShape2D_v8cd5")
+
+[node name="Floor15" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(947, -2601)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor15"]
+position = Vector2(1902, -338)
+shape = SubResource("RectangleShape2D_v8cd5")
+
+[node name="Floor20" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(774, -3847)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor20"]
+position = Vector2(598.75, 30)
+shape = SubResource("RectangleShape2D_8admu")
+
+[node name="Floor21" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1741, -4273)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor21"]
+position = Vector2(118, -321)
+shape = SubResource("RectangleShape2D_txwu7")
+
+[node name="Floor22" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(3058, -3507)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor22"]
+position = Vector2(733.5, 37)
+shape = SubResource("RectangleShape2D_4wucl")
+
+[node name="Floor23" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1742, -4179)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor23"]
+position = Vector2(861, -70)
+shape = SubResource("RectangleShape2D_1abdj")
+
+[node name="Floor24" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1742, -4179)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor24"]
+position = Vector2(3047, 1194)
+shape = SubResource("RectangleShape2D_1abdj")
+
+[node name="Floor25" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(1610, -4202)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor25"]
+position = Vector2(820, 345)
+shape = SubResource("RectangleShape2D_2ic81")
+
+[node name="Floor26" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(4571, -4059)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor26"]
+position = Vector2(441, 272)
+shape = SubResource("RectangleShape2D_4str0")
+
+[node name="Floor27" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(3352, -2482)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor27"]
+position = Vector2(1046.5, -81)
+shape = SubResource("RectangleShape2D_a55xl")
+
+[node name="Floor28" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(3502, -2572)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor28"]
+position = Vector2(1110, -172)
+shape = SubResource("RectangleShape2D_wf5py")
+
+[node name="Floor29" type="StaticBody2D" parent="prefabcollissions"]
+position = Vector2(3468, -2485)
+script = ExtResource("22_iys1t")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor29"]
+position = Vector2(721, 396)
+shape = SubResource("RectangleShape2D_b7g7s")

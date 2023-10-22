@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cn6u35e1bwdai" path="res://assets/sprites/environment/tree/ground_tree_parallax_2.png" id="3_gixs0"]
 [ext_resource type="Texture2D" uid="uid://b2vn4oyahjrm5" path="res://assets/sprites/environment/sky/sky_sun_orb.png" id="3_iwqjt"]
 [ext_resource type="Texture2D" uid="uid://bhwspx4kqmxb1" path="res://assets/sprites/environment/sky/sky_cloud_head.png" id="4_1ovde"]
-[ext_resource type="Texture2D" uid="uid://c7tspstxofby3" path="res://assets/sprites/environment/branch/parallax_layer2.png" id="4_eydh2"]
+[ext_resource type="Texture2D" uid="uid://c7tspstxofby3" path="res://assets/sprites/environment/parallax_layer2.png" id="4_eydh2"]
 [ext_resource type="Texture2D" uid="uid://cdvocbxvttyd3" path="res://assets/sprites/environment/tree/ground_tree_parallax_1.png" id="4_ufdrg"]
 [ext_resource type="Texture2D" uid="uid://cwmfbjjcsqilp" path="res://assets/sprites/environment/sky/sky_cloud_foot back.png" id="5_fl0l7"]
 [ext_resource type="Texture2D" uid="uid://cndwm5ptgq3sk" path="res://assets/sprites/environment/sky/sky_cloud_hand_forward.png" id="6_xxd65"]
