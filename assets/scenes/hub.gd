@@ -81,10 +81,6 @@ func _on_portrait_trigger_body_exited(body):
 		items_visible = false
 
 
-func _on_area_2d_body_entered(body):
-	pass # Replace with function body.
-
-
 func _on_mouse_enter_left():
 	if !items_visible or item_taken:
 		return

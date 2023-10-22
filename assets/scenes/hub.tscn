@@ -1,15 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1y65wq6p7snw"]
+[gd_scene load_steps=20 format=3 uid="uid://c1y65wq6p7snw"]
 
 [ext_resource type="PackedScene" uid="uid://cos54k7w1dq8u" path="res://assets/prefabs/world/ground/leaves/leaf_test_ground.tscn" id="1_colpn"]
 [ext_resource type="Script" path="res://assets/scenes/hub.gd" id="1_qxbdx"]
 [ext_resource type="Texture2D" uid="uid://b682i1trunjsu" path="res://assets/sprites/environment/tree/tree_hand_1.png" id="3_ed7u1"]
 [ext_resource type="Texture2D" uid="uid://b7b7iv8bwboc6" path="res://assets/sprites/environment/tree/tree_hand_2.png" id="4_pfgsq"]
 [ext_resource type="Texture2D" uid="uid://cy50hupo4yq2a" path="res://assets/sprites/environment/tree/ground_tree_npc.png" id="5_dtfi8"]
-[ext_resource type="PackedScene" uid="uid://bi677ehj2vfuh" path="res://assets/prefabs/portal/dun_portal.tscn" id="5_m2im7"]
-[ext_resource type="PackedScene" uid="uid://c4traopaoxkld" path="res://assets/prefabs/portal/portal.tscn" id="5_rh7tu"]
+[ext_resource type="PackedScene" uid="uid://deqyr0ovlrvax" path="res://assets/prefabs/portal/portal.tscn" id="5_rh7tu"]
 [ext_resource type="PackedScene" uid="uid://dc04lphd2fj1a" path="res://assets/prefabs/portrait.tscn" id="6_fm3cf"]
 [ext_resource type="Texture2D" uid="uid://b4ve0t3o3lw6j" path="res://assets/sprites/keys/Keys_framed_e.png" id="7_bwo7h"]
 [ext_resource type="Texture2D" uid="uid://cn1xw7l537fbc" path="res://assets/sprites/keys/Keys_framed_q.png" id="8_6g7id"]
+[ext_resource type="Texture2D" uid="uid://y8pfksbcskhw" path="res://assets/sprites/environment/ruins/portal.png" id="9_jr021"]
+[ext_resource type="Texture2D" uid="uid://bu7ynrxer8aim" path="res://assets/sprites/environment/ruins/arch.png" id="10_idvsn"]
+[ext_resource type="Texture2D" uid="uid://b0bctf7uvnlsb" path="res://assets/sprites/environment/ruins/stand.png" id="11_bybgc"]
+[ext_resource type="AudioStream" uid="uid://dl5dqk7n5rmeq" path="res://assets/audio/portal/sfx_portal.wav" id="12_d8sec"]
+[ext_resource type="Texture2D" uid="uid://cjyx5udxd22j4" path="res://assets/sprites/environment/ruins/statue_pumpkin.png" id="14_5vp5a"]
+[ext_resource type="Texture2D" uid="uid://dlrutrqyvter7" path="res://assets/sprites/environment/ruins/statue_sun.png" id="15_cwrmv"]
 
 [sub_resource type="Animation" id="Animation_vcpnt"]
 resource_name = "fade_in_portraits"
@@ -50,15 +55,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c24vl"]
 size = Vector2(866, 466)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo52m"]
-size = Vector2(165, 536)
-
 [node name="hub" type="Node2D"]
 script = ExtResource("1_qxbdx")
 camera_limit_right = 6712
 camera_limit_top = -2560
 spawn_point = NodePath("SpawnPoint")
-next_stage_collider = NodePath("Portal Trigger/CollisionShape2D")
 
 [node name="walls" type="Node2D" parent="."]
 position = Vector2(2048, 0)
@@ -231,25 +232,38 @@ position = Vector2(2048, -85)
 position = Vector2(1584, -275)
 shape = SubResource("RectangleShape2D_c24vl")
 
-[node name="Dun_Portal" parent="." instance=ExtResource("5_m2im7")]
-offset_left = 64.0
-offset_right = 398.0
+[node name="Portal" type="Sprite2D" parent="."]
+position = Vector2(240, -312)
+texture = ExtResource("9_jr021")
 
-[node name="Portal" parent="." instance=ExtResource("5_rh7tu")]
-offset_left = 6320.0
-offset_top = -672.0
-offset_right = 6654.0
-offset_bottom = -64.0
+[node name="Arch" type="Sprite2D" parent="Portal"]
+position = Vector2(1, -138)
+texture = ExtResource("10_idvsn")
+
+[node name="Stand" type="Sprite2D" parent="Portal"]
+position = Vector2(-139, 142)
+texture = ExtResource("11_bybgc")
+
+[node name="Stand2" type="Sprite2D" parent="Portal"]
+position = Vector2(141, 142)
+texture = ExtResource("11_bybgc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Portal"]
+stream = ExtResource("12_d8sec")
+
+[node name="StatuePumpkin" type="Sprite2D" parent="Portal"]
+position = Vector2(0, -568)
+texture = ExtResource("14_5vp5a")
+
+[node name="Portal2" parent="." instance=ExtResource("5_rh7tu")]
+position = Vector2(6480, -290)
+
+[node name="StatueSun" type="Sprite2D" parent="Portal2"]
+position = Vector2(1, -575)
+texture = ExtResource("15_cwrmv")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(448, -232)
-
-[node name="Portal Trigger" type="Area2D" parent="."]
-position = Vector2(6576, -352)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal Trigger"]
-position = Vector2(2.5, 20)
-shape = SubResource("RectangleShape2D_fo52m")
+position = Vector2(240, -253)
 
 [node name="Left Trigger" type="Control" parent="."]
 layout_mode = 3
@@ -269,7 +283,6 @@ offset_bottom = -260.0
 
 [connection signal="body_entered" from="portrait_trigger" to="." method="_on_portrait_trigger_body_entered"]
 [connection signal="body_exited" from="portrait_trigger" to="." method="_on_portrait_trigger_body_exited"]
-[connection signal="body_entered" from="Portal Trigger" to="." method="_on_area_2d_body_entered"]
 [connection signal="mouse_entered" from="Left Trigger" to="." method="_on_mouse_enter_left"]
 [connection signal="mouse_exited" from="Left Trigger" to="." method="_on_mouse_exit"]
 [connection signal="mouse_entered" from="Left Trigger2" to="." method="_on_mouse_enter_right"]

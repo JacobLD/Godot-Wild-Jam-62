@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=55 format=3 uid="uid://cj6dn5njhacl4"]
 
 [ext_resource type="Texture2D" uid="uid://drbbh6kyni220" path="res://assets/sprites/level_1-a.jpg" id="1_qumke"]
@@ -23,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cjyx5udxd22j4" path="res://assets/sprites/environment/ruins/statue_pumpkin.png" id="21_5tmxj"]
 [ext_resource type="Texture2D" uid="uid://b27x3t0tibfpt" path="res://assets/sprites/environment/ruins/corner_diamond.png" id="22_qfne4"]
 [ext_resource type="Texture2D" uid="uid://b8o2lfglxhoww" path="res://assets/sprites/environment/ruins/beam_checkered.png" id="23_cpnm2"]
+
 [ext_resource type="Texture2D" uid="uid://buhy75j743bb4" path="res://assets/sprites/environment/ruins/beam_blood_checkered.png" id="25_n8jle"]
 [ext_resource type="Texture2D" uid="uid://ca1o1yv4jpnmo" path="res://assets/sprites/environment/ruins/cube_small_checkered.png" id="26_oo6ls"]
 [ext_resource type="Texture2D" uid="uid://nyqqlngldegp" path="res://assets/sprites/environment/level_black_frame_tileable.png" id="27_l4wux"]
@@ -45,11 +47,13 @@ size = Vector2(214, 71)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtrqy"]
 size = Vector2(69, 699)
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt3dn"]
 size = Vector2(805, 78)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqbkg"]
 size = Vector2(63, 1890)
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6evaa"]
 size = Vector2(1523, 126)
@@ -60,6 +64,7 @@ size = Vector2(1134, 73)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54a47"]
 size = Vector2(209, 73)
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5ope"]
 size = Vector2(632, 76)
 
@@ -69,6 +74,7 @@ size = Vector2(76, 76)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6hcy"]
 size = Vector2(227, 76)
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_melm3"]
 size = Vector2(2919, 46)
 
@@ -77,6 +83,7 @@ size = Vector2(57, 3999)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yusee"]
 size = Vector2(574, 72)
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tdhj"]
 size = Vector2(67, 714)
@@ -90,6 +97,7 @@ size = Vector2(401, 75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gg4r0"]
 size = Vector2(61, 1096)
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2p70g"]
 size = Vector2(308, 152)
 
@@ -101,6 +109,7 @@ size = Vector2(335, 963)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gcu8e"]
 size = Vector2(139.5, 272.5)
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6wln"]
 size = Vector2(48, 276)
@@ -868,6 +877,7 @@ polygon = PackedVector2Array(2920, -3235, 2977, -3275, 2925, -3330, 2922, -3387,
 
 [node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="collisionpolygons/Floor25"]
 position = Vector2(-221, 72)
+
 polygon = PackedVector2Array(708, -1245, 778, -1227, 856, -1132, 874, -1020, 867, -939, 890, -647, 946, -603, 1131, -609, 1130, -463, 894, -441, 787, -475, 726, -576, 724, -827)
 
 [node name="prefabcollissions" type="Node" parent="."]
@@ -879,6 +889,7 @@ type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor"]
 position = Vector2(367, 32.5)
+
 shape = SubResource("RectangleShape2D_eaprh")
 
 [node name="Floor3" type="StaticBody2D" parent="prefabcollissions"]
@@ -888,6 +899,7 @@ type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor3"]
 position = Vector2(1130.5, 32.5)
+
 shape = SubResource("RectangleShape2D_fed41")
 
 [node name="Floor4" type="StaticBody2D" parent="prefabcollissions"]
@@ -897,6 +909,7 @@ type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor4"]
 position = Vector2(58.5, 18)
+
 shape = SubResource("RectangleShape2D_s4y26")
 
 [node name="Floor5" type="StaticBody2D" parent="prefabcollissions"]
@@ -906,6 +919,7 @@ type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor5"]
 position = Vector2(126, 39.5)
+
 shape = SubResource("RectangleShape2D_0iqqc")
 
 [node name="Floor6" type="StaticBody2D" parent="prefabcollissions"]
@@ -915,6 +929,7 @@ type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="prefabcollissions/Floor6"]
 position = Vector2(32.5, 347.5)
+
 shape = SubResource("RectangleShape2D_mtrqy")
 
 [node name="Floor7" type="StaticBody2D" parent="prefabcollissions"]
