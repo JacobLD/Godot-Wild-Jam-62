@@ -18,9 +18,17 @@ func on_swing(pos = self.position):
 func on_block(pos = self.position):
 	_play_random_child_at(pos, $Block)
 
+func on_damage(pos = self.position):
+	_play_random_child_at(pos, $Damage)
+
+func on_dodge(pos = self.position):
+	_play_random_child_at(pos, $Dodge)
 
 func on_hit(pos = self.position):
 	_play_random_child_at(pos, $Hit)
+
+func on_parry(pos = self.position):
+	_play_random_child_at(pos, $Parry)
 
 func on_footstep(type, pos = self.position):
 	match type:

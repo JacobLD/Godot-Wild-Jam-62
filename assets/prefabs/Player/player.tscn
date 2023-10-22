@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://bqv4qnvnbdgkg"]
+[gd_scene load_steps=113 format=3 uid="uid://bqv4qnvnbdgkg"]
 
 [ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_11evo"]
 [ext_resource type="Texture2D" uid="uid://cw841hx6wjpth" path="res://assets/sprites/portraits/constant/portrait_item_hood_back.png" id="2_clm85"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bx3m73cq83qsh" path="res://assets/sprites/portraits/constant/portrait_item_eye_olive.png" id="5_vqgeo"]
 [ext_resource type="Texture2D" uid="uid://b212eyyaa4g0o" path="res://assets/sprites/spritesheet_player.png" id="7_itnss"]
 [ext_resource type="PackedScene" uid="uid://de8cnnppan8rk" path="res://assets/prefabs/attack_box/attack_box.tscn" id="10_ium6w"]
+[ext_resource type="PackedScene" uid="uid://canmkm18615on" path="res://assets/prefabs/hitbox.tscn" id="10_py1l3"]
 [ext_resource type="PackedScene" uid="uid://tvxqrrabb1de" path="res://assets/prefabs/sfx_player/sfx_player.tscn" id="27_m8xev"]
 [ext_resource type="Script" path="res://assets/prefabs/Player/player_camera.gd" id="28_1yqfp"]
 
@@ -854,11 +855,15 @@ graph_offset = Vector2(-669, -315)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1osqf"]
 size = Vector2(70, 288)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aad8t"]
+size = Vector2(71, 282)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d5ba"]
 size = Vector2(120, 208)
 
-[node name="PlayerController" type="CharacterBody2D"]
+[node name="PlayerController" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_11evo")
+is_player_and_not_clone = true
 
 [node name="InputController" type="Node" parent="."]
 script = ExtResource("2_x2ywn")
@@ -885,6 +890,7 @@ parameters/conditions/jump_blocking = false
 parameters/conditions/run = false
 
 [node name="face" type="Node2D" parent="."]
+position = Vector2(0, -1)
 
 [node name="PortraitItemHoodBack" type="Sprite2D" parent="face"]
 position = Vector2(11, -79)
@@ -918,7 +924,7 @@ position = Vector2(10, -80)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("7_itnss")
 hframes = 48
-frame = 7
+frame = 13
 
 [node name="sfx_player" parent="." instance=ExtResource("27_m8xev")]
 
@@ -944,8 +950,17 @@ target_position = Vector2(0, 188)
 [node name="JumpGraceTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Hitbox" parent="." instance=ExtResource("10_py1l3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, 22)
+shape = SubResource("RectangleShape2D_aad8t")
+
 [node name="attack_box" parent="." instance=ExtResource("10_ium6w")]
+owned_by = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_box"]
 position = Vector2(108, -40)
 shape = SubResource("RectangleShape2D_8d5ba")
+
+[connection signal="Take_Damage" from="Hitbox" to="." method="on_take_damage"]

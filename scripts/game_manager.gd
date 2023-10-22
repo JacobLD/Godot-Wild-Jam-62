@@ -14,6 +14,8 @@ var level_1_scene : PackedScene = preload("res://assets/scenes/level1a.tscn")
 
 var next_stage = 1
 
+var previous_player_props : Array[PlayerProps] = []
+
 func _ready():
 	await get_tree().root.ready
 	add_child(_player_unlock_timer)
@@ -24,8 +26,12 @@ func _ready():
 	set_player_item(ItemManager.get_starter_jaw_clone())
 	set_player_item(ItemManager.get_starter_nose_clone())
 	load_tutorial()
-	#get_tree().create_timer(1).timeout.connect(enter_level_1)
+	get_tree().create_timer(1).timeout.connect(test_level)
 
+func test_level():
+	previous_player_props.append(PlayerProps.new(_player))
+	load_stage(level_1_scene)
+	
 
 func register_world(world : Node2D):
 	_world = world
@@ -56,7 +62,7 @@ func exit_hub():
 	# Hide screen
 	match next_stage:
 		1:
-			pass
+			load_stage(level_1_scene)
 		2:
 			pass
 		3:
@@ -69,6 +75,7 @@ func exit_hub():
 var changing_stages = false
 
 func enter_hub():
+	previous_player_props.append(PlayerProps.new(_player))
 	load_stage(hub_scene)
 
 func enter_level_1():
@@ -104,3 +111,9 @@ func _load_stage(stage : PackedScene):
 	old_stage.queue_free()
 	Parallax.start_over(new_stage.stage_time)
 	changing_stages = false
+
+
+func on_player_died():
+	
+	_player.done_dying = true
+	new_stage.respawn_player()

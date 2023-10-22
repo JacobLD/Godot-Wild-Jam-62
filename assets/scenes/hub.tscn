@@ -60,7 +60,6 @@ script = ExtResource("1_qxbdx")
 camera_limit_right = 6712
 camera_limit_top = -2560
 spawn_point = NodePath("SpawnPoint")
-next_stage_collider = null
 
 [node name="walls" type="Node2D" parent="."]
 position = Vector2(2048, 0)
@@ -284,6 +283,7 @@ offset_bottom = -260.0
 
 [connection signal="body_entered" from="portrait_trigger" to="." method="_on_portrait_trigger_body_entered"]
 [connection signal="body_exited" from="portrait_trigger" to="." method="_on_portrait_trigger_body_exited"]
+[connection signal="time_to_go" from="Portal2" to="." method="_on_time_to_go"]
 [connection signal="mouse_entered" from="Left Trigger" to="." method="_on_mouse_enter_left"]
 [connection signal="mouse_exited" from="Left Trigger" to="." method="_on_mouse_exit"]
 [connection signal="mouse_entered" from="Left Trigger2" to="." method="_on_mouse_enter_right"]
